@@ -1,12 +1,12 @@
 Resources:
 
-SheetMusicPlus (lots of recommendations based on genre, more by this composer, customers who bought this also bought.. )
+Sephora.com - write a script to pull data from different skincare categories?
+Or... API?
+https://github.com/bobintornado/sephora-api
 
-Henle Verlag (they have 1-10 difficulty ratings) (They have pretty good recommendations)
+Paula's Choice - write a script to pull data from different skincare concerns
 
-Alfred music publishing (they have less tiers for difficulty, but useful 'You May Also Like' section) 
-
-Amazon.com (use the customers who bought this also bought, filter by category for music books only)
+Link to articles?
 
 
 
