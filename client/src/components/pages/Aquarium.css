@@ -11,10 +11,11 @@ img.fish {
   }
   
   .water {
-    background-color: black;
+    background-image: url("./underwater.jpg");
     opacity: 0.15;
+    background-size: cover;
     z-index: -1;
-    position: absolute;
+    position:absolute;
     left: 0;
     top: 0;
     margin: 0;

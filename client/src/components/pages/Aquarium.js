@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import "../../utilities.css";
 import "./Aquarium.css";
 import Fish from "../modules/Fish.js"
+import doryfish from "../data/doryfish.png"
 
 class Aquarium extends Component {
     constructor(props) {
@@ -35,7 +36,7 @@ class Aquarium extends Component {
             <div className='water' style={{ ...this.state, zIndex:-40 }}></div>
             <div className='water' style={{ ...this.state, zIndex:-50 }}></div>
             <div className='water' style={{ ...this.state, zIndex:-60 }}></div>
-            <Fish image="./doryfish.png"/>
+            <Fish image={doryfish}/>
           </div>
         );
       }
