@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import "../../utilities.css";
 
-class Quiz extends Component {
+class Aquarium extends Component {
     constructor(props) {
         super(props);
     }
@@ -10,14 +10,17 @@ class Quiz extends Component {
     componentDidMount(){
 
     }
+    // "use strict";
+
+
 
     render() {
         return ( <>
-            <li> Have you been here before?</li>
+            <li> FISHIES?</li>
             </>
         );
     }
 
 }
 
-export default Quiz;
+export default Aquarium;

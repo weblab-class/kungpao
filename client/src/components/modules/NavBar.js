@@ -18,19 +18,25 @@ class NavBar extends Component {
   render() {
     return (
       <nav className="NavBar-container">
-        <div className="NavBar-title u-inlineBlock">Skinsation</div>
+        <div className="NavBar-title u-inlineBlock">Habit Aquarium</div>
         <div className="NavBar-linkContainer u-inlineBlock">
           <Link to="/" className="NavBar-link">
             Skeleton
           </Link>
-          <Link to="/quiz" className="NavBar-link">
-              Quiz
+          <Link to="/aquarium" className="NavBar-link">
+              Aquarium
           </Link>
-          {this.props.userId && (
-            <Link to="/profile" className="NavBar-link">
-              Profile
+          {/* {this.props.userId && (
+            <Link to="/habits" className="NavBar-link">
+              Habits
             </Link>
-          )}
+          )} */}
+          <Link to="/habits" className="NavBar-link">
+            Habits
+          </Link>
+          <Link to="/store" className="NavBar-link">
+            Store
+          </Link>
           {this.props.userId ? (
             <GoogleLogout
               clientId={GOOGLE_CLIENT_ID}

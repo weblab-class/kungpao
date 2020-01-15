@@ -3,7 +3,9 @@ import { Router } from "@reach/router";
 import NavBar from "./modules/Navbar.js"
 import NotFound from "./pages/NotFound.js";
 import Skeleton from "./pages/Skeleton.js";
-import Quiz from "./pages/Quiz.js";
+import Aquarium from "./pages/Aquarium.js";
+import Habits from "./pages/Habits.js";
+import Store from "./pages/Store.js";
 
 import "./App.css";
 import "../utilities.css";
@@ -11,7 +13,7 @@ import "../utilities.css";
 import { socket } from "../client-socket.js";
 
 import { get, post } from "../utilities";
-import Profile from "./pages/Profile.js";
+
 
 /**
  * Define the "App" component as a class.
@@ -65,12 +67,15 @@ class App extends Component {
             handleLogout={this.handleLogout}
             userId={this.state.userId}
           />
-          <Quiz
-            path="/quiz"
+          <Aquarium
+            path="/aquarium"
             />
-          <Profile
-            path="/profile"
+          <Habits
+            path="/habits"
           />
+          <Store
+            path="/store"
+            />
           <NotFound default />
         </Router>
         </div>
