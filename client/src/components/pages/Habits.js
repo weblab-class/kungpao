@@ -13,7 +13,14 @@ class Habits extends Component {
 
     render() {
         return ( <>
-            <li> Keep track of your habits.</li>
+            <h1>Keep track of your habits.</h1>
+            <h2>Daily</h2>
+            <ul>
+                <li>drink 3 glasses of water</li>
+                <li>eat breakfast</li>
+                <li><input type="text" name="firstname"/><button type="button">+</button></li>
+            </ul>
+            
             </>
         );
     }
