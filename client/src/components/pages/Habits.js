@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import "../../utilities.css";
 
-class Profile extends Component {
+class Habits extends Component {
     constructor(props) {
         super(props);
     }
@@ -13,11 +13,11 @@ class Profile extends Component {
 
     render() {
         return ( <>
-            <li> Hello! This is the profile page.</li>
+            <li> Keep track of your habits.</li>
             </>
         );
     }
 
 }
 
-export default Profile;
+export default Habits;
