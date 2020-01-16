@@ -7,6 +7,9 @@ import "./Store.css";
 class Store extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            availableFish: [],
+        }
         
     }
 

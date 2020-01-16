@@ -16,8 +16,8 @@ class FishCard extends Component {
 
   render() {
     return (
-      <div className="FishCard square">
-        <div className="content u-textCenter">
+      <div className="FishCard square u-pointer">
+        <div className="content u-textCenter u-pointer">
           <img src={doryfish} width="100%">
           </img>
           i'm a fish
