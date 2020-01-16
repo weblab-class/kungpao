@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Modal from "react-modal";
 import { Router } from "@reach/router";
 import NavBar from "./modules/Navbar.js"
 import NotFound from "./pages/NotFound.js";
@@ -6,6 +7,7 @@ import Skeleton from "./pages/Skeleton.js";
 import Aquarium from "./pages/Aquarium.js";
 import Habits from "./pages/Habits.js";
 import Store from "./pages/Store.js";
+import Popup from "./modules/Popup.js";
 
 import "./App.css";
 import "../utilities.css";
@@ -29,6 +31,8 @@ class App extends Component {
       userId: undefined,
       lastFed: undefined,
       gId: undefined,
+      showPopup: false,
+      popText: "",
     };
   }
 
@@ -40,8 +44,6 @@ class App extends Component {
         
       }
     });
-    
-    
   }
 
   handleLogin = (res) => {
@@ -57,50 +59,40 @@ class App extends Component {
     this.setState({ userId: undefined });
     post("/api/logout");
   };
-
-  feedFish = () => {
-    console.log(Date.now())
-
-    this.checkifFed().then((y) => {
-      console.log(this.state.lastFed)
-    if (this.state.lastFed.length == 0){
-      console.log("Feeding!");
-      post("/api/feedfish");
-    }
-    else if (Date.now() - this.state.lastFed[0].lastfed > 86400000){
-      console.log("Feeding...");
-      post("/api/feedfish");
-    }
-    else {
-      console.log("You already fed your fish less than 24 hours ago!")
-    }
-    })
-  };
-
   checkifFed = () => {
     get("/api/feedfish", {googleid: this.state.gId}).then((ff) => {
-      console.log("Retrieving...");
-      console.log(this.state.gId);
       this.setState( {
         lastFed : ff,
       });
-      console.log(Date.now())
-      console.log(this.state.lastFed)
-      // console.log(this.state.lastFed[0].lastfed)
-      console.log(this.state.lastFed.length)
     if (this.state.lastFed.length == 0){
-      console.log("Feeding!");
       post("/api/feedfish");
+      this.togglePopup();
+      this.setState({
+        popText: "Yay! You have fed your fish.",
+      });
     }
     else if (Date.now() - this.state.lastFed[this.state.lastFed.length -1].lastfed > 86400000){
-      console.log("Feeding...");
       post("/api/feedfish");
+      this.togglePopup();
+      this.setState({
+        popText: "Yay! You have fed your fish.",
+      });
     }
     else {
-      console.log(Date.now() - Date.parse(this.state.lastFed[this.state.lastFed.length-1].lastfed))
-      console.log("You already fed your fish less than 24 hours ago!")
+      console.log("You already fed your fish less than 24 hours ago!");
+      this.togglePopup();
+      this.setState({
+        popText: "You have already fed your fish in the last 24 hours.",
+      });
     }
     });
+  }
+
+  togglePopup = () => {
+    this.setState({
+      showPopup: !this.state.showPopup
+    });
+    console.log("toggled");
   }
 
   render() {
@@ -133,6 +125,9 @@ class App extends Component {
           <NotFound default />
         </Router>
         <button onClick={this.checkifFed}> Feed fish</button>
+        {this.state.showPopup ? <Popup popText={this.state.popText}
+          onClose={this.togglePopup}>
+        </Popup> : null}
         <button>Place Items</button>
         
         </div>
