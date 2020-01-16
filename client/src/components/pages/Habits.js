@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import GoalsList from "../modules/GoalsList.js";
 
 import "../../utilities.css";
 
@@ -13,7 +14,11 @@ class Habits extends Component {
 
     render() {
         return ( <>
-            <li> Keep track of your habits.</li>
+            <h1>Keep track of your habits.</h1>
+            <button type="button">daily</button>
+            <button type="button">weekly</button>
+            <button type="button">monthly</button>
+            <GoalsList />
             </>
         );
     }
