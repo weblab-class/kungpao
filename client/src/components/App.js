@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Popup from "reactjs-popup";
 import { Router } from "@reach/router";
 import NavBar from "./modules/Navbar.js"
 import NotFound from "./pages/NotFound.js";
@@ -57,7 +58,6 @@ class App extends Component {
     
     return (
       <>
-        
         <NavBar
           handleLogin={this.handleLogin}
           handleLogout={this.handleLogout}
@@ -82,7 +82,14 @@ class App extends Component {
             />
           <NotFound default />
         </Router>
-
+        <Popup trigger={<button> Menu</button>} position="right center">
+          <Popup trigger={<button> Feed fish </button>} position="right center">
+            <div> Fish are happy! </div>
+          </Popup>
+          <Popup trigger={<button> Place fish </button>} position="right center">
+            <div> You have no fish. </div>
+          </Popup>
+        </Popup>
         
         </div>
       </>
