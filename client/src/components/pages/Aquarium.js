@@ -4,8 +4,12 @@ import "../../utilities.css";
 import "./Aquarium.css";
 import Fish from "../modules/Fish.js"
 import doryfish from "../data/doryfish.png"
+import underwater from "./underwater.jpg"
+
 
 class Aquarium extends Component {
+
+  
     constructor(props) {
         super(props);
     }
@@ -26,16 +30,13 @@ class Aquarium extends Component {
         window.removeEventListener('resize', () => this.handleResize());
       }
     
+      
+
       render() {
         return (
           <div>
+            
             <div className='water' style={{ ...this.state, zIndex:-1 }}></div>
-            <div className='water' style={{ ...this.state, zIndex:-10 }}></div>
-            <div className='water' style={{ ...this.state, zIndex:-20 }}></div>
-            <div className='water' style={{ ...this.state, zIndex:-30 }}></div>
-            <div className='water' style={{ ...this.state, zIndex:-40 }}></div>
-            <div className='water' style={{ ...this.state, zIndex:-50 }}></div>
-            <div className='water' style={{ ...this.state, zIndex:-60 }}></div>
             <Fish image={doryfish}/>
           </div>
         );

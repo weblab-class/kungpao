@@ -11,15 +11,16 @@ img.fish {
   }
   
   .water {
-    background-image: url("./underwater.jpg");
-    opacity: 0.15;
+    background-image: url("./seawithsand.jpg");
+    opacity: 0.60;
     background-size: cover;
+    background-repeat: no-repeat;
     z-index: -1;
     position:absolute;
     left: 0;
     top: 0;
+    right: 0;
+    bottom: 0;
     margin: 0;
     padding: 0;
-    height: 100vh;
-    width: 100vw;
   }
