@@ -1,0 +1,9 @@
+.SingleMessage-container{
+    position:relative;
+}
+
+.FishCardGroup{
+    display:flex;
+    flex-direction: row;
+    
+}
