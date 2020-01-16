@@ -11,6 +11,7 @@ const express = require("express");
 
 // import models so we can interact with the database
 const User = require("./models/user");
+const FedFish = require("./models/fedfish.js");
 
 // import authentication library
 const auth = require("./auth");
@@ -43,9 +44,28 @@ router.post("/initsocket", (req, res) => {
 // |------------------------------|
 
 // anything else falls to this "not found" case
+
+router.get("/feedfish", (req, res) => {
+  FedFish.find({googleid: req.query.googleid}).then((ff) => {
+    res.send(ff);
+  });
+});
+
+router.post("/feedfish", (req, res) => {
+  const feed = new FedFish({
+    name: req.user.name,
+    googleid: req.user.googleid,
+    lastfed: Date.now(),
+  });
+  console.log(`HELLOOOOO`);
+  feed.save().then((f) => res.send(f));
+});
+
 router.all("*", (req, res) => {
   console.log(`API route not found: ${req.method} ${req.url}`);
   res.status(404).send({ msg: "API route not found" });
 });
+
+
 
 module.exports = router;

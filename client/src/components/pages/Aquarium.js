@@ -26,9 +26,9 @@ class Aquarium extends Component {
         })
       }
     
-      componentWillUnmount() {
-        window.removeEventListener('resize', () => this.handleResize());
-      }
+      // componentWillUnmount() {
+      //   window.removeEventListener('resize', () => this.handleResize());
+      // }
     
       
 
