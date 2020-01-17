@@ -12,9 +12,12 @@ const express = require("express");
 // import models so we can interact with the database
 const User = require("./models/user");
 const FedFish = require("./models/fedfish.js");
+const Habit = require("./models/habit.js");
 const Message = require("./models/message.js");
 const MyFish = require("./models/myfish.js");
 const AlmostMyFish = require("./models/almostmyfish.js");
+const AllFish = require("./models/allfish.js");
+const Money = require("./models/money.js");
 
 
 // import authentication library
@@ -62,7 +65,7 @@ router.post("/feedfish", (req, res) => {
     lastfed: Date.now(),
   });
   console.log(`HELLOOOOO`);
-  feed.save()//.then((f) => res.send(f));
+  feed.save().then((f) => res.send(f));
 });
 
 router.get("/buyfish", (req, res) => {
@@ -71,13 +74,77 @@ router.get("/buyfish", (req, res) => {
   });
 });
 
+router.get("/habit", (req, res) => {
+  Habit.find({ "creator_id": req.user._id }).then((habits) => {
+    res.send(habits);
+  });
+})
+
+router.post("/habit", (req, res) => {
+  const newHabit = new Habit({
+    creator_id: req.user._id,
+    content: req.body.content,
+  });
+  newHabit.save().then((habit) => {
+    res.send(habit);
+  });
+})
 router.post("/buyfish", (req, res) => {
   const newfish = new AlmostMyFish({
     type: req.body.type,
     googleid: req.user.googleid,
   });
   console.log(`HELLOOOOO`);
-  newfish.save() //.then((f) => res.send(f));
+  newfish.save() .then((f) => res.send(f));
+});
+
+router.get("/todaysfish", (req, res) => {
+  console.log("fail");
+  let allFish = [{
+    "type": "doryfish",
+    "price": 25,
+    "name": "dory",
+  }, {
+    "type": "blueyellowfish",
+    "price": 20,
+    "name": "angel",
+  }, {
+    "type": "purplecoral",
+    "price": 14,
+    "name": "coral",
+  }];
+  //randomizes order of allFish array
+  for(let i = allFish.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * i)
+    const temp = allFish[i]
+    allFish[i] = allFish[j]
+    allFish[j] = temp
+  }
+  let todaysFish = allFish.slice(2);
+  let testfish = [1,2,3];
+  res.send(allFish);
+});
+
+router.get("/money", (req, res) => {
+  Money.find({googleid: req.query.googleid}).then((m) => {
+    res.send(m);
+  });
+});
+
+router.post("/money", (req, res) => {
+  if (!Money.findOne({googleid: req.query.googleid})){
+    Money.insertOne({
+      googleid: req.query.googleid,
+      money: req.body.money,
+    })
+  }
+  else{
+    Money.updateOne(
+      {googleid: req.query.googlid},
+      {$set: {money: req.body.money}}
+    )
+  }
+  
 });
 
 router.get("/placefish", (req, res) => {
