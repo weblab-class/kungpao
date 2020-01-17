@@ -133,11 +133,10 @@ class App extends Component {
     this.setState({
       fish: this.state.placedfish.concat(newfish),
     });
-    const body = { type: newfish.type };
+    const body = { type: newfish.type , googleid: this.state.gId};
     post("/api/placefish", body).then(res => console.log(res));
     //need to delete from notplacedfish
-    
-    post("/api/removefish", body);
+    post("/api/removefish", body).then(res => console.log(res));
     console.log('addedfish')
   }
 

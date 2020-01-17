@@ -96,8 +96,11 @@ router.post("/placefish", (req, res) => {
 });
 
 router.post("/removeFish", (req, res) => {
-  AlmostMyFish.deleteOne({type: req.body.type}).then ((err) => {
-    if (err) return console.log(`error :(`);
+  console.log(req.body.type);
+  console.log(typeof(req.body.type));
+  console.log(req.body.googleid);
+  AlmostMyFish.deleteOne({"type": req.body.type, "googleid": req.body.googleid}).then ((err) => {
+    if (err) return console.log(err);
     console.log(`deleted fish ${req.body.type} from almostmyfish`);
   });
 });

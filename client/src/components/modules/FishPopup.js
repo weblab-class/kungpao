@@ -8,7 +8,7 @@ class FishPopup extends React.Component {
 
   constructor(props) {
     super(props);
-    console.log(this.props.availFish[0].type);
+    console.log(this.props.availFish.length);
   }
 
   componentDidMount () {
@@ -30,13 +30,13 @@ class FishPopup extends React.Component {
     return (
       <div className="window">
           <p> What do you want to put in your aquarium? </p>
-        
-          {this.props.availFish.map((f) =>(
+          {this.props.availFish.length == 0 ? null : this.props.availFish.map((f) =>(
             <>
             <img src={this.displayFish(f.type)} alt='fishy' height="100px" width="100px"></img>
             <button className="fishButton" onClick={() => this.props.addingFish(f)}> Add this fish! </button>
             </>
           ))}
+          
         
         <button className="closeButton" onClick={this.props.onClose}>
             Close
