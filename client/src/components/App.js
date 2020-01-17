@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Router } from "@reach/router";
-import NavBar from "./modules/Navbar.js"
+import NavBar from "./modules/NavBar.js"
 import NotFound from "./pages/NotFound.js";
 import Skeleton from "./pages/Skeleton.js";
 import Aquarium from "./pages/Aquarium.js";
