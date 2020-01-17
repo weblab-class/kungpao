@@ -58,7 +58,8 @@ router.post("/feedfish", (req, res) => {
     lastfed: Date.now(),
   });
   console.log(`HELLOOOOO`);
-  feed.save().then((f) => res.send(f));
+  feed.save()
+  // feed.save().then((f) => res.send(f));
 });
 
 router.all("*", (req, res) => {

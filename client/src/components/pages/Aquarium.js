@@ -59,7 +59,6 @@ class Aquarium extends Component {
             ))}
             <div className='water' style={{ ...this.state, zIndex:-1 }}></div>
             
-            {/* <Fish image={doryfish}/> */}
           </div>
         );
       }

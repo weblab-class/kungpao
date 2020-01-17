@@ -8,6 +8,10 @@ import Habits from "./pages/Habits.js";
 import Store from "./pages/Store.js";
 import Popup from "./modules/Popup.js";
 import FishPopup from "./modules/FishPopup.js";
+import Login from "./pages/Login.js";
+import GoogleLogin, { GoogleLogout } from "react-google-login";
+
+const GOOGLE_CLIENT_ID = "121479668229-t5j82jrbi9oejh7c8avada226s75bopn.apps.googleusercontent.com";
 
 import "./App.css";
 import "../utilities.css";
@@ -114,21 +118,16 @@ class App extends Component {
   render() {
     
     return (
-      
       <>
-        <NavBar
+      {this.state.userId ?
+      <>
+      <NavBar
           handleLogin={this.handleLogin}
           handleLogout={this.handleLogout}
           userId={this.state.userId}
         />
         <div className="App-container">
         <Router>
-          {/* <Skeleton
-            path="/"
-            handleLogin={this.handleLogin}
-            handleLogout={this.handleLogout}
-            userId={this.state.userId}
-          /> */}
           <Aquarium
             path="/"
             fishList={this.state.fish}
@@ -142,15 +141,22 @@ class App extends Component {
             path="/store"
             />
           <NotFound default />
-        </Router>
-        {/* <button onClick={this.checkifFed}> Feed fish</button> */}
+        </Router> 
         {this.state.showPopup ? <Popup popText={this.state.popText}
           onClose={this.togglePopup}>
         </Popup> : null}
-        {/* <button onClick={this.pickingFish}>Place Items</button> */}
         {this.state.pickFish ? <FishPopup onClose={this.pickingFish} addingFish ={byfish => this.addingFish(byfish)}></FishPopup> : null}
         </div>
-      </>
+        </>
+        
+        : 
+        <>
+        <Login handleLogin = {this.handleLogin}/>
+        
+</>
+      }
+        
+        </>
     );
   }
 }

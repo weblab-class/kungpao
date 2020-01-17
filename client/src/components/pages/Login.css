@@ -1,0 +1,26 @@
+.logo {
+    margin: 0;
+    position: absolute;
+    top: 40%;
+    left: 28%;
+    transform: (-50%, -50%);
+    font-size: 50px;
+    color: whitesmoke;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.logo-container{
+    height: 100vh;
+    position: relative;
+    border: 3px green;
+    background-image: url("underwater.jpg");
+    background-size: cover;
+
+}
+
+.login-button{
+    position: absolute;
+    top: 50%;
+    left: 48%;
+}
+
