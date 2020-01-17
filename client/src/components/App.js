@@ -62,8 +62,9 @@ class App extends Component {
       this.setState({ userId: user._id, gId: user.googleid, });
       post("/api/initsocket", { socketid: socket.id });
       get("/api/buyfish", {googleid: user.googleid}).then((f) => {
-        this.setState({notplaced : this.state.notplaced.concat([f])});
-        console.log(this.state.notplaced)
+        this.setState({notplaced : this.state.notplaced.concat(f)});
+        console.log(this.state.notplaced);
+        console.log(this.state.notplaced[0]);
       });
     });
   };
