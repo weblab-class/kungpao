@@ -17,6 +17,7 @@ const Message = require("./models/message.js");
 const MyFish = require("./models/myfish.js");
 const AlmostMyFish = require("./models/almostmyfish.js");
 const AllFish = require("./models/allfish.js");
+const Money = require("./models/money.js");
 
 
 // import authentication library
@@ -122,8 +123,28 @@ router.get("/todaysfish", (req, res) => {
   let todaysFish = allFish.slice(2);
   let testfish = [1,2,3];
   res.send(allFish);
-  
+});
 
+router.get("/money", (req, res) => {
+  Money.find({googleid: req.query.googleid}).then((m) => {
+    res.send(m);
+  });
+});
+
+router.post("/money", (req, res) => {
+  if (!Money.findOne({googleid: req.query.googleid})){
+    Money.insertOne({
+      googleid: req.query.googleid,
+      money: req.body.money,
+    })
+  }
+  else{
+    Money.updateOne(
+      {googleid: req.query.googlid},
+      {$set: {money: req.body.money}}
+    )
+  }
+  
 });
 
 router.get("/placefish", (req, res) => {
