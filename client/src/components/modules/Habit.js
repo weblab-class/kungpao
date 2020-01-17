@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class GoalItem extends Component {
+class Habit extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -29,4 +29,4 @@ class GoalItem extends Component {
   }
 }
 
-export default GoalItem;
+export default Habit;

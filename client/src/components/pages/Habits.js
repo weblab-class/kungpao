@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import GoalsList from "../modules/GoalsList.js";
+import HabitList from "../modules/HabitList.js";
 
 import "../../utilities.css";
 
@@ -18,7 +18,7 @@ class Habits extends Component {
             <button type="button">daily</button>
             <button type="button">weekly</button>
             <button type="button">monthly</button>
-            <GoalsList />
+            <HabitList />
             </>
         );
     }

@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import GoalItem from "./GoalItem.js";
+import Habit from "./Habit.js";
 
-class GoalsList extends Component {
+class HabitList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      goals: [],
+      habits: [],
       inputText: ""
     };
 
@@ -19,13 +19,13 @@ class GoalsList extends Component {
     });
   };
 
-  submitGoal = () => {
-    const { goals, inputText } = this.state;
-    const newGoals = goals.concat([{ goal: inputText, key: this.keyCounter }]);
+  submitHabit = () => {
+    const { habits, inputText } = this.state;
+    const newHabits = habits.concat([{ habit: inputText, key: this.keyCounter }]);
     this.keyCounter++;
 
     this.setState({
-      goals: newGoals,
+      habits: newHabits,
       inputText: ""
     });
   };
@@ -33,11 +33,11 @@ class GoalsList extends Component {
   render() {
     return (
       <div>
-        {this.state.goals.map(item => (
-        <GoalItem
-            key={`goalItem-${item.key}`}
-            content={item.goal}
-            deleteGoal={() => this.deleteGoal(item.key)}
+        {this.state.habits.map(item => (
+        <Habit
+            key={`habit-${item.key}`}
+            content={item.habit}
+            deleteHabit={() => this.deleteHabit(item.key)}
         />
         ))}
         <input
@@ -45,10 +45,10 @@ class GoalsList extends Component {
           value={this.state.inputText}
           onChange={this.handleInputChange}
         />
-        <button onClick={this.submitGoal}>+</button>
+        <button onClick={this.submitHabit}>+</button>
       </div>
     );
   }
 }
 
-export default GoalsList;
+export default HabitList;
