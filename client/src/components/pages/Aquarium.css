@@ -24,3 +24,19 @@ img.fish {
     margin: 0;
     padding: 0;
   }
+
+  .bubble img {
+    max-width: 5%;
+    max-height: 5%;
+    margin-bottom: 0;
+    margin-top: 80vh;
+    animation: floatUp;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    
+  }
+
+  @keyframes floatUp {
+    from {margin-top: 80vh;}
+    to {margin-left: 200px; margin-top: 0vh;}
+  }

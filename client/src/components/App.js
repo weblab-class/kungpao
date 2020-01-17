@@ -46,7 +46,7 @@ class App extends Component {
     get("/api/whoami").then((user) => {
       if (user._id) {
         // they are registed in the database, and currently logged in.
-        this.setState({ userId: user._id });
+        this.setState({ userId: user._id, gId: user.googleid});
         
       }
     });
@@ -66,6 +66,7 @@ class App extends Component {
     post("/api/logout");
   };
   checkifFed = () => {
+    console.log(this.state.gId);
     get("/api/feedfish", {googleid: this.state.gId}).then((ff) => {
       this.setState( {
         lastFed : ff,

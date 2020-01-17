@@ -4,6 +4,7 @@ import "../../utilities.css";
 import "./Aquarium.css";
 import Fish from "../modules/Fish.js";
 import doryfish from "../data/doryfish.png";
+import bubble from "./bubble.png";
 
 
 class Aquarium extends Component {
@@ -57,8 +58,11 @@ class Aquarium extends Component {
             {this.props.fishList.map((f) => (
               <Fish image={f}/>
             ))}
-            <div className='water' style={{ ...this.state, zIndex:-1 }}></div>
-            
+            <div className='water' style={{ ...this.state, zIndex:-1 }}>
+              <div className='bubble'>
+                <img src={bubble} alt="bubble"></img>
+              </div>
+            </div>
           </div>
         );
       }
