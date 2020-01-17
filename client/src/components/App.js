@@ -123,15 +123,17 @@ class App extends Component {
         />
         <div className="App-container">
         <Router>
-          <Skeleton
+          {/* <Skeleton
             path="/"
             handleLogin={this.handleLogin}
             handleLogout={this.handleLogout}
             userId={this.state.userId}
-          />
+          /> */}
           <Aquarium
-            path="/aquarium"
+            path="/"
             fishList={this.state.fish}
+            checkifFed={this.checkifFed}
+            pickingFish = {this.pickingFish}
             />
           <Habits
             path="/habits"
@@ -141,13 +143,12 @@ class App extends Component {
             />
           <NotFound default />
         </Router>
-        <button onClick={this.checkifFed}> Feed fish</button>
+        {/* <button onClick={this.checkifFed}> Feed fish</button> */}
         {this.state.showPopup ? <Popup popText={this.state.popText}
           onClose={this.togglePopup}>
         </Popup> : null}
-        <button onClick={this.pickingFish}>Place Items</button>
+        {/* <button onClick={this.pickingFish}>Place Items</button> */}
         {this.state.pickFish ? <FishPopup onClose={this.pickingFish} addingFish ={byfish => this.addingFish(byfish)}></FishPopup> : null}
-        {/* <Aquarium /> */}
         </div>
       </>
     );

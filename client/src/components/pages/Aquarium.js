@@ -12,6 +12,11 @@ class Aquarium extends Component {
     constructor(props) {
         super(props);
         console.log(this.props.fishList);
+        this.state = {
+          showPopup: false,
+          popText: "",
+          pickFish: false,
+        };
     }
 
     componentDidMount() {
@@ -30,9 +35,25 @@ class Aquarium extends Component {
       //   window.removeEventListener('resize', () => this.handleResize());
       // }
 
+      togglePopup = () => {
+        this.setState({
+          showPopup: !this.state.showPopup
+        });
+        console.log("toggled");
+      }
+
+      pickingFish = () => {
+        this.setState({
+          pickFish: !this.state.pickFish
+        });
+      }
+
       render() {
         return (
           <div>
+            <button onClick={this.props.checkifFed}> Feed fish</button>
+            <button onClick={this.props.pickingFish}>Place Items</button>
+
             {this.props.fishList.map((f) => (
               <Fish image={f}/>
             ))}
