@@ -34,7 +34,7 @@ class FishPopup extends React.Component {
           {this.props.availFish.map((f) =>(
             <>
             <img src={this.displayFish(f.type)} alt='fishy' height="100px" width="100px"></img>
-            <button className="fishButton" onClick={() => this.props.addingFish(this.displayFish(f.type))}> Add this fish! </button>
+            <button className="fishButton" onClick={() => this.props.addingFish(f)}> Add this fish! </button>
             </>
           ))}
         

@@ -80,6 +80,21 @@ router.post("/buyfish", (req, res) => {
   newfish.save() //.then((f) => res.send(f));
 });
 
+router.get("/placefish", (req, res) => {
+  MyFish.find({googleid: req.query.googleid}).then((ff) => {
+    res.send(ff);
+  });
+});
+
+router.post("/placefish", (req, res) => {
+  const aquafish = new MyFish({
+    type: req.body.type,
+    googleid: req.user.googleid,
+  });
+  console.log(`placed fish in Aquarium!`);
+  aquafish.save()//.then((f) => res.send(f));
+});
+
 
 router.all("*", (req, res) => {
   console.log(`API route not found: ${req.method} ${req.url}`);
