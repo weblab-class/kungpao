@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Modal from "react-modal";
 import { Router } from "@reach/router";
 import NavBar from "./modules/Navbar.js"
 import NotFound from "./pages/NotFound.js";
@@ -8,6 +7,7 @@ import Aquarium from "./pages/Aquarium.js";
 import Habits from "./pages/Habits.js";
 import Store from "./pages/Store.js";
 import Popup from "./modules/Popup.js";
+import FishPopup from "./modules/FishPopup.js";
 
 import "./App.css";
 import "../utilities.css";
@@ -33,6 +33,8 @@ class App extends Component {
       gId: undefined,
       showPopup: false,
       popText: "",
+      pickFish: false,
+      fish: [],
     };
   }
 
@@ -95,6 +97,20 @@ class App extends Component {
     console.log("toggled");
   }
 
+  pickingFish = () => {
+    this.setState({
+      pickFish: !this.state.pickFish
+    });
+  }
+
+  addingFish = (newfish) => {
+    this.setState({
+      fish: this.state.fish.concat([newfish]),
+    });  
+    console.log("BIIGIDSIFD");
+  }
+
+
   render() {
     
     return (
@@ -128,8 +144,9 @@ class App extends Component {
         {this.state.showPopup ? <Popup popText={this.state.popText}
           onClose={this.togglePopup}>
         </Popup> : null}
-        <button>Place Items</button>
-        
+        <button onClick={this.pickingFish}>Place Items</button>
+        {this.state.pickFish ? <FishPopup onClose={this.pickingFish} addingFish ={byfish => this.addingFish(byfish)}></FishPopup> : null}
+        <Aquarium fishList={this.state.fish}/>
         </div>
       </>
     );

@@ -2,9 +2,8 @@ import React, { Component } from "react";
 
 import "../../utilities.css";
 import "./Aquarium.css";
-import Fish from "../modules/Fish.js"
-import doryfish from "../data/doryfish.png"
-import underwater from "./underwater.jpg"
+import Fish from "../modules/Fish.js";
+import doryfish from "../data/doryfish.png";
 
 
 class Aquarium extends Component {
@@ -12,6 +11,7 @@ class Aquarium extends Component {
   
     constructor(props) {
         super(props);
+        console.log(this.props.fishList);
     }
 
     componentDidMount() {
@@ -29,15 +29,16 @@ class Aquarium extends Component {
       // componentWillUnmount() {
       //   window.removeEventListener('resize', () => this.handleResize());
       // }
-    
-      
 
       render() {
         return (
           <div>
-            
+            {this.props.fishList.map((f) => (
+              <Fish image={f}/>
+            ))}
             <div className='water' style={{ ...this.state, zIndex:-1 }}></div>
-            <Fish image={doryfish}/>
+            
+            {/* <Fish image={doryfish}/> */}
           </div>
         );
       }
