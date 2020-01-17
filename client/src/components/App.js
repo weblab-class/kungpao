@@ -19,6 +19,7 @@ import "../utilities.css";
 import { socket } from "../client-socket.js";
 
 import { get, post } from "../utilities";
+import { unstable_renderSubtreeIntoContainer } from "react-dom";
 
 
 
@@ -39,6 +40,7 @@ class App extends Component {
       popText: "",
       pickFish: false,
       fish: [],
+      notplaced: [],
     };
   }
 
@@ -50,6 +52,7 @@ class App extends Component {
         
       }
     });
+    
   }
 
   handleLogin = (res) => {
@@ -58,6 +61,10 @@ class App extends Component {
     post("/api/login", { token: userToken }).then((user) => {
       this.setState({ userId: user._id, gId: user.googleid, });
       post("/api/initsocket", { socketid: socket.id });
+      get("/api/buyfish", {googleid: user.googleid}).then((f) => {
+        this.setState({notplaced : this.state.notplaced.concat([f])});
+        console.log(this.state.notplaced)
+      });
     });
   };
 
@@ -106,6 +113,7 @@ class App extends Component {
     this.setState({
       pickFish: !this.state.pickFish
     });
+    
   }
 
   addingFish = (newfish) => {
@@ -146,7 +154,7 @@ class App extends Component {
         {this.state.showPopup ? <Popup popText={this.state.popText}
           onClose={this.togglePopup}>
         </Popup> : null}
-        {this.state.pickFish ? <FishPopup onClose={this.pickingFish} addingFish ={byfish => this.addingFish(byfish)}></FishPopup> : null}
+        {this.state.pickFish ? <FishPopup onClose={this.pickingFish} availFish = {this.state.notplaced} addingFish ={byfish => this.addingFish(byfish)}></FishPopup> : null}
         </div>
         </>
         

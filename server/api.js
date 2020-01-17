@@ -65,6 +65,12 @@ router.post("/feedfish", (req, res) => {
   feed.save()//.then((f) => res.send(f));
 });
 
+router.get("/buyfish", (req, res) => {
+  AlmostMyFish.find({googleid: req.query.googleid}).then((ff) => {
+    res.send(ff);
+  });
+});
+
 router.post("/buyfish", (req, res) => {
   const newfish = new AlmostMyFish({
     type: req.body.type,
