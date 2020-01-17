@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Modal from "react-modal";
 import { Router } from "@reach/router";
 import NavBar from "./modules/Navbar.js"
 import NotFound from "./pages/NotFound.js";
@@ -8,6 +7,11 @@ import Aquarium from "./pages/Aquarium.js";
 import Habits from "./pages/Habits.js";
 import Store from "./pages/Store.js";
 import Popup from "./modules/Popup.js";
+import FishPopup from "./modules/FishPopup.js";
+import Login from "./pages/Login.js";
+import GoogleLogin, { GoogleLogout } from "react-google-login";
+
+const GOOGLE_CLIENT_ID = "121479668229-t5j82jrbi9oejh7c8avada226s75bopn.apps.googleusercontent.com";
 
 import "./App.css";
 import "../utilities.css";
@@ -33,6 +37,8 @@ class App extends Component {
       gId: undefined,
       showPopup: false,
       popText: "",
+      pickFish: false,
+      fish: [],
     };
   }
 
@@ -40,7 +46,7 @@ class App extends Component {
     get("/api/whoami").then((user) => {
       if (user._id) {
         // they are registed in the database, and currently logged in.
-        this.setState({ userId: user._id });
+        this.setState({ userId: user._id, gId: user.googleid});
         
       }
     });
@@ -60,6 +66,7 @@ class App extends Component {
     post("/api/logout");
   };
   checkifFed = () => {
+    console.log(this.state.gId);
     get("/api/feedfish", {googleid: this.state.gId}).then((ff) => {
       this.setState( {
         lastFed : ff,
@@ -95,26 +102,38 @@ class App extends Component {
     console.log("toggled");
   }
 
+  pickingFish = () => {
+    this.setState({
+      pickFish: !this.state.pickFish
+    });
+  }
+
+  addingFish = (newfish) => {
+    this.setState({
+      fish: this.state.fish.concat([newfish]),
+    });  
+    console.log("BIIGIDSIFD");
+  }
+
+
   render() {
     
     return (
-      
       <>
-        <NavBar
+      {this.state.userId ?
+      <>
+      <NavBar
           handleLogin={this.handleLogin}
           handleLogout={this.handleLogout}
           userId={this.state.userId}
         />
         <div className="App-container">
         <Router>
-          <Skeleton
-            path="/"
-            handleLogin={this.handleLogin}
-            handleLogout={this.handleLogout}
-            userId={this.state.userId}
-          />
           <Aquarium
-            path="/aquarium"
+            path="/"
+            fishList={this.state.fish}
+            checkifFed={this.checkifFed}
+            pickingFish = {this.pickingFish}
             />
           <Habits
             path="/habits"
@@ -123,15 +142,22 @@ class App extends Component {
             path="/store"
             />
           <NotFound default />
-        </Router>
-        <button onClick={this.checkifFed}> Feed fish</button>
+        </Router> 
         {this.state.showPopup ? <Popup popText={this.state.popText}
           onClose={this.togglePopup}>
         </Popup> : null}
-        <button>Place Items</button>
-        
+        {this.state.pickFish ? <FishPopup onClose={this.pickingFish} addingFish ={byfish => this.addingFish(byfish)}></FishPopup> : null}
         </div>
-      </>
+        </>
+        
+        : 
+        <>
+        <Login handleLogin = {this.handleLogin}/>
+        
+</>
+      }
+        
+        </>
     );
   }
 }
