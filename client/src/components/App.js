@@ -131,6 +131,7 @@ class App extends Component {
           />
           <Aquarium
             path="/aquarium"
+            fishList={this.state.fish}
             />
           <Habits
             path="/habits"
@@ -146,7 +147,7 @@ class App extends Component {
         </Popup> : null}
         <button onClick={this.pickingFish}>Place Items</button>
         {this.state.pickFish ? <FishPopup onClose={this.pickingFish} addingFish ={byfish => this.addingFish(byfish)}></FishPopup> : null}
-        <Aquarium fishList={this.state.fish}/>
+        {/* <Aquarium /> */}
         </div>
       </>
     );
