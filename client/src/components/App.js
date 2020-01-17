@@ -10,7 +10,6 @@ import Popup from "./modules/Popup.js";
 import FishPopup from "./modules/FishPopup.js";
 import Login from "./pages/Login.js";
 import GoogleLogin, { GoogleLogout } from "react-google-login";
-import AlmostMyFish from "../../../server/models/almostmyfish.js";
 
 const GOOGLE_CLIENT_ID = "707474204069-ibaig6vr8u2gf995465eel35t6kf6u1r.apps.googleusercontent.com";
 
@@ -137,11 +136,8 @@ class App extends Component {
     const body = { type: newfish.type };
     post("/api/placefish", body).then(res => console.log(res));
     //need to delete from notplacedfish
-    //this is not working....
-    // AlmostMyFish.deleteOne({type: newfish.type}).then ((err) => {
-    //   if (err) return console.log("error :(");
-    //   console.log("deleted fish from almostmyfish");
-    // });
+    
+    post("/api/removefish", body);
     console.log('addedfish')
   }
 
