@@ -4,7 +4,7 @@ import "../../utilities.css";
 import "./Login.css";
 import GoogleLogin, { GoogleLogout } from "react-google-login";
 
-const GOOGLE_CLIENT_ID = "121479668229-t5j82jrbi9oejh7c8avada226s75bopn.apps.googleusercontent.com";
+const GOOGLE_CLIENT_ID = "707474204069-ibaig6vr8u2gf995465eel35t6kf6u1r.apps.googleusercontent.com";
 
 class Login extends Component {
     constructor(props) {

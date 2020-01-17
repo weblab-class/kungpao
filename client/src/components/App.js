@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Router } from "@reach/router";
-import NavBar from "./modules/Navbar.js"
+import NavBar from "./modules/NavBar.js"
 import NotFound from "./pages/NotFound.js";
 import Skeleton from "./pages/Skeleton.js";
 import Aquarium from "./pages/Aquarium.js";
@@ -11,7 +11,7 @@ import FishPopup from "./modules/FishPopup.js";
 import Login from "./pages/Login.js";
 import GoogleLogin, { GoogleLogout } from "react-google-login";
 
-const GOOGLE_CLIENT_ID = "121479668229-t5j82jrbi9oejh7c8avada226s75bopn.apps.googleusercontent.com";
+const GOOGLE_CLIENT_ID = "707474204069-ibaig6vr8u2gf995465eel35t6kf6u1r.apps.googleusercontent.com";
 
 import "./App.css";
 import "../utilities.css";
