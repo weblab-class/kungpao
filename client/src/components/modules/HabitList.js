@@ -47,6 +47,7 @@ class HabitList extends Component {
       <div>
         {this.state.habits.map(item => (
         <Habit
+            key={`Habit_${item._id}`}
             content={item.content}
         />
         ))}

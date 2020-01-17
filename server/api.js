@@ -12,7 +12,7 @@ const express = require("express");
 // import models so we can interact with the database
 const User = require("./models/user");
 const FedFish = require("./models/fedfish.js");
-const Habit = require(".models/habit.js");
+const Habit = require("./models/habit.js");
 
 // import authentication library
 const auth = require("./auth");
@@ -63,19 +63,19 @@ router.post("/feedfish", (req, res) => {
 });
 
 router.get("/habit", (req, res) => {
-  Habits.find({ googleid: req.query.googleid }).then((habits) => {
+  Habit.find({}).then((habits) => { // TODO only find habits belonging to this user
     res.send(habits);
   });
 })
 
 router.post("/habit", (req, res) => {
-  const newfeeHabit = new Habit({
+  const newHabit = new Habit({
     googleid: req.user.googleid,
     content: req.body.content,
   });
-
-  newHabit.save().then((habit) => res.send(habit));
-
+  newHabit.save().then((habit) => {
+    res.send(habit);
+  });
 })
 
 router.all("*", (req, res) => {
