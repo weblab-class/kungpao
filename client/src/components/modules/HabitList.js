@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import Habit from "./Habit.js";
 
+import { get } from "../../utilities";
+import { post } from "../../utilities";
+
 class HabitList extends Component {
   constructor(props) {
     super(props);
@@ -8,8 +11,14 @@ class HabitList extends Component {
       habits: [],
       inputText: ""
     };
+  }
 
-    this.keyCounter = 0;
+  componentDidMount() {
+    get("/api/habit").then((habitObjs) => {
+      habitObjs.map((habitObj) => {
+        this.setState({ stories: this.state.habits.concat([habitObj]) });
+      });
+    });
   }
 
   handleInputChange = event => {
@@ -19,14 +28,17 @@ class HabitList extends Component {
     });
   };
 
-  submitHabit = () => {
-    const { habits, inputText } = this.state;
-    const newHabits = habits.concat([{ habit: inputText, key: this.keyCounter }]);
-    this.keyCounter++;
-
+  addNewHabit(habitObj) {
     this.setState({
-      habits: newHabits,
+      habits: this.state.habits.concat([habitObj]),
       inputText: ""
+    });
+  }
+
+  submitHabit = () => {
+    const body = {content: this.state.inputText};
+    post("api/habit", body).then((habit) => {
+      this.addNewHabit(habit);
     });
   };
 
@@ -35,9 +47,7 @@ class HabitList extends Component {
       <div>
         {this.state.habits.map(item => (
         <Habit
-            key={`habit-${item.key}`}
-            content={item.habit}
-            deleteHabit={() => this.deleteHabit(item.key)}
+            content={item.content}
         />
         ))}
         <input
