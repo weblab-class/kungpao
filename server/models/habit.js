@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const HabitSchema = new mongoose.Schema({
-    googleid: String,
+    creator_id: String,
     content: String,
 });
 

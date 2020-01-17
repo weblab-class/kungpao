@@ -16,7 +16,7 @@ class HabitList extends Component {
   componentDidMount() {
     get("/api/habit").then((habitObjs) => {
       habitObjs.map((habitObj) => {
-        this.setState({ stories: this.state.habits.concat([habitObj]) });
+        this.setState({ habits: this.state.habits.concat([habitObj]) });
       });
     });
   }

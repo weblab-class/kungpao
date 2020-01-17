@@ -63,15 +63,14 @@ router.post("/feedfish", (req, res) => {
 });
 
 router.get("/habit", (req, res) => {
-  Habit.find({}).then((habits) => { // TODO only find habits belonging to this user
+  Habit.find({ "creator_id": req.user._id }).then((habits) => {
     res.send(habits);
   });
 })
 
 router.post("/habit", (req, res) => {
   const newHabit = new Habit({
-    // googleid: req.user.googleid,
-    googleid: 1,
+    creator_id: req.user._id,
     content: req.body.content,
   });
   newHabit.save().then((habit) => {
