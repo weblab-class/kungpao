@@ -4,7 +4,10 @@ import "../../utilities.css";
 import "./Aquarium.css";
 import Fish from "../modules/Fish.js";
 import doryfish from "../data/doryfish.png";
+import byfish from "../data/blueyellowfish.png";
 import bubble from "./bubble.png";
+import Popup from "../modules/Popup.js";
+import FishPopup from "../modules/FishPopup.js";
 
 
 class Aquarium extends Component {
@@ -49,6 +52,17 @@ class Aquarium extends Component {
         });
       }
 
+      displayFish = (fishname) => {
+        console.log(fishname);
+        if (fishname == 'doryfish') {
+          console.log('heLLOOOOo');
+          return doryfish;
+        }
+        else if (fishname == 'blueyellowfish') {
+          return byfish;
+        }
+      }
+
       render() {
         return (
           <div>
@@ -56,8 +70,13 @@ class Aquarium extends Component {
             <button onClick={this.props.pickingFish}>Place Items</button>
 
             {this.props.fishList.map((f) => (
-              <Fish image={f}/>
+              <Fish image={this.displayFish(f.type)}/>
             ))}
+
+        {this.props.showPopup ? <Popup popText={this.props.popText}
+          onClose={this.props.togglePopup}>
+        </Popup> : null}
+        {this.props.pickFish ? <FishPopup onClose={this.props.pickingFish} availFish = {this.props.notplaced} addingFish ={byfish => this.props.addingFish(byfish)}></FishPopup> : null}
             <div className='water' style={{ ...this.state, zIndex:-1 }}>
               <div className='bubble'>
                 <img src={bubble} alt="bubble"></img>
