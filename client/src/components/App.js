@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Router } from "@reach/router";
-import NavBar from "./modules/Navbar.js"
+import NavBar from "./modules/NavBar.js"
 import NotFound from "./pages/NotFound.js";
 import Skeleton from "./pages/Skeleton.js";
 import Aquarium from "./pages/Aquarium.js";
@@ -10,8 +10,9 @@ import Popup from "./modules/Popup.js";
 import FishPopup from "./modules/FishPopup.js";
 import Login from "./pages/Login.js";
 import GoogleLogin, { GoogleLogout } from "react-google-login";
+import AlmostMyFish from "../../../server/models/almostmyfish.js";
 
-const GOOGLE_CLIENT_ID = "121479668229-t5j82jrbi9oejh7c8avada226s75bopn.apps.googleusercontent.com";
+const GOOGLE_CLIENT_ID = "707474204069-ibaig6vr8u2gf995465eel35t6kf6u1r.apps.googleusercontent.com";
 
 import "./App.css";
 import "../utilities.css";
@@ -39,7 +40,7 @@ class App extends Component {
       showPopup: false,
       popText: "",
       pickFish: false,
-      fish: [],
+      placedfish: [],
       notplaced: [],
     };
   }
@@ -53,6 +54,11 @@ class App extends Component {
           this.setState({notplaced : f});
           console.log(this.state.notplaced);
           console.log(this.state.notplaced[0]);
+        });
+        get("/api/placefish", {googleid: user.googleid}).then((f) => {
+          this.setState({placedfish : f});
+          console.log("placedfish");
+          console.log(this.state.placedfish);
         });
       }
     });
@@ -69,6 +75,9 @@ class App extends Component {
         this.setState({notplaced : f});
         console.log(this.state.notplaced);
         console.log(this.state.notplaced[0]);
+      });
+      get("/api/placefish", {googleid: user.googleid}).then((f) => {
+        this.setState({placedfish : f});
       });
     });
   };
@@ -123,9 +132,17 @@ class App extends Component {
 
   addingFish = (newfish) => {
     this.setState({
-      fish: this.state.fish.concat([newfish]),
-    });  
-    console.log("BIIGIDSIFD");
+      fish: this.state.placedfish.concat(newfish),
+    });
+    const body = { type: newfish.type };
+    post("/api/placefish", body).then(res => console.log(res));
+    //need to delete from notplacedfish
+    //this is not working....
+    // AlmostMyFish.deleteOne({type: newfish.type}).then ((err) => {
+    //   if (err) return console.log("error :(");
+    //   console.log("deleted fish from almostmyfish");
+    // });
+    console.log('addedfish')
   }
 
 
@@ -144,9 +161,15 @@ class App extends Component {
         <Router>
           <Aquarium
             path="/"
-            fishList={this.state.fish}
+            fishList={this.state.placedfish}
             checkifFed={this.checkifFed}
             pickingFish = {this.pickingFish}
+            showPopup = {this.state.showPopup}
+            popText = {this.state.popText}
+            togglePopup = {this.togglePopup}
+            pickFish = {this.state.pickFish}
+            notplaced = {this.state.notplaced}
+            addingFish = {this.addingFish}
             />
           <Habits
             path="/habits"
@@ -156,10 +179,10 @@ class App extends Component {
             />
           <NotFound default />
         </Router> 
-        {this.state.showPopup ? <Popup popText={this.state.popText}
+        {/* {this.state.showPopup ? <Popup popText={this.state.popText}
           onClose={this.togglePopup}>
         </Popup> : null}
-        {this.state.pickFish ? <FishPopup onClose={this.pickingFish} availFish = {this.state.notplaced} addingFish ={byfish => this.addingFish(byfish)}></FishPopup> : null}
+        {this.state.pickFish ? <FishPopup onClose={this.pickingFish} availFish = {this.state.notplaced} addingFish ={byfish => this.addingFish(byfish)}></FishPopup> : null} */}
         </div>
         </>
         
