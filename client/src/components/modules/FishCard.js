@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import doryfish from "../data/doryfish.png"
+import doryfish from "../data/doryfish.png";
+import blueyellowfish from "../data/blueyellowfish.png";
+import purplecoral from "../data/purplecoral.png";
 import { get, post } from "../../utilities";
 
 import "./FishCard.css";
@@ -21,7 +23,7 @@ class FishCard extends Component {
 };
 
   buyFish = (value) => {
-    const body = { type: this.props.type };
+    const body = { type: this.props.fish.type };
     post("/api/buyfish", body).then(res => console.log(res));
     console.log('good')
   };
@@ -30,15 +32,15 @@ class FishCard extends Component {
     return (
       <div onClick={this.buyFish} className="FishCard square u-pointer">
         <div className="content u-textCenter u-pointer">
-          <img src={doryfish} width="100%" >
+          <img src={blueyellowfish} width="100%" >
           </img>
           <div className="FishCard-title">
           <span className="FishCard-name">
-            dory
+            {this.props.fish.name}
           </span>
           
           <span className="FishCard-price">
-            25
+            {this.props.fish.price}
           </span>
           </div>
           

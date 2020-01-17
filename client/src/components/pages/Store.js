@@ -8,13 +8,41 @@ class Store extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            availableFish: [],
-            fishtoday: ["doryfish","blueyellowfish"],
+            availableFish: [{
+                "type": "doryfish",
+                "price": 25,
+                "name": "dory",
+              }, {
+                "type": "blueyellowfish",
+                "price": 25,
+                "name": "angel",
+              }, {
+                "type": "purplecoral",
+                "price": 25,
+                "name": "coral",
+              }],
+            fishtoday: [{
+                "type": "doryfish",
+                "price": 25,
+                "name": "dory",
+              }, {
+                "type": "blueyellowfish",
+                "price": 25,
+                "name": "angel",
+              }, {
+                "type": "purplecoral",
+                "price": 25,
+                "name": "coral",
+              }],
         }
         
     }
 
     componentDidMount(){
+
+    }
+
+    randomFishOfTheDay(){
 
     }
 
