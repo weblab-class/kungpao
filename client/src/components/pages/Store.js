@@ -9,6 +9,7 @@ class Store extends Component {
         super(props);
         this.state = {
             availableFish: [],
+            fishtoday: ["doryfish","blueyellowfish"],
         }
         
     }
@@ -31,7 +32,7 @@ class Store extends Component {
                 fish food
             </button>
             <div>
-                <SingleMessage/>
+                <SingleMessage fishtoday={this.state.fishtoday}/>
             </div>
 
             </div>

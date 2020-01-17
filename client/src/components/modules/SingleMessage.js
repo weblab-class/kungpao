@@ -23,9 +23,12 @@ class SingleMessage extends Component {
           <div className="SingleMessage-container">
             <FishCard/>
             <div className="FishCardGroup">
-              <FishCard/>
-              <FishCard/>
-              <FishCard/>
+              <div>
+              <FishCard type = {this.props.fishtoday[0]}/>
+              </div>
+              
+              <FishCard type = {this.props.fishtoday[1]}/>
+              <FishCard type = {this.props.fishtoday[2]}/>
 
             </div>
             <div className="Response-container">

@@ -12,6 +12,10 @@ const express = require("express");
 // import models so we can interact with the database
 const User = require("./models/user");
 const FedFish = require("./models/fedfish.js");
+const Message = require("./models/message.js");
+const MyFish = require("./models/myfish.js");
+const AlmostMyFish = require("./models/almostmyfish.js");
+
 
 // import authentication library
 const auth = require("./auth");
@@ -58,8 +62,18 @@ router.post("/feedfish", (req, res) => {
     lastfed: Date.now(),
   });
   console.log(`HELLOOOOO`);
-  feed.save().then((f) => res.send(f));
+  feed.save()//.then((f) => res.send(f));
 });
+
+router.post("/buyfish", (req, res) => {
+  const newfish = new AlmostMyFish({
+    type: req.body.type,
+    googleid: req.user.googleid,
+  });
+  console.log(`HELLOOOOO`);
+  newfish.save() //.then((f) => res.send(f));
+});
+
 
 router.all("*", (req, res) => {
   console.log(`API route not found: ${req.method} ${req.url}`);
