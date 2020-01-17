@@ -49,7 +49,11 @@ class App extends Component {
       if (user._id) {
         // they are registed in the database, and currently logged in.
         this.setState({ userId: user._id, gId: user.googleid});
-        
+        get("/api/buyfish", {googleid: user.googleid}).then((f) => {
+          this.setState({notplaced : f});
+          console.log(this.state.notplaced);
+          console.log(this.state.notplaced[0]);
+        });
       }
     });
     
@@ -62,7 +66,7 @@ class App extends Component {
       this.setState({ userId: user._id, gId: user.googleid, });
       post("/api/initsocket", { socketid: socket.id });
       get("/api/buyfish", {googleid: user.googleid}).then((f) => {
-        this.setState({notplaced : this.state.notplaced.concat(f)});
+        this.setState({notplaced : f});
         console.log(this.state.notplaced);
         console.log(this.state.notplaced[0]);
       });
