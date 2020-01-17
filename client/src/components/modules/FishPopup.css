@@ -1,0 +1,22 @@
+.window {
+    position: 'absolute';
+    background-color: white;
+    height: 50px;
+    width: 200px;
+    margin: 10px;
+    padding: 100;
+}
+
+.closeButton {
+    position: 'relative';
+    padding: 100; 
+    background-color: white;
+    align-content: flex-end;
+}
+
+.fishButton {
+    position: 'center';
+    height: 40px;
+    width: 100px;
+    margin: 20px;
+}
