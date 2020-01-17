@@ -70,7 +70,8 @@ router.get("/habit", (req, res) => {
 
 router.post("/habit", (req, res) => {
   const newHabit = new Habit({
-    googleid: req.user.googleid,
+    // googleid: req.user.googleid,
+    googleid: 1,
     content: req.body.content,
   });
   newHabit.save().then((habit) => {
