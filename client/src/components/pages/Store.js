@@ -1,50 +1,34 @@
 import React, { Component } from "react";
 import SingleMessage from "../modules/SingleMessage.js";
+import { get, post } from "../../utilities";
+
 
 import "../../utilities.css";
 import "./Store.css";
+//import { get } from "mongoose";
 
 class Store extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            availableFish: [{
-                "type": "doryfish",
-                "price": 25,
-                "name": "dory",
-              }, {
-                "type": "blueyellowfish",
-                "price": 25,
-                "name": "angel",
-              }, {
-                "type": "purplecoral",
-                "price": 25,
-                "name": "coral",
-              }],
-            fishtoday: [{
-                "type": "doryfish",
-                "price": 25,
-                "name": "dory",
-              }, {
-                "type": "blueyellowfish",
-                "price": 25,
-                "name": "angel",
-              }, {
-                "type": "purplecoral",
-                "price": 25,
-                "name": "coral",
-              }],
+            fishtoday: [],
         }
         
     }
 
     componentDidMount(){
-
+        console.log('yay');
+        get("/api/todaysfish").then((res) => {
+            this.setState({
+              fishtoday: res,
+            });
+          });
+          
     }
 
-    randomFishOfTheDay(){
-
-    }
+    populateFishToday(){
+        
+      }
 
     render() {
         return ( 
@@ -55,7 +39,7 @@ class Store extends Component {
             type="submit"
             className="Chat-button u-pointer"
             value="Submit"
-            onClick={console.log("{this.handleSubmit}")}
+            onClick={console.log("hi i'm a button")}
             >
                 fish food
             </button>
