@@ -21,14 +21,14 @@ class SingleMessage extends Component {
     render() {
         return (
           <div className="SingleMessage-container">
-            <FishCard/>
+            <FishCard fish = {this.props.fishtoday[0]}/>
             <div className="FishCardGroup">
               <div>
-              <FishCard type = {this.props.fishtoday[0]}/>
+              <FishCard fish = {this.props.fishtoday[0]}/>
               </div>
               
-              <FishCard type = {this.props.fishtoday[1]}/>
-              <FishCard type = {this.props.fishtoday[2]}/>
+              <FishCard fish = {this.props.fishtoday[1]}/>
+              <FishCard fish = {this.props.fishtoday[2]}/>
 
             </div>
             <div className="Response-container">
