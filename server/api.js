@@ -95,8 +95,11 @@ router.post("/buyfish", (req, res) => {
     googleid: req.user.googleid,
   });
   console.log(`HELLOOOOO`);
-  newfish.save() .then((f) => res.send(f));
-});
+  newfish.save().then((f) => {
+    res.send(f);
+  });
+})
+
 
 router.get("/todaysfish", (req, res) => {
   console.log("fail");
@@ -159,15 +162,17 @@ router.post("/placefish", (req, res) => {
     googleid: req.user.googleid,
   });
   console.log(`placed fish in Aquarium!`);
-  aquafish.save()//.then((f) => res.send(f));
+  aquafish.save().then((f) => {
+    res.send(f);
+  });
 });
 
 router.post("/removeFish", (req, res) => {
   console.log(req.body.type);
   console.log(typeof(req.body.type));
   console.log(req.body.googleid);
-  AlmostMyFish.deleteOne({"type": req.body.type, "googleid": req.body.googleid}).then ((err) => {
-    if (err) return console.log(err);
+  AlmostMyFish.deleteOne({"type": req.body.type, "googleid": req.body.googleid}).then ((deleted) => {
+    res.send(deleted);
     console.log(`deleted fish ${req.body.type} from almostmyfish`);
   });
 });

@@ -9,10 +9,8 @@ import bubble from "./bubble.png";
 import Popup from "../modules/Popup.js";
 import FishPopup from "../modules/FishPopup.js";
 
-
 class Aquarium extends Component {
 
-  
     constructor(props) {
         super(props);
         console.log(this.props.fishList);
@@ -34,10 +32,6 @@ class Aquarium extends Component {
           width: window.innerWidth
         })
       }
-    
-      // componentWillUnmount() {
-      //   window.removeEventListener('resize', () => this.handleResize());
-      // }
 
       togglePopup = () => {
         this.setState({
@@ -64,10 +58,15 @@ class Aquarium extends Component {
       }
 
       render() {
+
         return (
           <div>
+            <div className="button-container">
             <button onClick={this.props.checkifFed}> Feed fish</button>
+            </div>
+            <div className="button-container">
             <button onClick={this.props.pickingFish}>Place Items</button>
+            </div>
 
             {this.props.fishList.map((f) => (
               <Fish image={this.displayFish(f.type)}/>

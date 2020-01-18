@@ -9,6 +9,20 @@ img.fish {
     left: 0;
     top: 0;
   }
+
+  .button-container{
+    padding: 10px;
+    min-width: max-content;
+    margin-left: 100%;
+  }
+
+  .button-container button {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    padding: 10px;
+    font-family: sans-serif;
+    color: grey;
+  }
   
   .water {
     background-image: url("./seawithsand.jpg");
@@ -40,3 +54,6 @@ img.fish {
     from {margin-top: 80vh;}
     to {margin-left: 200px; margin-top: 0vh;}
   }
+
+
+  

@@ -130,8 +130,12 @@ class App extends Component {
   }
 
   addingFish = (newfish) => {
+    const ind = this.state.notplaced.indexOf(newfish);
+    var temp = this.state.notplaced;
+    temp.splice(ind, 1);
     this.setState({
-      fish: this.state.placedfish.concat(newfish),
+      placedfish: this.state.placedfish.concat(newfish),
+      notplaced: temp,
     });
     const body = { type: newfish.type , googleid: this.state.gId};
     post("/api/placefish", body).then(res => console.log(res));
@@ -139,7 +143,6 @@ class App extends Component {
     post("/api/removefish", body).then(res => console.log(res));
     console.log('addedfish')
   }
-
 
   render() {
     

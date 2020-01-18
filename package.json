@@ -31,6 +31,7 @@
     "nodemon": "^1.19.4",
     "prop-types": "^15.7.2",
     "react": "^16.7.0",
+    "react-burger-menu": "^2.6.13",
     "react-dom": "^16.7.0",
     "react-focus-lock": "^2.2.1",
     "react-google-login": "^5.0.7",
