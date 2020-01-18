@@ -66,7 +66,7 @@ class Store extends Component {
                 fish food
             </button>
             <div>
-                <SingleMessage fishtoday={this.state.fishtoday}/>
+                <SingleMessage fishtoday={this.state.fishtoday} boughtFish={this.props.boughtFish}/>
             </div>
 
             </div>

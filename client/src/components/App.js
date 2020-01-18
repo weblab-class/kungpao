@@ -152,6 +152,12 @@ class App extends Component {
     console.log('addedfish')
   }
 
+  boughtFish = (newfish) => {
+    this.setState({
+      notplaced: this.state.notplaced.concat(newfish),
+    })
+  }
+
   render() {
     
     return (
@@ -182,6 +188,7 @@ class App extends Component {
           />
           <Store
             path="/store"
+            boughtFish = {this.boughtFish}
             />
           <NotFound default />
         </Router> 

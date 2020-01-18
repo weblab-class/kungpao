@@ -23,7 +23,7 @@ class SingleMessage extends Component {
           <div className="SingleMessage-container">
             <div className="FishCardGroup">
               {this.props.fishtoday.map((f,i) => (
-                <FishCard fish = {f} key = {i}/>
+                <FishCard fish = {f} key = {i} boughtFish={this.props.boughtFish}/>
               ))}
 
 
