@@ -3,8 +3,20 @@ import React, { Component } from "react";
 import "../../utilities.css";
 import "./Aquarium.css";
 import Fish from "../modules/Fish.js";
+
+
 import doryfish from "../data/doryfish.png";
 import byfish from "../data/blueyellowfish.png";
+import purplecoral from "../data/purplecoral.png";
+import cfish from "../data/clownfish.png";
+import gyp from "../data/greenyellowpuffer.png";
+import patch from "../data/patchyfish.png";
+import peach from "../data/peachpuffer.png";
+import pink from "../data/pinkfish.png";
+import purplepeach from "../data/purplepeachfish.png";
+import seaweed from "../data/seaweed.png";
+import yfish from "../data/yellowfish.png";
+
 import bubble from "./bubble.png";
 import Popup from "../modules/Popup.js";
 import FishPopup from "../modules/FishPopup.js";
@@ -54,6 +66,33 @@ class Aquarium extends Component {
         }
         else if (fishname == 'blueyellowfish') {
           return byfish;
+        }
+        else if (fishname == 'purplecoral') {
+          return purplecoral;
+        }
+        else if (fishname == 'greenyellowpuffer') {
+          return gyp;
+        }
+        else if (fishname == 'patchyfish') {
+          return patch;
+        }
+        else if (fishname == 'peachpuffer') {
+          return peach;
+        }
+        else if (fishname == 'pinkfish') {
+          return pink;
+        }
+        else if (fishname == 'purplepeachfish') {
+          return purplepeach;
+        }
+        else if (fishname == 'clownfish') {
+          return cfish;
+        }
+        else if (fishname == 'yellowfish') {
+          return yfish;
+        }
+        else if (fishname == 'seaweed') {
+          return seaweed;
         }
       }
 
