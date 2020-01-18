@@ -148,7 +148,7 @@ router.get("/money", (req, res) => {
 });
 
 router.post("/money", (req, res) => {
-  if (!Money.findOne({googleid: req.query.googleid})){
+  if (!Money.find({googleid: req.query.googleid}).limit(1)){
     Money.insertOne({
       // googleid: req.query.googleid,
       creator_id: req.user._id,
