@@ -158,21 +158,11 @@ router.post("/createmoney", (req, res) => {
 })
 
 router.post("/money", (req, res) => {
-  if (!Money.find( {"creator_id": req.user._id }).limit(1)){
-    Money.insertOne({
-      // googleid: req.query.googleid,
-      creator_id: req.user._id,
-      money: req.body.money,
-    })
-  }
-  else{
-    Money.updateOne(
-      {creator_id: req.user._id},
-      {$set: {money: req.body.money}}
-    )
-  }
-  
-});
+  Money.updateOne(
+    {"creator_id": req.user._id},
+    {$set: {money: req.body.money}}
+  ).then((money) => res.send(money));
+})
 
 router.get("/placefish", (req, res) => {
   MyFish.find({googleid: req.query.googleid}).then((ff) => {
