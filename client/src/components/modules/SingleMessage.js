@@ -21,6 +21,9 @@ class SingleMessage extends Component {
     render() {
         return (
           <div className="SingleMessage-container">
+            <div>
+              Hi I'm Ray, the owner of the fish store! Here's what I have for you today:
+            </div>
             <div className="FishCardGroup">
               {this.props.fishtoday.map((f,i) => (
                 <FishCard fish = {f} key = {i} boughtFish={this.props.boughtFish}/>
