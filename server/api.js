@@ -162,6 +162,16 @@ router.post("/placefish", (req, res) => {
   aquafish.save()//.then((f) => res.send(f));
 });
 
+router.post("/removeFish", (req, res) => {
+  console.log(req.body.type);
+  console.log(typeof(req.body.type));
+  console.log(req.body.googleid);
+  AlmostMyFish.deleteOne({"type": req.body.type, "googleid": req.body.googleid}).then ((err) => {
+    if (err) return console.log(err);
+    console.log(`deleted fish ${req.body.type} from almostmyfish`);
+  });
+});
+
 
 router.all("*", (req, res) => {
   console.log(`API route not found: ${req.method} ${req.url}`);
