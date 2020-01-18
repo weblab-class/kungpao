@@ -22,8 +22,8 @@ class HabitList extends Component {
       });
     });
     get("api/money").then((moneyObj) => {
-      console.log("balance: " + moneyObj);
-      this.setState( { money: moneyObj.money });
+      console.log("balance: " + moneyObj[0].money);
+      this.setState( { balance: moneyObj[0].money });
     });
   }
 
@@ -51,9 +51,10 @@ class HabitList extends Component {
   updateHabitIsDone = (habitId, isDone) => {
     const body = {id: habitId, isDone: isDone};
     post("api/updateHabit", body).then((habit) => {
-      post("api/incrementMoney", {amount: habit.isDone ? 1 : 0}).then((money) => {
+      post("api/incrementMoney", {amount: isDone ? 1 : -1}).then((money) => {
+        console.log("increment money " + money.creator_id);
         this.setState({
-          balance: money.money,
+          balance: this.state.balance + (isDone ? 1 : -1),
         });
       })
     });

@@ -142,13 +142,23 @@ router.get("/todaysfish", (req, res) => {
 });
 
 router.get("/money", (req, res) => {
-  Money.find({googleid: req.query.googleid}).then((m) => {
+  Money.find({"creator_id": req.user._id }).then((m) => {
     res.send(m);
   });
 });
 
+router.post("/createmoney", (req, res) => {
+  const newMoney = new Money({
+    creator_id: req.user._id,
+    money: 0,
+  });
+  newMoney.save().then((money) => {
+    res.send(money);
+  });
+})
+
 router.post("/money", (req, res) => {
-  if (!Money.find({googleid: req.query.googleid}).limit(1)){
+  if (!Money.find( {"creator_id": req.user._id }).limit(1)){
     Money.insertOne({
       // googleid: req.query.googleid,
       creator_id: req.user._id,
