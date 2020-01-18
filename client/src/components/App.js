@@ -21,7 +21,17 @@ import { socket } from "../client-socket.js";
 import { get, post } from "../utilities";
 import { unstable_renderSubtreeIntoContainer } from "react-dom";
 
-
+import doryfish from "./data/doryfish.png";
+import byfish from "./data/blueyellowfish.png";
+import purplecoral from "./data/purplecoral.png";
+import cfish from "./data/clownfish.png";
+import gyp from "./data/greenyellowpuffer.png";
+import patch from "./data/patchyfish.png";
+import peach from "./data/peachpuffer.png";
+import pink from "./data/pinkfish.png";
+import purplepeach from "./data/purplepeachfish.png";
+import seaweed from "./data/seaweed.png";
+import yfish from "./data/yellowfish.png";
 
 /**
  * Define the "App" component as a class.
@@ -158,6 +168,44 @@ class App extends Component {
     })
   }
 
+  displayFish = (fishname) => {
+    console.log(fishname);
+    if (fishname == 'doryfish') {
+      console.log('heLLOOOOo');
+      return doryfish;
+    }
+    else if (fishname == 'blueyellowfish') {
+      return byfish;
+    }
+    else if (fishname == 'purplecoral') {
+      return purplecoral;
+    }
+    else if (fishname == 'greenyellowpuffer') {
+      return gyp;
+    }
+    else if (fishname == 'patchyfish') {
+      return patch;
+    }
+    else if (fishname == 'peachpuffer') {
+      return peach;
+    }
+    else if (fishname == 'pinkfish') {
+      return pink;
+    }
+    else if (fishname == 'purplepeachfish') {
+      return purplepeach;
+    }
+    else if (fishname == 'clownfish') {
+      return cfish;
+    }
+    else if (fishname == 'yellowfish') {
+      return yfish;
+    }
+    else if (fishname == 'seaweed') {
+      return seaweed;
+    }
+  }
+
   render() {
     
     return (
@@ -182,6 +230,7 @@ class App extends Component {
             pickFish = {this.state.pickFish}
             notplaced = {this.state.notplaced}
             addingFish = {this.addingFish}
+            displayFish = {this.displayFish}
             />
           <Habits
             path="/habits"
@@ -189,6 +238,7 @@ class App extends Component {
           <Store
             path="/store"
             boughtFish = {this.boughtFish}
+            displayFish = {this.displayFish}
             />
           <NotFound default />
         </Router> 

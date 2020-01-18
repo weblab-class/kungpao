@@ -33,7 +33,7 @@ class FishCard extends Component {
     return (
       <div onClick={this.buyFish} className="FishCard square u-pointer">
         <div className="content u-textCenter u-pointer">
-          <img src={blueyellowfish} width="100%" >
+          <img src={this.props.displayFish(this.props.fish.type)} width="100%" >
           </img>
           <div className="FishCard-title">
           <span className="FishCard-name">
