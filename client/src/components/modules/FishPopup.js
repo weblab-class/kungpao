@@ -15,24 +15,13 @@ class FishPopup extends React.Component {
 
   }
 
-  displayFish = (fishname) => {
-    console.log(fishname);
-    if (fishname == 'doryfish') {
-      console.log('heLLOOOOo');
-      return doryfish;
-    }
-    else if (fishname == 'blueyellowfish') {
-      return byfish;
-    }
-  }
-
   render() {
     return (
       <div className="window">
           <p> What do you want to put in your aquarium? </p>
           {this.props.availFish.length == 0 ? null : this.props.availFish.map((f) =>(
             <>
-            <img src={this.displayFish(f.type)} alt='fishy' height="100px" width="100px"></img>
+            <img src={this.props.displayFish(f.type)} alt='fishy' height="100px" width="100px"></img>
             <button className="fishButton" onClick={() => this.props.addingFish(f)}> Add this fish! </button>
             </>
           ))}
