@@ -19,6 +19,7 @@ const AlmostMyFish = require("./models/almostmyfish.js");
 const AllFish = require("./models/allfish.js");
 const Money = require("./models/money.js");
 
+const ObjectID = require('mongodb').ObjectID;
 
 // import authentication library
 const auth = require("./auth");
@@ -89,6 +90,21 @@ router.post("/habit", (req, res) => {
     res.send(habit);
   });
 })
+
+router.post("/updateHabit", (req, res) => {
+  Habit.updateOne(
+    {"_id": ObjectID(req.body.id)},
+    {$set: {isDone: req.body.isDone}},
+  ).then((habit) => res.send(habit));
+})
+
+router.post("/incrementMoney", (req, res) => {
+  Money.updateOne(
+    {"creator_id": req.user._id},
+    {$inc: {money: req.body.amount}}
+  ).then((money) => res.send(money));
+})
+
 router.post("/buyfish", (req, res) => {
   const newfish = new AlmostMyFish({
     type: req.body.type,
@@ -129,26 +145,27 @@ router.get("/todaysfish", (req, res) => {
 });
 
 router.get("/money", (req, res) => {
-  Money.find({googleid: req.query.googleid}).then((m) => {
+  Money.find({"creator_id": req.user._id }).then((m) => {
     res.send(m);
   });
 });
 
+router.post("/createmoney", (req, res) => {
+  const newMoney = new Money({
+    creator_id: req.user._id,
+    money: 0,
+  });
+  newMoney.save().then((money) => {
+    res.send(money);
+  });
+})
+
 router.post("/money", (req, res) => {
-  if (!Money.findOne({googleid: req.query.googleid})){
-    Money.insertOne({
-      googleid: req.query.googleid,
-      money: req.body.money,
-    })
-  }
-  else{
-    Money.updateOne(
-      {googleid: req.query.googlid},
-      {$set: {money: req.body.money}}
-    )
-  }
-  
-});
+  Money.updateOne(
+    {"creator_id": req.user._id},
+    {$set: {money: req.body.money}}
+  ).then((money) => res.send(money));
+})
 
 router.get("/placefish", (req, res) => {
   MyFish.find({googleid: req.query.googleid}).then((ff) => {

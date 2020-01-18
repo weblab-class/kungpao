@@ -78,6 +78,14 @@ class App extends Component {
       get("/api/placefish", {googleid: user.googleid}).then((f) => {
         this.setState({placedfish : f});
       });
+      get("api/money").then((money) => {
+        if (money.length === 0) {
+          console.log("creating money");
+          post("api/createMoney").then((money) => {
+            console.log(money);
+          });
+        }
+      })
     });
   };
 

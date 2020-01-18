@@ -12,6 +12,7 @@ class Store extends Component {
         super(props);
         this.state = {
             fishtoday: [],
+            money: 0,
         }
         
     }
@@ -23,6 +24,23 @@ class Store extends Component {
               fishtoday: res,
             });
           });
+
+        get("/api/money").then((res) => {
+            if(typeof res==='undefined'){
+                console.log('ihavemoney');
+                const body = { money: 0};
+                post("/api/money", body).then((f)=> console.log(f));
+            } else {
+                console.log('nomoney');
+                // this.setState({
+                    
+                //     money: res.money,
+                // });
+
+            };
+            
+                
+        });
           
     }
 
@@ -33,6 +51,10 @@ class Store extends Component {
     render() {
         return ( 
         <div>
+            <div className = "Money">
+                {this.state.money}
+
+            </div>
             <div className="ChatContainer">
             Buy stuff with sand dollars.
             <button
