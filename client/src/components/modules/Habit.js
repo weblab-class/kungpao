@@ -3,16 +3,11 @@ import React, { Component } from "react";
 class Habit extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isDone: false
-    };
   }
 
   handleInputChange = (event) => {
     const value = event.target.checked;
-    this.setState({
-      isDone: value
-    });
+    this.props.updateDatabaseIsDone(value);
   };
 
   render() {
@@ -20,7 +15,7 @@ class Habit extends Component {
       <div>
         <input
           type="checkbox"
-          checked={this.state.isDone}
+          defaultChecked={this.props.isDone}
           onChange={this.handleInputChange}
         />
         <span>{this.props.content}</span>
