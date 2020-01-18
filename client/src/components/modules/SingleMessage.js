@@ -26,15 +26,6 @@ class SingleMessage extends Component {
                 <FishCard fish = {f} key = {i} boughtFish={this.props.boughtFish}/>
               ))}
 
-
-              {/* <div>
-                
-              <FishCard fish = {this.props.fishtoday[0]}/>
-              </div>
-              
-              <FishCard fish = {this.props.fishtoday[1]}/>
-              <FishCard fish = {this.props.fishtoday[2]}/> */}
-
             </div>
             <div className="Response-container">
               {this.state.responses.map((r, i) => (
