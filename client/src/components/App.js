@@ -78,6 +78,12 @@ class App extends Component {
       get("/api/placefish", {googleid: user.googleid}).then((f) => {
         this.setState({placedfish : f});
       });
+      // TODO: create Money if first time user
+      get("api/money").then((money) => {
+        if (money === null) {
+          post("api/money", {money: 0});
+        }
+      })
     });
   };
 

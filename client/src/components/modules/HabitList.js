@@ -9,15 +9,21 @@ class HabitList extends Component {
     super(props);
     this.state = {
       habits: [],
-      inputText: ""
+      inputText: "",
+      balance: 0
     };
   }
 
   componentDidMount() {
     get("/api/habit").then((habitObjs) => {
       habitObjs.map((habitObj) => {
+        console.log("habit id" + habitObj._id);
         this.setState({ habits: this.state.habits.concat([habitObj]) });
       });
+    });
+    get("api/money").then((moneyObj) => {
+      console.log("balance: " + moneyObj);
+      this.setState( { money: moneyObj.money });
     });
   }
 
@@ -42,6 +48,17 @@ class HabitList extends Component {
     });
   };
 
+  updateHabitIsDone = (habitId, isDone) => {
+    const body = {id: habitId, isDone: isDone};
+    post("api/updateHabit", body).then((habit) => {
+      post("api/incrementMoney", {amount: habit.isDone ? 1 : 0}).then((money) => {
+        this.setState({
+          balance: money.money,
+        });
+      })
+    });
+  }
+
   render() {
     return (
       <div>
@@ -49,6 +66,8 @@ class HabitList extends Component {
         <Habit
             key={`Habit_${item._id}`}
             content={item.content}
+            isDone={item.isDone}
+            updateDatabaseIsDone={isDone => this.updateHabitIsDone(item._id, isDone)}
         />
         ))}
         <input
@@ -57,6 +76,7 @@ class HabitList extends Component {
           onChange={this.handleInputChange}
         />
         <button onClick={this.submitHabit}>+</button>
+        <div>Balance: {this.state.balance}</div>
       </div>
     );
   }

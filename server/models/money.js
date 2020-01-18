@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 
 const MoneySchema = new mongoose.Schema({
-    googleid: String,
+    // googleid: String,
+    creator_id: String,
     money: Number,
 });
 
