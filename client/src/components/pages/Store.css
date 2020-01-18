@@ -57,3 +57,16 @@ html {
   color: var(--white);
   background-color: var(--brightblue);
 }
+
+.Money {
+    box-sizing: border-box;
+    z-index: -1;
+    position:relative;
+    flex-grow: 1;
+
+    background: #F6F7FA;
+    border: 1px solid #CFD9E4;
+    border-radius: 4px;
+
+
+}

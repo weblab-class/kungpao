@@ -132,9 +132,9 @@ router.get("/money", (req, res) => {
 });
 
 router.post("/money", (req, res) => {
-  if (!Money.find({googleid: req.query.googleid}).limit(1)){
+  if (Money.find({googleid: req.query.googleid}).limit(1)==='undefined'){
     Money.insertOne({
-      googleid: req.query.googleid,
+      googleid: req.body.googleid,
       money: req.body.money,
     })
   }
