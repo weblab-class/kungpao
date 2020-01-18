@@ -13,6 +13,7 @@ class Store extends Component {
         this.state = {
             fishtoday: [],
             money: 0,
+            messages: [],
         }
         
     }
@@ -44,7 +45,11 @@ class Store extends Component {
           
     }
 
-    populateFishToday(){
+    addMessage(data){//work in progress
+        this.setState((prevstate) => ({
+            messages: prevstate.activeChat.messages.concat(data),
+            
+          }));
         
       }
 
