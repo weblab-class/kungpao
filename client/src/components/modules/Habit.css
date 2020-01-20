@@ -1,0 +1,41 @@
+
+/* Create a custom checkbox */
+
+.habit-container {
+    position: relative;
+    display: flex;
+    background-color: #FFFFFF;
+    padding: 10px 0;
+    margin: 10px 0;
+    border-radius: 10px;
+}
+
+.habit-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    /* position: absolute; */
+    top: 0;
+    left: 0;
+    height: 15px;
+    width: 15px;
+    margin: 0 15px;
+    border-radius: 100%;
+    border: #00CBD9 3px solid;
+    background-color: #FFFFFF;
+}
+
+/* On mouse-over*/
+.habit-container:hover input ~ .checkmark {
+    background-color: rgba(0, 203, 217, 0.26);
+}
+
+/* When the checkbox is checked*/
+.habit-container input:checked ~ .checkmark {
+    background-color: #00CBD9;
+}
