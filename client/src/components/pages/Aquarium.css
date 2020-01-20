@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Croissant+One|Open+Sans+Condensed:300&display=swap');
+
 .App {
     text-align: center;
 }
@@ -12,15 +14,16 @@ img.fish {
 
   .button-container{
     padding: 10px;
-    min-width: max-content;
-    margin-left: 100%;
+    min-width: 80px;
+    margin-left: calc(100vw - 160px);
   }
 
   .button-container button {
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 10px;
     padding: 10px;
-    font-family: sans-serif;
+    font-family: 'Open Sans Condensed';
+    font-size: 15px;
     color: grey;
   }
   

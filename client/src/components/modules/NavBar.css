@@ -1,34 +1,67 @@
+
+@import url('https://fonts.googleapis.com/css?family=Croissant+One|Open+Sans+Condensed:300&display=swap');
+
 .NavBar-container {
-    padding: var(--s) var(--m);
-    background-color: rgba(255, 255, 255, 0.5);
-    height: fit-content;
-    width: 100px;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.NavBar-sidebar {
+  padding: 10px;
+  margin-left: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  height: 200px;
+  width: 150px;
+  border-radius: 0px 0px 10px 0px;
+  top: 0;
+}
   
-  .NavBar-title {
-    color: rgb(0, 0, 0);
-    font-size: 20px;
-  }
+.NavBar-title {
+  color: rgb(73, 73, 73);
+  font-size: 20px;
+  width: 200px;
+  height: 40px;
+  margin-left: calc(50vw - 100px);
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 0px 0px 0px 10px;
+  text-align: center;
+  padding: 10px;
+  font-family: 'Croissant One', cursive;
+}
   
-  .NavBar-linkContainer {
-    margin-left: var(--l);
+.menu-item {
+  padding: 10px;
+}
+
+.menu-item ::before {
+  content: "◯ ";
   }
-  
-  .NavBar-link,
-  .NavBar-link:visited {
-    color: gray;
-    opacity: 0.8;
-    text-decoration: none;
-  }
-  
-  .NavBar-link:hover {
-    opacity: 0.8;
-  }
-  
-  .NavBar-link.NavBar-login {
-    opacity: 1;
-  }
-  
-  .NavBar-link + .NavBar-link {
-    margin-left: var(--m);
-  }
+
+
+.NavBar-link,
+.NavBar-link:visited {
+  color: gray;
+  opacity: 0.8;
+  text-decoration: none;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+
+.NavBar-link:hover {
+  opacity: 0.8;
+}
+
+.NavBar-link:active {
+  color:blue;
+}
+
+.NavBar-link.NavBar-login {
+  opacity: 1;
+}
+
+.NavBar-link + .NavBar-link {
+  margin-left: var(--m);
+}

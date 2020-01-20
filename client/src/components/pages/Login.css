@@ -1,26 +1,41 @@
+@import url('https://fonts.googleapis.com/css?family=Croissant+One|Open+Sans+Condensed:300&display=swap');
+
 .logo {
     margin: 0;
+    width: 600px;
+    height: 100px;
     position: absolute;
-    top: 40%;
-    left: 28%;
-    transform: (-50%, -50%);
+    top: calc(50vh - 90px);
+    left: calc(50vw - 300px);
     font-size: 50px;
     color: whitesmoke;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: "Croissant One", "cursive";
+    text-align: center;
 }
 
 .logo-container{
+
     height: 100vh;
     position: relative;
-    border: 3px green;
     background-image: url("underwater.jpg");
     background-size: cover;
 
 }
 
+.description {
+    top: calc(50vh + 80px);
+    position: absolute;
+    height: 80px;
+    width: 500px;
+    left: calc(50vw - 250px);
+    font-family: 'Open Sans Condensed', sans-serif;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 20px;
+}
+
 .login-button{
     position: absolute;
-    top: 50%;
-    left: 48%;
+    top: calc(50vh + 160px);
+    left: calc(50vw - 30px);
 }
 

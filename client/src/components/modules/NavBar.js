@@ -4,9 +4,24 @@ import GoogleLogin, { GoogleLogout } from "react-google-login";
 
 import "./NavBar.css";
 
+
 // This identifies your web application to Google's authentication service
 const GOOGLE_CLIENT_ID = "707474204069-ibaig6vr8u2gf995465eel35t6kf6u1r.apps.googleusercontent.com";
+const NavLink = props => (
+  <Link
+    {...props}
+    getProps={({ isCurrent }) => {
+      // the object returned here is passed to the
+      // anchor element's props
+      return {
+        style: {
+          color: isCurrent ? "red" : "blue"
 
+        }
+      };
+    }}
+  />
+);
 /**
  * The navigation bar at the top of all pages. Takes no props.
  */
@@ -15,25 +30,27 @@ class NavBar extends Component {
     super(props);
   }
 
+  
+
   render() {
     return (
+      <>
       <nav className="NavBar-container">
-        <Link to="/" className="NavBar-title u-inlineBlock">Habit Aquarium</Link>
-        <div className="NavBar-linkContainer u-inlineBlock">
-          <div>
-          <Link to="/" className="NavBar-link">
-              Aquarium
-          </Link>
+      <div className="NavBar-sidebar">
+          <div className="menu-item">
+          <NavLink to="/" className="NavBar-link">
+            Aquarium
+          </NavLink>
           </div>
-          <div>
-          <Link to="/habits" className="NavBar-link">
+          <div className="menu-item">
+          <NavLink to="/habits" className="NavBar-link">
             Habits
-          </Link>
+          </NavLink>
           </div>
-          <div>
-          <Link to="/store" className="NavBar-link">
+          <div className="menu-item">
+          <NavLink to="/store" className="NavBar-link">
             Store
-          </Link>
+          </NavLink>
           </div>
           {this.props.userId ? (
             <GoogleLogout
@@ -53,7 +70,12 @@ class NavBar extends Component {
             />
           )}
         </div>
+        <div className="NavBar-title">
+            Habit Aquarium
+        </div>
+        
       </nav>
+      </>
     );
   }
 }
