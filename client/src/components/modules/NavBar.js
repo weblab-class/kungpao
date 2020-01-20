@@ -35,7 +35,7 @@ class NavBar extends Component {
   render() {
     return (
       <>
-      <nav className="NavBar-container">
+      <div className="NavBar-container">
       <div className="NavBar-sidebar">
           <div className="menu-item">
           <NavLink to="/" className="NavBar-link">
@@ -52,7 +52,12 @@ class NavBar extends Component {
             Store
           </NavLink>
           </div>
-          {this.props.userId ? (
+        </div>
+        <div className="NavBar-title">
+            Habit Aquarium
+        </div>
+        <div className="logout-button">
+        {this.props.userId ? (
             <GoogleLogout
               clientId={GOOGLE_CLIENT_ID}
               buttonText="Logout"
@@ -69,12 +74,10 @@ class NavBar extends Component {
               className="NavBar-link NavBar-login"
             />
           )}
-        </div>
-        <div className="NavBar-title">
-            Habit Aquarium
+
         </div>
         
-      </nav>
+      </div>
       </>
     );
   }

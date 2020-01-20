@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Croissant+One|Open+Sans+Condensed:300&display=swap');
+
+
 .window {
     background-color: rgba(255, 255, 255, 0.5);
     height: fit-content;
@@ -9,6 +12,7 @@
     color: grey;
     animation: popIn;
     animation-duration: 0.1s;
+    font-family: "Open Sans Condensed";
 }
 
 @keyframes popIn{
