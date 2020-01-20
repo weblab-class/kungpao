@@ -65,7 +65,7 @@ class HabitList extends Component {
 
   render() {
     return (
-      <div class="habitlist">
+      <div className="habitlist">
         {this.state.habits.map(item => (
         <Habit
             key={`Habit_${item._id}`}
