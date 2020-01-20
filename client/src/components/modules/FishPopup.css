@@ -3,16 +3,22 @@
     height: fit-content;
     width: 200px;
     padding: 5px 10px 10px 5px;
-    margin-left: calc(100vw - 400px);
+    margin-left: calc(50vw - 100px);
     margin-top: calc(100vh - 800px);
     border-radius: 10px;
     color: grey;
+    animation: popIn;
+    animation-duration: 0.1s;
 }
+
+@keyframes popIn{
+    50%  {transform: scale(1.2);}
+  }
 
 .closeButton {
     position: 'relative';
     padding: 100; 
-    background-color: white;
+    background-color:  rgba(255, 255, 255, 0.5);
     align-content: flex-end;
 }
 
