@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import "./Habit.css";
+
 class Habit extends Component {
   constructor(props) {
     super(props);
@@ -12,14 +14,15 @@ class Habit extends Component {
 
   render() {
     return (
-      <div>
+      <label class='habit-container'>
         <input
           type="checkbox"
           defaultChecked={this.props.isDone}
           onChange={this.handleInputChange}
         />
-        <span>{this.props.content}</span>
-      </div>
+        <span class="checkmark"></span>
+        <span class="text">{this.props.content}</span>
+      </label>
     );
   }
 }

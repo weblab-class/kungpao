@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import Habit from "./Habit.js";
 
+
+import "./HabitList.css";
+
 import { get } from "../../utilities";
 import { post } from "../../utilities";
 
@@ -62,7 +65,7 @@ class HabitList extends Component {
 
   render() {
     return (
-      <div>
+      <div class="habitlist">
         {this.state.habits.map(item => (
         <Habit
             key={`Habit_${item._id}`}
