@@ -168,10 +168,14 @@ class App extends Component {
     })
   }
 
+  /**
+   * return an image
+   */
   displayFish = (fishname) => {
+    // TODO: refactor using switch 
     console.log(fishname);
     if (fishname == 'doryfish') {
-      console.log('heLLOOOOo');
+      console.log('heLLOOOOo', doryfish);
       return doryfish;
     }
     else if (fishname == 'blueyellowfish') {

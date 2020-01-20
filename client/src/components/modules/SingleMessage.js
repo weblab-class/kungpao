@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import FishCard from "./FishCard.js";
 import Response from "./Response.js";
+import { get, post } from "../../utilities";
+
 
 import "./SingleMessage.css";
 
@@ -18,6 +20,11 @@ class SingleMessage extends Component {
       }
     }
 
+    sendMessage = (value, to, from) => {
+      const body = {recipient: to, content: value, sender: from };
+      post("/api/chat", body);
+    };
+
     render() {
         return (
           <div className="SingleMessage-container">
@@ -26,7 +33,7 @@ class SingleMessage extends Component {
             </div>
             <div className="FishCardGroup">
               {this.props.fishtoday.map((f,i) => (
-                <FishCard fish = {f} key = {i} boughtFish={this.props.boughtFish} displayFish = {this.props.displayFish}/>
+                <FishCard fish = {f} key = {i} boughtFish={this.props.boughtFish} displayFish = {this.props.displayFish} sendMessage = {this.sendMessage}/>
               ))}
 
             </div>
@@ -36,6 +43,7 @@ class SingleMessage extends Component {
               ))}
 
             </div>
+            
             
               
           </div>

@@ -60,6 +60,15 @@
     "style-loader": "^0.23.1",
     "webpack": "^4.28.3",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.14"
+    "webpack-dev-server": "^3.1.14",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "onchange": "^5.2.0",
+    "prettier": "^1.16.4",
+    "flatted": "^2.0.0",
+    "prop-types": "^15.6.0",
+    "random-id": "0.0.2",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1"
   }
 }
