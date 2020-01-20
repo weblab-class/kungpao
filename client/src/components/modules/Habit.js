@@ -14,14 +14,14 @@ class Habit extends Component {
 
   render() {
     return (
-      <label class='habit-container'>
+      <label className='habit-container'>
         <input
           type="checkbox"
           defaultChecked={this.props.isDone}
           onChange={this.handleInputChange}
         />
-        <span class="checkmark"></span>
-        <span class="text">{this.props.content}</span>
+        <span className="checkmark"></span>
+        <span className="text">{this.props.content}</span>
       </label>
     );
   }

@@ -74,12 +74,14 @@ class HabitList extends Component {
             updateDatabaseIsDone={isDone => this.updateHabitIsDone(item._id, isDone)}
         />
         ))}
-        <input
-          type="text"
-          value={this.state.inputText}
-          onChange={this.handleInputChange}
-        />
-        <button onClick={this.submitHabit}>+</button>
+        <div className="newhabitandbutton">
+          <input
+            type="text"
+            value={this.state.inputText}
+            onChange={this.handleInputChange}
+          />
+          <button onClick={this.submitHabit}>+</button>
+        </div>
         <div>Balance: {this.state.balance}</div>
       </div>
     );
