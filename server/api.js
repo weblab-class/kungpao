@@ -145,7 +145,7 @@ router.get("/todaysfish", (req, res) => {
 });
 
 router.get("/money", (req, res) => {
-  Money.find({"creator_id": req.user._id }).then((m) => {
+  Money.findOne({"creator_id": req.user._id }).then((m) => {
     res.send(m);
   });
 });

@@ -25,8 +25,8 @@ class HabitList extends Component {
       });
     });
     get("api/money").then((moneyObj) => {
-      console.log("balance: " + moneyObj[0].money);
-      this.setState( { balance: moneyObj[0].money });
+      console.log("balance: " + moneyObj.money);
+      this.setState( { balance: moneyObj.money });
     });
   }
 
