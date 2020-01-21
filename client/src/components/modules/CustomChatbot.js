@@ -9,13 +9,17 @@ function CustomChatbot(props) {
     console.log(props)
     const config = {
       width: "100%",
-      height: "100%",
+      height: "70%",
       botAvatar: ray,
       handleEnd: (response) => {
-        const body = { type: response.values[0] };
-        post("/api/buyfish", body).then(res => console.log(res));
-        console.log('good')
-        props.boughtFish(body);
+        if(response.values[0]!=='No'){
+          const body = { type: response.values[0] };
+          post("/api/buyfish", body).then(res => console.log(res));
+          console.log('good')
+          props.boughtFish(body);
+
+        }
+        
       }
       // cache: true
       // height: "400px",
@@ -30,7 +34,7 @@ function CustomChatbot(props) {
       }
     })
    fishOfferings.push({ 
-        value: "false",
+        value: "No",
         label: "No",
         trigger: "Done"
       } )
