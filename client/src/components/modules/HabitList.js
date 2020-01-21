@@ -21,9 +21,22 @@ class HabitList extends Component {
     get("/api/habit").then((habitObjs) => {
       habitObjs.map((habitObj) => {
         console.log("habit id" + habitObj._id);
-        this.setState({ habits: this.state.habits.concat([habitObj]) });
+        const todaysDate = Date();
+        if (habitObj.date && todaysDate.getFullYear() === habitObj.date.getFullYear()&&
+          todaysDate.getMonth() === habitObj.date.getMonth() &&
+          todaysDate.getDate() === habitObj.date.getDate()) {
+          this.setState({ habits: this.state.habits.concat([habitObj]) });
+        }
+        else {
+          habitObj.date = todaysDate;
+          habitObj.isDone = false;
+          this.setState({ habits: this.state.habits.concat([habitObj]) });
+          const body = {id: habitObj._id, isDone: false, date: todaysDate};
+          post("api/updateHabit", body);
+        }
       });
     });
+    
     get("api/money").then((moneyObj) => {
       console.log("balance: " + moneyObj.money);
       this.setState( { balance: moneyObj.money });
