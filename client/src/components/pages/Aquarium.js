@@ -8,6 +8,11 @@ import bubble from "./bubble.png";
 import Popup from "../modules/Popup.js";
 import FishPopup from "../modules/FishPopup.js";
 
+import purplecoral from "../data/purplecoral.png";
+import seaweed from "../data/seaweed.png";
+
+
+
 class Aquarium extends Component {
 
     constructor(props) {
@@ -19,6 +24,8 @@ class Aquarium extends Component {
           pickFish: false,
         };
     }
+
+    
 
     componentDidMount() {
         this.handleResize();
@@ -45,9 +52,19 @@ class Aquarium extends Component {
         });
       }
 
+      setProperty = (item, mar) => {
+        item.style.setProperty('--img-position', mar + 'px');
+      }
+
       
 
       render() {
+        // let pos = Math.random();
+        // let pcoral = <img src={purplecoral} alt="coral"></img>
+        // pcoral, pos => this.setProperty(pcoral, pos);
+        // let pos2 = Math.random();
+        // let sw = <img src={seaweed} alt="seaweed"></img>
+        // sw, pos2 => this.setProperty(sw, pos2);
 
         return (
           <div>
@@ -59,6 +76,18 @@ class Aquarium extends Component {
             </div>
 
             {this.props.fishList.map((f) => (
+              f.type == "purplecoral" ? 
+                <div className="ocean-decor">
+                <img src={purplecoral} alt="coral"></img>
+                {/* {pcoral} */}
+                </div>
+              :
+              f.type == "seaweed" ?
+              <div className="ocean-decor">
+                <img src={seaweed} alt="seaweed"></img>
+                {/* {sw} */}
+                </div>
+              :
               <Fish image={this.props.displayFish(f.type)}/>
             ))}
 
