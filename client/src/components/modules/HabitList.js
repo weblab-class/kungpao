@@ -20,24 +20,27 @@ class HabitList extends Component {
   componentDidMount() {
     get("/api/habit").then((habitObjs) => {
       habitObjs.map((habitObj) => {
-        console.log("habit id" + habitObj._id);
-        const todaysDate = Date();
-        if (habitObj.date && todaysDate.getFullYear() === habitObj.date.getFullYear()&&
-          todaysDate.getMonth() === habitObj.date.getMonth() &&
-          todaysDate.getDate() === habitObj.date.getDate()) {
-          this.setState({ habits: this.state.habits.concat([habitObj]) });
-        }
-        else {
+        const todaysDate = new Date();
+        var parsedDate = new Date(habitObj.date);
+        console.log(habitObj.date === undefined);
+        console.log(todaysDate.getFullYear() !== parsedDate.getFullYear());
+        console.log(todaysDate.getMonth() !== parsedDate.getMonth());
+        console.log(todaysDate.getDate() !== parsedDate.getDate());
+        if (habitObj.date === undefined || todaysDate.getFullYear() !== parsedDate.getFullYear() ||
+            todaysDate.getMonth() !== parsedDate.getMonth() ||
+            todaysDate.getDate() !== parsedDate.getDate()) {
+          console.log("it is a new day");
           habitObj.date = todaysDate;
           habitObj.isDone = false;
-          this.setState({ habits: this.state.habits.concat([habitObj]) });
+            
           const body = {id: habitObj._id, isDone: false, date: todaysDate};
-          post("api/updateHabit", body);
+          post("/api/updateHabit", body);
         }
+        this.setState({ habits: this.state.habits.concat([habitObj]) });
       });
     });
     
-    get("api/money").then((moneyObj) => {
+    get("/api/money").then((moneyObj) => {
       console.log("balance: " + moneyObj.money);
       this.setState( { balance: moneyObj.money });
     });
@@ -66,8 +69,8 @@ class HabitList extends Component {
 
   updateHabitIsDone = (habitId, isDone) => {
     const body = {id: habitId, isDone: isDone};
-    post("api/updateHabit", body).then((habit) => {
-      post("api/incrementMoney", {amount: isDone ? 1 : -1}).then((money) => {
+    post("/api/updateHabit", body).then((habit) => {
+      post("/api/incrementMoney", {amount: isDone ? 1 : -1}).then((money) => {
         console.log("increment money " + money.creator_id);
         this.setState({
           balance: this.state.balance + (isDone ? 1 : -1),

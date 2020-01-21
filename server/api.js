@@ -86,7 +86,7 @@ router.post("/habit", (req, res) => {
   const newHabit = new Habit({
     creator_id: req.user._id,
     content: req.body.content,
-    date: Date(),
+    date: new Date(),
   });
   newHabit.save().then((habit) => {
     res.send(habit);
