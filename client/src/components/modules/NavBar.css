@@ -67,9 +67,9 @@
   opacity: 0.8;
 }
 
-.NavBar-link:active {
+/* .NavBar-link:active {
   color:blue;
-}
+} */
 
 .NavBar-link.NavBar-login {
   opacity: 1;
