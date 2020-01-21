@@ -100,8 +100,8 @@ class App extends Component {
       //   });
       // });
       get("api/money").then((money) => {
-        console.log('MONEY ' + money);
-        if (money.length === 0) {
+        console.log('MONEYRIP ' + money.money);
+        if (money.money == null) {
           console.log("creating money");
           post("api/createMoney").then((money) => {
             console.log(money);

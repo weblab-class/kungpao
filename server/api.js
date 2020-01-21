@@ -201,7 +201,13 @@ router.get("/todaysfish", async (req, res) => {
 
 router.get("/money", (req, res) => {
   Money.findOne({"creator_id": req.user._id }).then((m) => {
-    res.send(m);
+    if (m === null) {
+      res.send({money: null});
+    }
+    else {
+      res.send(m);
+    }
+    
   });
 });
 
