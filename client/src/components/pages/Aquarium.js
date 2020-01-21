@@ -68,11 +68,17 @@ class Aquarium extends Component {
 
         return (
           <div>
+            <div className="both-buttons">
+              <div></div>
+              <div></div>
+              <div></div>
             <div className="button-container">
             <button onClick={this.props.checkifFed}> Feed fish</button>
             </div>
             <div className="button-container">
             <button onClick={this.props.pickingFish}>Place Items</button>
+            </div>
+            
             </div>
 
             {this.props.fishList.map((f) => (
