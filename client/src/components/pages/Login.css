@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Croissant+One|Open+Sans+Condensed:300&display=swap');
-
+@import url('https://fonts.googleapis.com/css?family=Croissant+One|Open+Sans|Open+Sans+Condensed:300|Quicksand&display=swap');
 .logo {
     margin: 0;
     width: 600px;
@@ -28,14 +27,15 @@
     height: 80px;
     width: 500px;
     left: calc(50vw - 250px);
-    font-family: 'Open Sans Condensed', sans-serif;
+    font-family: 'Quicksand', sans-serif;
     color: rgba(255, 255, 255, 0.5);
-    font-size: 20px;
+    font-size: 18px;
+    text-align: center;
 }
 
 .login-button{
     position: absolute;
-    top: calc(50vh + 160px);
+    top: calc(50vh + 180px);
     left: calc(50vw - 30px);
 }
 

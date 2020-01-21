@@ -21,7 +21,7 @@ html {
     border-radius: 18px;
 
     flex-grow: 1;
-    overflow-y: auto;
+    overflow-y: visible;
 }
 
 .NewPostInput-input,

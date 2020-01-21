@@ -18,6 +18,7 @@ const MyFish = require("./models/myfish.js");
 const AlmostMyFish = require("./models/almostmyfish.js");
 const AllFish = require("./models/allfish.js");
 const Money = require("./models/money.js");
+const TodayFish = require("./models/todayfish");
 
 const ObjectID = require('mongodb').ObjectID;
 
@@ -98,6 +99,7 @@ router.post("/updateHabit", (req, res) => {
   ).then((habit) => res.send(habit));
 })
 
+// TODO: will not pass a security review. fix. 
 router.post("/incrementMoney", (req, res) => {
   Money.updateOne(
     {"creator_id": req.user._id},
@@ -117,7 +119,13 @@ router.post("/buyfish", (req, res) => {
 })
 
 
-router.get("/todaysfish", (req, res) => {
+router.get("/todaysfish", async (req, res) => {
+  const dateNow = new Date();
+  const dateNowString = `aa${dateNow.getFullYear()}${dateNow.getMonth()}${dateNow.getDate()}`
+  const todayFishes = await TodayFish.findOne({date: dateNowString});
+  if (todayFishes !== null) {
+    return res.json(todayFishes.fishes);
+  }
   console.log("fail");
   let allFish = [{
     "type": "doryfish",
@@ -131,7 +139,47 @@ router.get("/todaysfish", (req, res) => {
     "type": "purplecoral",
     "price": 14,
     "name": "coral",
-  }];
+  },{
+    "type": "clownfish",
+    "price": 30,
+    "name": "nemo",
+  },
+  {
+    "type": "greenyellowpuffer",
+    "price": 5,
+    "name": "green puff",
+  },
+  {
+    "type": "peachpuffer",
+    "price": 5,
+    "name": "peach puff",
+  },
+  {
+    "type": "patchyfish",
+    "price": 7,
+    "name": "patch",
+  },
+  {
+    "type": "pinkfish",
+    "price": 10,
+    "name": "pinky",
+  },
+  {
+    "type": "purplepeachfish",
+    "price": 45,
+    "name": "purp peach",
+  },
+  {
+    "type": "seaweed",
+    "price": 3,
+    "name": "seaweed",
+  },
+  {
+    "type": "yellowfish",
+    "price": 15,
+    "name": "yellow",
+  },
+];
   //randomizes order of allFish array
   for(let i = allFish.length - 1; i > 0; i--){
     const j = Math.floor(Math.random() * i)
@@ -141,7 +189,14 @@ router.get("/todaysfish", (req, res) => {
   }
   let todaysFish = allFish.slice(2);
   let testfish = [1,2,3];
-  res.send(allFish);
+
+  console.log(todaysFish)
+  await TodayFish.create({
+    date: dateNowString,
+    fishes: todaysFish
+  })
+  
+  res.send(todaysFish);
 });
 
 router.get("/money", (req, res) => {
@@ -173,6 +228,7 @@ router.get("/placefish", (req, res) => {
   });
 });
 
+// TODO: an inventory check needs to happen before a new MyFish instance is created
 router.post("/placefish", (req, res) => {
   const aquafish = new MyFish({
     type: req.body.type,
@@ -193,6 +249,32 @@ router.post("/removeFish", (req, res) => {
     console.log(`deleted fish ${req.body.type} from almostmyfish`);
   });
 });
+
+router.post("/chat", (req, res) => {
+  const newMessage = new Message({
+    recipient: req.body.recipient,
+    sender: req.body.sender,
+    content: req.body.content,
+    timestamp: Date.now(),
+  })
+  console.log(`a message!`);
+  newMessage.save().then((f) => res.send(f));
+
+});
+
+router.get("/chat", (req, res) => {
+  // get messages that are from me->you OR you->me
+  let query = {
+      $or: [
+        { "sender": req.user._id, "recipient": 'ray' },
+        { "sender": 'ray', "recipient": req.user._id },
+      ],
+    };
+  //Message.find(query).then((messages) => console.log("these are " + messages));
+
+  Message.find(query).then((messages) => res.send(messages));
+});
+
 
 
 router.all("*", (req, res) => {
