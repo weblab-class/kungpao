@@ -18,27 +18,28 @@ class HabitList extends Component {
   }
 
   componentDidMount() {
+    var habitsToReset = [];
     get("/api/habit").then((habitObjs) => {
       habitObjs.map((habitObj) => {
         const todaysDate = new Date();
         var parsedDate = new Date(habitObj.date);
-        console.log(habitObj.date === undefined);
-        console.log(todaysDate.getFullYear() !== parsedDate.getFullYear());
-        console.log(todaysDate.getMonth() !== parsedDate.getMonth());
-        console.log(todaysDate.getDate() !== parsedDate.getDate());
         if (habitObj.date === undefined || todaysDate.getFullYear() !== parsedDate.getFullYear() ||
             todaysDate.getMonth() !== parsedDate.getMonth() ||
             todaysDate.getDate() !== parsedDate.getDate()) {
-          console.log("it is a new day");
           habitObj.date = todaysDate;
           habitObj.isDone = false;
             
-          const body = {id: habitObj._id, isDone: false, date: todaysDate};
-          post("/api/updateHabit", body);
+          habitsToReset.push({id: habitObj._id, isDone: false, date: todaysDate});
         }
         this.setState({ habits: this.state.habits.concat([habitObj]) });
       });
+
+      for (var index in habitsToReset) {
+        post("/api/updateHabit", habitsToReset[index]);
+      }
     });
+
+    
     
     get("/api/money").then((moneyObj) => {
       console.log("balance: " + moneyObj.money);
