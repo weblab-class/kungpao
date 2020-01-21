@@ -139,7 +139,47 @@ router.get("/todaysfish", async (req, res) => {
     "type": "purplecoral",
     "price": 14,
     "name": "coral",
-  }];
+  },{
+    "type": "clownfish",
+    "price": 30,
+    "name": "nemo",
+  },
+  {
+    "type": "greenyellowpuffer",
+    "price": 5,
+    "name": "green puff",
+  },
+  {
+    "type": "peachpuffer",
+    "price": 5,
+    "name": "peach puff",
+  },
+  {
+    "type": "patchyfish",
+    "price": 7,
+    "name": "patch",
+  },
+  {
+    "type": "pinkfish",
+    "price": 10,
+    "name": "pinky",
+  },
+  {
+    "type": "purplepeachfish",
+    "price": 45,
+    "name": "purp peach",
+  },
+  {
+    "type": "seaweed",
+    "price": 3,
+    "name": "seaweed",
+  },
+  {
+    "type": "yellowfish",
+    "price": 15,
+    "name": "yellow",
+  },
+];
   //randomizes order of allFish array
   for(let i = allFish.length - 1; i > 0; i--){
     const j = Math.floor(Math.random() * i)
