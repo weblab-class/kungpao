@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import Habit from "./Habit.js";
 
+
+import "./HabitList.css";
+
 import { get } from "../../utilities";
 import { post } from "../../utilities";
 
@@ -62,7 +65,7 @@ class HabitList extends Component {
 
   render() {
     return (
-      <div>
+      <div className="habitlist">
         {this.state.habits.map(item => (
         <Habit
             key={`Habit_${item._id}`}
@@ -71,12 +74,14 @@ class HabitList extends Component {
             updateDatabaseIsDone={isDone => this.updateHabitIsDone(item._id, isDone)}
         />
         ))}
-        <input
-          type="text"
-          value={this.state.inputText}
-          onChange={this.handleInputChange}
-        />
-        <button onClick={this.submitHabit}>+</button>
+        <div className="newhabitandbutton">
+          <input
+            type="text"
+            value={this.state.inputText}
+            onChange={this.handleInputChange}
+          />
+          <button onClick={this.submitHabit}>+</button>
+        </div>
         <div>Balance: {this.state.balance}</div>
       </div>
     );

@@ -27,6 +27,7 @@ class FishCard extends Component {
     post("/api/buyfish", body).then(res => console.log(res));
     console.log('good')
     this.props.boughtFish(body);
+    this.props.sendMessage("I want " + this.props.fish.type, 'ray', this.props.userId);
   };
 
   render() {
