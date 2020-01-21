@@ -11,13 +11,11 @@ img.fish {
     top: 0;
   }
 
-  .ocean-decor img{
+  /* .ocean-decor img{
     height: 10%;
     width: 10%;
-    /* margin-top: calc(100vh - 600px); */
-    /* margin-left: var(--img-position); */
     float: bottom;
-  }
+  } */
 
   .button-container{
     padding: 10px;

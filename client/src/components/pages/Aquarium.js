@@ -76,18 +76,18 @@ class Aquarium extends Component {
             </div>
 
             {this.props.fishList.map((f) => (
-              f.type == "purplecoral" ? 
-                <div className="ocean-decor">
-                <img src={purplecoral} alt="coral"></img>
-                {/* {pcoral} */}
-                </div>
-              :
-              f.type == "seaweed" ?
-              <div className="ocean-decor">
-                <img src={seaweed} alt="seaweed"></img>
-                {/* {sw} */}
-                </div>
-              :
+              // f.type == "purplecoral" ? 
+              //   <div className="ocean-decor">
+              //   <img src={purplecoral} alt="coral"></img>
+              //   {/* {pcoral} */}
+              //   </div>
+              // :
+              // f.type == "seaweed" ?
+              // <div className="ocean-decor">
+              //   <img src={seaweed} alt="seaweed"></img>
+              //   {/* {sw} */}
+              //   </div>
+              // :
               <Fish image={this.props.displayFish(f.type)}/>
             ))}
 
