@@ -36,7 +36,7 @@ function CustomChatbot(props) {
    fishOfferings.push({ 
         value: "No",
         label: "No",
-        trigger: "Done"
+        trigger: "none",
       } )
   const steps = [
       {
@@ -54,16 +54,21 @@ function CustomChatbot(props) {
         options: fishOfferings
       },
       {
+        id: "none",
+        message: "Have a great day !!",
+        end: true,
+       },
+      {
        id: "Done",
        message: "Have a great day !!",
-       trigger: "reoffer"
+       trigger: "confirm"
       },{
-        id: "reoffer",
+        id: "confirm",
         end: true,
         options: [{
-          "value": "buyanotherfish",
+          value: "confirm purchase",
           trigger: "Greet",
-          label: "buy another fish"
+          label: "confirm purchase"
         }]
       }
     ];
