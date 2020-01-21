@@ -23,6 +23,7 @@ class HabitList extends Component {
       habitObjs.map((habitObj) => {
         const todaysDate = new Date();
         var parsedDate = new Date(habitObj.date);
+        console.log("is there date " + habitObj.date);
         if (habitObj.date === undefined || todaysDate.getFullYear() !== parsedDate.getFullYear() ||
             todaysDate.getMonth() !== parsedDate.getMonth() ||
             todaysDate.getDate() !== parsedDate.getDate()) {
@@ -35,6 +36,7 @@ class HabitList extends Component {
       });
 
       for (var index in habitsToReset) {
+        console.log(habitsToReset[index].id);
         post("/api/updateHabit", habitsToReset[index]);
       }
     });
