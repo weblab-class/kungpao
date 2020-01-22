@@ -96,6 +96,7 @@ class HabitList extends Component {
         <div className="newhabitandbutton">
           <input
             type="text"
+            placeholder="Add a new daily goal"
             value={this.state.inputText}
             onChange={this.handleInputChange}
           />
