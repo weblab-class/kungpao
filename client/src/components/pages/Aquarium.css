@@ -54,7 +54,7 @@ img.fish {
     padding: 0;
   }
 
-  .bubble img {
+  .bubble img{
     max-width: 5%;
     max-height: 5%;
     margin-bottom: 0;
@@ -65,9 +65,24 @@ img.fish {
     
   }
 
+  .feed-heart img {
+    max-width: 5%;
+    max-height: 5%;
+    margin-left: 50vh;
+    margin-top: 80vh;
+    animation: float2;
+    animation-duration: 3s;
+    animation-iteration-count: 1;
+  }
+
   @keyframes floatUp {
     from {margin-top: 80vh;}
     to {margin-left: 200px; margin-top: 0vh;}
+  }
+
+  @keyframes float2 {
+    from {margin-top: 80vh; margin-left: 50vw;}
+    to {margin-top: 0vh; margin-left: 50vw;}
   }
 
 

@@ -24,7 +24,7 @@
 .description {
     top: calc(50vh + 80px);
     position: absolute;
-    height: 80px;
+    height: 50px;
     width: 500px;
     left: calc(50vw - 250px);
     font-family: 'Quicksand', sans-serif;
@@ -35,7 +35,7 @@
 
 .login-button{
     position: absolute;
-    top: calc(50vh + 180px);
+    top: calc(50vh + 140px);
     left: calc(50vw - 30px);
 }
 

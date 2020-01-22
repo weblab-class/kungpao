@@ -133,7 +133,13 @@ class App extends Component {
         lastFed : temp,
       });
       console.log(this.state.lastFed);
-    if (this.state.lastFed == 0){
+    if (this.state.placedfish.length == 0) {
+      this.setState({
+        popText: "You don't have any fish in your aquarium!",
+      });
+      this.togglePopup();
+    }
+    else if (this.state.lastFed == 0){
       post("/api/feedfish");
       this.togglePopup();
       this.setState({
@@ -156,12 +162,14 @@ class App extends Component {
     });
   }
 
+
   togglePopup = () => {
     this.setState({
       showPopup: !this.state.showPopup
     });
     console.log("toggled");
   }
+
 
   pickingFish = () => {
     this.setState({

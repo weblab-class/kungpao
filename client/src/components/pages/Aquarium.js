@@ -10,6 +10,7 @@ import FishPopup from "../modules/FishPopup.js";
 
 import purplecoral from "../data/purplecoral.png";
 import seaweed from "../data/seaweed.png";
+import heart from "./redheart.png";
 
 
 
@@ -18,6 +19,9 @@ class Aquarium extends Component {
     constructor(props) {
         super(props);
         console.log(this.props.fishList);
+        this.state = {
+          releasedHeart : false,
+        }
 
     }
 
@@ -38,6 +42,13 @@ class Aquarium extends Component {
 
       setProperty = (item, mar) => {
         item.style.setProperty('--img-position', mar + 'px');
+      }
+
+      heartReleased = () => {
+        this.setState({
+          releasedHeart : true
+        });
+        console.log("heart released");
       }
 
       
@@ -92,6 +103,10 @@ class Aquarium extends Component {
               <div className='bubble'>
                 <img src={bubble} alt="bubble"></img>
               </div>
+              {/* {this.props.popText == "Yay! You have fed your fish." ? (this.state.releasedHeart == false ? <div className="feed-heart">
+                <img src={heart} alt="heart"></img> 
+                {this.heartReleased}
+              </div> : null) : null} */}
             </div>
           </div>
         );

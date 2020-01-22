@@ -22,7 +22,7 @@ class Login extends Component {
                 Welcome to your Habit Aquarium.
             </div>
             <div className="description">
-                Add new habit goals and maintain them. Each time you check off completion of a habit, you receive currency to buy items to fill up your aquarium!
+                Keep track of good habits and grow your aquarium!
             </div>
             <div className="login-button">
             <GoogleLogin
