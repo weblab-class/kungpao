@@ -54,6 +54,14 @@ class HabitList extends Component {
     this.setState({
       inputText: value
     });
+    console.log(event.keyCode);
+    if (event.keyCode === 13) {
+      // Cancel the default action, if needed
+      event.preventDefault();
+      console.log("enter pressed")
+      // Trigger the button element with a click
+      document.getElementById("submitHabitButton").click();
+    }
   };
 
   addNewHabit(habitObj) {
@@ -63,7 +71,8 @@ class HabitList extends Component {
     });
   }
 
-  submitHabit = () => {
+  submitHabit = (event) => {
+    event.preventDefault();
     const body = {content: this.state.inputText};
     post("api/habit", body).then((habit) => {
       this.addNewHabit(habit);
@@ -93,14 +102,20 @@ class HabitList extends Component {
             updateDatabaseIsDone={isDone => this.updateHabitIsDone(item._id, isDone)}
         />
         ))}
-        <div className="newhabitandbutton">
-          <input
-            type="text"
-            placeholder="Add a new daily goal"
-            value={this.state.inputText}
-            onChange={this.handleInputChange}
-          />
-          <button onClick={this.submitHabit}>+</button>
+        <div className="newhabitandbutton" >
+          <form>
+              <input
+                type="text"
+                placeholder="Add a new daily goal"
+                value={this.state.inputText}
+                onChange={this.handleInputChange}
+              />
+              <input
+                type="submit"
+                value="+"
+                onClick={this.submitHabit}
+              />
+          </form>
         </div>
         <div>Balance: {this.state.balance}</div>
       </div>
