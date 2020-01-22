@@ -121,15 +121,20 @@ class App extends Component {
     console.log(this.state.gId);
     get("/api/feedfish", {googleid: this.state.gId}).then((ff) => {
       let temp = 0;
-      if (ff.length == 0) {
+      if (typeof ff == 'undefined') {
         temp = 0;
       }
-      temp  = ff[ff.length -1];
+      else if (ff.length == 0) {
+        temp = 0;
+      }
+      else {
+        temp  = ff[ff.length -1];
+      }
       this.setState( {
         lastFed : temp,
       });
       console.log(this.state.lastFed);
-    if (this.state.lastFed.length == 0){
+    if (this.state.lastFed == 0){
       post("/api/feedfish");
       this.togglePopup();
       this.setState({

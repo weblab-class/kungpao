@@ -17,6 +17,7 @@ class FishPopup extends React.Component {
 
   render() {
     return (
+      <div className="full-window" onClick={this.props.onCloseFP}>
       <div className="window">
           <p> What do you want to put in your aquarium? </p>
           {this.props.availFish.length == 0 ? <p>You don't have any items! Maintain habits to gain sand dollars to use in the store :)</p> : this.props.availFish.map((f) =>(
@@ -27,9 +28,10 @@ class FishPopup extends React.Component {
           ))}
           
         
-        <button className="closeButton" onClick={this.props.onClose}>
+        <button className="closeButton" onClick={this.props.onCloseFP}>
             Close
         </button>
+      </div>
       </div>
     );
   }

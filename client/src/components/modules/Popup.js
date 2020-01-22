@@ -3,13 +3,20 @@ import React from 'react';
 import "./Popup.css";
 
 class Popup extends React.Component {
+
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
+      <div className="full-window" onClick={this.props.onCloseP}>
       <div className="window">
           <p> {this.props.popText}</p>
-        <button className="closeButton" onClick={this.props.onClose}>
+        <button className="closeButton" onClick={this.props.onCloseP}>
             Close
         </button>
+      </div>
       </div>
     );
   }

@@ -18,11 +18,7 @@ class Aquarium extends Component {
     constructor(props) {
         super(props);
         console.log(this.props.fishList);
-        this.state = {
-          showPopup: false,
-          popText: "",
-          pickFish: false,
-        };
+
     }
 
     
@@ -39,18 +35,6 @@ class Aquarium extends Component {
         })
       }
 
-      togglePopup = () => {
-        this.setState({
-          showPopup: !this.state.showPopup
-        });
-        console.log("toggled");
-      }
-
-      pickingFish = () => {
-        this.setState({
-          pickFish: !this.state.pickFish
-        });
-      }
 
       setProperty = (item, mar) => {
         item.style.setProperty('--img-position', mar + 'px');
@@ -68,17 +52,20 @@ class Aquarium extends Component {
 
         return (
           <div>
+            <div className="full-window">
             <div className="both-buttons">
               <div></div>
               <div></div>
               <div></div>
-            <div className="button-container">
-            <button onClick={this.props.checkifFed}> Feed fish</button>
-            </div>
-            <div className="button-container">
-            <button onClick={this.props.pickingFish}>Place Items</button>
-            </div>
+              <div className="button-container">
+                <button onClick={this.props.pickFish ? this.props.pickingFish : this.props.checkifFed}
+                   > Feed fish</button>
+              </div>
+              <div className="button-container">
+                <button onClick={this.props.showPopup ? this.props.togglePopup : this.props.pickingFish}>Place Items</button>
+              </div>
             
+              </div>
             </div>
 
             {this.props.fishList.map((f) => (
@@ -98,9 +85,9 @@ class Aquarium extends Component {
             ))}
 
         {this.props.showPopup ? <Popup popText={this.props.popText}
-          onClose={this.props.togglePopup}>
+          onCloseP={this.props.togglePopup}>
         </Popup> : null}
-        {this.props.pickFish ? <FishPopup onClose={this.props.pickingFish} availFish = {this.props.notplaced} addingFish ={byfish => this.props.addingFish(byfish)} displayFish = {this.props.displayFish}></FishPopup> : null}
+        {this.props.pickFish ? <FishPopup onCloseFP={this.props.pickingFish} availFish = {this.props.notplaced} addingFish ={byfish => this.props.addingFish(byfish)} displayFish = {this.props.displayFish}></FishPopup> : null}
             <div className='water' style={{ ...this.state, zIndex:-1 }}>
               <div className='bubble'>
                 <img src={bubble} alt="bubble"></img>
