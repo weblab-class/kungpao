@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Croissant+One|Open+Sans|Open+Sans+Condensed:300|Quicksand&display=swap');
 
 .button {
     position: relative;
@@ -6,4 +7,6 @@
     margin: 10px;
     border-radius: 10px;
     border: none;
+    font-size: 14px;
+    font-family: 'Quicksand', sans-serif;
 }

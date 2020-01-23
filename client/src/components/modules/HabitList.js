@@ -107,7 +107,7 @@ class HabitList extends Component {
               <input
                 type="text"
                 class="text"
-                placeholder="Add a new daily goal"
+                placeholder="Add a new daily habit"
                 value={this.state.inputText}
                 onChange={this.handleInputChange}
               />
