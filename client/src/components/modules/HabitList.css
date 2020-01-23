@@ -9,20 +9,11 @@
     display: flex;
 }
 
-.newhabitandbutton input {
+.newhabitandbutton .text {
     position: relative;
     background-color: #FFFFFF;
     padding: 10px 0;
     margin: 10px 0;
-    border-radius: 10px;
-    border: none;
-}
-
-.newhabitandbutton button {
-    position: relative;
-    background-color: #FFFFFF;
-    padding: 10px;
-    margin: 10px;
     border-radius: 10px;
     border: none;
 }

@@ -106,12 +106,14 @@ class HabitList extends Component {
           <form>
               <input
                 type="text"
+                class="text"
                 placeholder="Add a new daily goal"
                 value={this.state.inputText}
                 onChange={this.handleInputChange}
               />
               <input
                 type="submit"
+                class="button"
                 value="+"
                 onClick={this.submitHabit}
               />

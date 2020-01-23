@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import HabitList from "../modules/HabitList.js";
 
 import "../../utilities.css";
+import "./Habits.css";
 
 class Habits extends Component {
     constructor(props) {
@@ -15,9 +16,9 @@ class Habits extends Component {
     render() {
         return ( <>
             <h1>Keep track of your habits.</h1>
-            <button type="button">daily</button>
-            <button type="button">weekly</button>
-            <button type="button">monthly</button>
+            <button class="button" type="button">daily</button>
+            <button class="button" type="button">weekly</button>
+            <button class="button" type="button">monthly</button>
             <HabitList />
             </>
         );
