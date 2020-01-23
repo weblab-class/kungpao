@@ -77,7 +77,7 @@ function CustomChatbot(props) {
        },
       {
        id: "Done",
-       message: "Have a great day !!",
+       message: "Confirmed! You can choose to place your fish in your aquarium right away by clicking 'Place Items' on the Aquarium tab, or save it for later.",
        end: true,
       },
       {
@@ -90,7 +90,7 @@ function CustomChatbot(props) {
         options: [{
           value: "confirm",
           trigger: "Done",
-          label: "confirm purchase",
+          label: "confirm",
         },
         {
           value: "No",
