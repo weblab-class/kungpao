@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Habit from "./Habit.js";
 import sanddollar from "../data/sanddollar.png";
 
+import { toDay, toWeek, toMonth } from "../util/date.js";
 
 import "./HabitList.css";
 
@@ -14,6 +15,7 @@ class HabitList extends Component {
     this.state = {
       habits: [],
       type: "daily",
+      title: "",
       inputText: "",
       balance: 0
     };
@@ -21,10 +23,12 @@ class HabitList extends Component {
 
   componentDidMount() {
     var habitsToReset = [];
+    const todaysDate = new Date();
+    this.setState( { title: toDay(todaysDate) });
     get("/api/habit", {type: this.state.type} ).then((habitObjs) => {
       habitObjs.map((habitObj) => {
-        const todaysDate = new Date();
         var parsedDate = new Date(habitObj.date);
+        const todaysDate = new Date();
         console.log("is there date " + habitObj.date);
         if (habitObj.date === undefined || todaysDate.getFullYear() !== parsedDate.getFullYear() ||
             todaysDate.getMonth() !== parsedDate.getMonth() ||
@@ -95,11 +99,21 @@ class HabitList extends Component {
 
   reloadHabitList = (type) => {
     var habitsToReset = [];
-    var habits = []
+    var habits = [];
+    const todaysDate = new Date();
+    if (type === "daily") {
+      this.setState( { title: toDay(todaysDate) });
+    }
+    else if (type === "weekly") {
+      this.setState( { title: toWeek(todaysDate) });
+    }
+    else {
+      this.setState( { title: toMonth(todaysDate) });
+    }
     get("/api/habit", {type: type} ).then((habitObjs) => {
       habitObjs.map((habitObj) => {
-        const todaysDate = new Date();
         var parsedDate = new Date(habitObj.date);
+        const todaysDate = new Date();
         console.log("is there date " + habitObj.date);
         if (habitObj.date === undefined || todaysDate.getFullYear() !== parsedDate.getFullYear() ||
             todaysDate.getMonth() !== parsedDate.getMonth() ||
@@ -143,6 +157,8 @@ class HabitList extends Component {
           <button className="button" onClick={this.monthlyTab} type="button">monthly</button>
 
           <div className="panel">
+
+            <div>{this.state.title}</div>
           
             {this.state.habits.map(item => (
             <Habit
