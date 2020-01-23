@@ -52,6 +52,9 @@ class Aquarium extends Component {
         return (
           <div>
             <div className="full-window">
+            {this.props.fishList.map((f) => (
+              <Fish image={this.props.displayFish(f.type)}/>
+            ))}
             <div className="both-buttons">
               <div></div>
               <div></div>
@@ -68,9 +71,7 @@ class Aquarium extends Component {
             </div>
 
 
-            {this.props.fishList.map((f) => (
-              <Fish image={this.props.displayFish(f.type)}/>
-            ))}
+            
 
         {this.props.showPopup ? <Popup popText={this.props.popText}
           onCloseP={this.props.togglePopup}>

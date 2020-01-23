@@ -6,6 +6,7 @@ import { get, post } from "../../utilities";
 import "../../utilities.css";
 import "./Store.css";
 import CustomChatbot from "../modules/CustomChatbot.js";
+import Fish from "../modules/Fish.js";
 
 //import { get } from "mongoose";
 
@@ -97,10 +98,15 @@ class Store extends Component {
             
             
         // </div>
+        <>
         <div className="ChatContainer">
         {this.state.fishtoday.length > 0 ? <CustomChatbot displayFish={this.props.displayFish} fish={this.state.fishtoday} boughtFish={this.props.boughtFish}/> : <div/>}
         
       </div>
+      {this.props.fishList.map((f) => (
+        <Fish image={this.props.displayFish(f.type)}/>
+      ))}
+      </>
             
         );
     }

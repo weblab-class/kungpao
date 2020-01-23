@@ -3,6 +3,7 @@ import HabitList from "../modules/HabitList.js";
 
 import "../../utilities.css";
 import "./Habits.css";
+import Fish from "../modules/Fish.js";
 
 class Habits extends Component {
     constructor(props) {
@@ -15,6 +16,9 @@ class Habits extends Component {
 
     render() {
         return ( <>
+            {this.props.fishList.map((f) => (
+              <Fish image={this.props.displayFish(f.type)}/>
+            ))}
             <button className="button" type="button">daily</button>
             <button className="button" type="button">weekly</button>
             <button className="button" type="button">monthly</button>

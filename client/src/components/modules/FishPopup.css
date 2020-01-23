@@ -17,6 +17,7 @@
     animation: popIn;
     animation-duration: 0.1s;
     font-family: "Quicksand";
+    z-index: 2;
 }
 
 .no-items {
@@ -43,4 +44,8 @@
     height: 40px;
     width: 100px;
     margin: 20px;
+    padding: 100; 
+    background-color:  rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    font-family: "Quicksand"
 }

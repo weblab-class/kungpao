@@ -275,11 +275,14 @@ class App extends Component {
             />
           <Habits
             path="/habits"
+            fishList={this.state.placedfish}
+            displayFish = {this.displayFish}
           />
           <Store
             path="/store"
             boughtFish = {this.boughtFish}
             displayFish = {this.displayFish}
+            fishList={this.state.placedfish}
             />
           <NotFound default />
         </Router> 
