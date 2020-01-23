@@ -86,6 +86,7 @@ router.post("/habit", (req, res) => {
   const newHabit = new Habit({
     creator_id: req.user._id,
     content: req.body.content,
+    date: new Date(),
   });
   newHabit.save().then((habit) => {
     res.send(habit);
@@ -93,10 +94,19 @@ router.post("/habit", (req, res) => {
 })
 
 router.post("/updateHabit", (req, res) => {
-  Habit.updateOne(
-    {"_id": ObjectID(req.body.id)},
-    {$set: {isDone: req.body.isDone}},
-  ).then((habit) => res.send(habit));
+  if (req.body.date) {
+    Habit.updateOne(
+      {"_id": ObjectID(req.body.id)},
+      {$set: {isDone: req.body.isDone}},
+      {$set: {date: req.body.date}},
+    ).then((habit) => res.send(habit));
+  }
+  else {
+    Habit.updateOne(
+      {"_id": ObjectID(req.body.id)},
+      {$set: {isDone: req.body.isDone}},
+    ).then((habit) => res.send(habit));
+  }
 })
 
 // TODO: will not pass a security review. fix. 
@@ -201,7 +211,13 @@ router.get("/todaysfish", async (req, res) => {
 
 router.get("/money", (req, res) => {
   Money.findOne({"creator_id": req.user._id }).then((m) => {
-    res.send(m);
+    if (m === null) {
+      res.send({money: null});
+    }
+    else {
+      res.send(m);
+    }
+    
   });
 });
 

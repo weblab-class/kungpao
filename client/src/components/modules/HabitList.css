@@ -1,28 +1,42 @@
-.habitlist {
+.habitlist-container {
+    display: flex;
+    font-size: 14px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.panel {
     background-color: #F6F7FA;
     padding: 10px 20px;
+    margin: 10px;
     width: 400px;
+    height: fit-content;
+    
     border-radius: 10px;
+}
+
+.balance {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.balance img {
+    width: 20px;
+    height: 20px;
+    margin: 0 10px;
 }
 
 .newhabitandbutton {
     display: flex;
 }
 
-.newhabitandbutton input {
+.newhabitandbutton .text {
     position: relative;
     background-color: #FFFFFF;
-    padding: 10px 0;
+    padding: 10px 10px;
     margin: 10px 0;
     border-radius: 10px;
     border: none;
-}
-
-.newhabitandbutton button {
-    position: relative;
-    background-color: #FFFFFF;
-    padding: 10px;
-    margin: 10px;
-    border-radius: 10px;
-    border: none;
+    font-size: 14px;
+    font-family: 'Quicksand', sans-serif;
 }
