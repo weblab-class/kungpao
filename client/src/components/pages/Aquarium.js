@@ -78,9 +78,8 @@ class Aquarium extends Component {
         {this.props.showPopup ? <Popup popText={this.props.popText}
           onCloseP={this.props.togglePopup}>
         </Popup> : null}
-        {this.props.pickFish ? <FishPopup onCloseFP={this.props.pickingFish} availFish = {this.props.notplaced} addingFish ={byfish => this.props.addingFish(byfish)} displayFish = {this.props.displayFish}></FishPopup> : null}
-            <div className='water' onClick={this.getMouseCoor
-              } style={{ ...this.state, zIndex:-1 }}>
+        {this.props.pickFish ? <FishPopup onCloseFP={this.props.pickingFish} addAllFish = {this.props.addAllFish} availFish = {this.props.notplaced} addingFish ={byfish => this.props.addingFish(byfish)} displayFish = {this.props.displayFish}></FishPopup> : null}
+            <div className='water' style={{ ...this.state, zIndex:-1 }}>
                 <div>
                   <img className='bubble' src={bubble} alt="bubble"></img>
                 </div>

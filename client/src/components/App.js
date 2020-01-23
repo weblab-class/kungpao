@@ -195,7 +195,22 @@ class App extends Component {
     //need to delete from notplacedfish
     post("/api/removefish", body).then(res => console.log(res));
     console.log('addedfish')
-    this.pickingFish;
+    // this.pickingFish;
+  }
+
+  addAllFish = () => {
+    var f;
+    for (f = 0; f < this.state.notplaced.length; f++){
+      let currentFish = this.state.notplaced[f];
+      const body = { type: currentFish.type , googleid: this.state.gId};
+      post("/api/placefish", body).then(res => console.log(res));
+      post("/api/removefish", body).then(res => console.log(res));
+      console.log('addedfish')
+    }
+    this.setState({
+      placedfish: this.state.placedfish.concat(this.state.notplaced),
+      notplaced: [],
+    });
   }
 
   boughtFish = (newfish) => {
@@ -272,6 +287,7 @@ class App extends Component {
             addingFish = {this.addingFish}
             displayFish = {this.displayFish}
             releasedHeart = {this.state.releasedHeart}
+            addAllFish = {this.addAllFish}
             />
           <Habits
             path="/habits"
