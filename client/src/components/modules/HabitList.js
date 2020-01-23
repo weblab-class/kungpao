@@ -20,7 +20,7 @@ class HabitList extends Component {
 
   componentDidMount() {
     var habitsToReset = [];
-    get("/api/habit").then((habitObjs) => {
+    get("/api/habit", {type: "daily"} ).then((habitObjs) => {
       habitObjs.map((habitObj) => {
         const todaysDate = new Date();
         var parsedDate = new Date(habitObj.date);
@@ -74,7 +74,7 @@ class HabitList extends Component {
 
   submitHabit = (event) => {
     event.preventDefault();
-    const body = {content: this.state.inputText};
+    const body = {content: this.state.inputText, type: "daily"};
     post("api/habit", body).then((habit) => {
       this.addNewHabit(habit);
     });
