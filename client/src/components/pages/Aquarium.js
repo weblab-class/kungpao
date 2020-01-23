@@ -52,8 +52,8 @@ class Aquarium extends Component {
         return (
           <div>
             <div className="full-window">
-            {this.props.fishList.map((f) => (
-              <Fish image={this.props.displayFish(f.type)}/>
+            {this.props.fishList.map((f,i) => (
+              <Fish key={i} image={this.props.displayFish(f.type)}/>
             ))}
             <div className="both-buttons">
               <div></div>

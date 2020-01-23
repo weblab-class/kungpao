@@ -209,9 +209,9 @@ class App extends Component {
    */
   displayFish = (fishname) => {
     // TODO: refactor using switch 
-    console.log(fishname);
+    //console.log(fishname);
     if (fishname == 'doryfish') {
-      console.log('heLLOOOOo', doryfish);
+      //console.log('heLLOOOOo');
       return doryfish;
     }
     else if (fishname == 'blueyellowfish') {

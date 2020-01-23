@@ -9,11 +9,11 @@ function CustomChatbot(props) {
     console.log(props)
     const config = {
       width: "100%",
-      height: "70%",
+      height: "65vh",
       botAvatar: ray,
       handleEnd: (response) => {
         if(response.values[0]!=='No'){
-          const body = { type: response.values[0] };
+          const body = { type: response.values[0].type, price: response.values[0].price };
           post("/api/buyfish", body).then(res => console.log(res));
           console.log('good')
           props.boughtFish(body);
@@ -28,9 +28,9 @@ function CustomChatbot(props) {
 
     const fishOfferings = props.fish.map((f,i) => {
       return {
-        value: f.type,
+        value: f,
         label: f.name + "$#$" + "$" + f.price + "$#$"+props.displayFish(f.type),
-        trigger: "Done"
+        trigger: props.money > f.price ? "Done" : "poor"
       }
     })
    fishOfferings.push({ 
@@ -57,6 +57,10 @@ function CustomChatbot(props) {
         id: "none",
         message: "Have a great day !!",
         end: true,
+       },
+       {
+         id: "poor",
+         message: "You don't have enough money to purchase this fish",
        },
       {
        id: "Done",
