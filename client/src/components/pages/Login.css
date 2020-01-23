@@ -16,7 +16,7 @@
 
     height: 100vh;
     position: relative;
-    background-image: url("underwater.jpg");
+    background-image: url("./coral-reef.jpg");
     background-size: cover;
 
 }

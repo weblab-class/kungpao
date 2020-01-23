@@ -18,25 +18,25 @@ class Fish extends Component {
       yDirection: yarray[Math.floor(Math.random() * yarray.length)],
       yVelocity: 1,
 
-      z: Math.random() * Constant.min_z,
-      zVelocity: 0.1
+      // z: Math.random() * Constant.min_z,
+      // zVelocity: 0.1
     };
   }
 
   chooseRandomMovement() {
     let xVelocity = Math.random() * Constant.max_x_velocity;
     let yVelocity = Math.random() * Constant.max_y_velocity;
-    let zVelocity = Math.random() * Constant.max_z_velocity;
+    // let zVelocity = Math.random() * Constant.max_z_velocity;
     let xDirection = Math.random() < 0.5 ? 'right' : 'left';
     let yDirection = Math.random() < 0.5 ? 'up' : 'down';
-    let zDirection = Math.random() < 0.5 ? 'in' : 'out';
+    // let zDirection = Math.random() < 0.5 ? 'in' : 'out';
     this.setState({
       xVelocity: xVelocity,
       yVelocity: yVelocity,
       xDirection: xDirection,
       yDirection: yDirection,
-      zVelocity: zVelocity,
-      zDirection: zDirection
+      // zVelocity: zVelocity,
+      // zDirection: zDirection
     })
   }
 
@@ -57,13 +57,13 @@ class Fish extends Component {
     yDirection: 'down',
     yVelocity: 1,
 
-    z: Constant.min_z,  // start in the back
-    zVelocity: 0.1
+    // z: Constant.min_z,  // start in the back
+    // zVelocity: 0.1
     })
   }
 
   move() {
-    let { xVelocity, xDirection, yVelocity, yDirection, zVelocity, zDirection } = this.state;
+    let { xVelocity, xDirection, yVelocity, yDirection} = this.state;
 
     if (this.state.x > window.innerWidth || this.state.y > window.innerHeight) {
       this.relocate(); // if the fish is outisde the window (window was resized, probably)
@@ -83,19 +83,19 @@ class Fish extends Component {
       yDirection = 'down';
     }
 
-    if (this.state.z > (-1)) {
-      zDirection = 'in';
-    } else if (this.state.z < Constant.min_z) {
-      zDirection = 'out';
-    }
+    // if (this.state.z > (-1)) {
+    //   zDirection = 'in';
+    // } else if (this.state.z < Constant.min_z) {
+    //   zDirection = 'out';
+    // }
 
     this.setState({
       x: this.state.x + (xDirection === 'left' ? xVelocity : -xVelocity),
       xDirection: xDirection,
       y: this.state.y + (yDirection === 'down' ? yVelocity : -yVelocity),
       yDirection: yDirection,
-      z: this.state.z + (zDirection === 'in' ? -zVelocity : zVelocity),
-      zDirection: zDirection
+      // z: this.state.z + (zDirection === 'in' ? -zVelocity : zVelocity),
+      // zDirection: zDirection
     })
   }
 
@@ -106,10 +106,11 @@ class Fish extends Component {
   }
 
   render() {
-    let yScale = 2 - (this.state.z / Constant.min_z);
+    let yScale = 1;
+    // 2 - (this.state.z / Constant.min_z);
     let xScale = ( this.state.xDirection === 'left' ? yScale : -yScale );
     let fishScale = {transform: `scaleX(${xScale}) scaleY(${yScale})`};
-    let fishStyle = { ...fishScale, left: this.state.x, top: this.state.y, zIndex: Math.round(this.state.z) }
+    let fishStyle = { ...fishScale, left: this.state.x, top: this.state.y}
 
     return (
       <img className='fish' style={fishStyle} src={this.props.image}/>

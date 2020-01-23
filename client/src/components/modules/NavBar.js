@@ -16,7 +16,7 @@ const NavLink = props => (
       
       return {
         style: {
-        textShadow: isCurrent ? "1px 1px 0 grey" : "none"
+        textShadow: isCurrent ? "1px 1px 0 lightgrey" : "none"
         }
       };
     }}

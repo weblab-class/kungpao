@@ -45,11 +45,11 @@ img.fish {
   }
   
   .water {
-    background-image: url("./seawithsand.jpg");
-    opacity: 0.60;
+    background-image: url("./coral-reef.jpg");
+    opacity: 0.9;
     background-size: cover;
     background-repeat: no-repeat;
-    z-index: -1;
+    z-index: -0.4;
     position:absolute;
     left: 0;
     top: 0;

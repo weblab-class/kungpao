@@ -12,6 +12,8 @@
 .closeButton {
     position: 'relative';
     padding: 100; 
-    background-color: white;
-    align-content: flex-end;
+    background-color:  rgba(255, 255, 255, 0.3);
+    align-content: center;
+    border-radius: 5px;
+    font-family: "Quicksand"
 }
