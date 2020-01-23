@@ -20,6 +20,7 @@ class Store extends Component {
             messages: [],
 
         }
+        this.changeMoney = this.changeMoney.bind(this);
     }
 
     loadMessageHistory(value) {
@@ -57,12 +58,12 @@ class Store extends Component {
           
     }
 
-    changeMoney(price){
+    changeMoney(price, previousmoney){
       
       post("/api/incrementMoney", {amount: -price}).then((money) => {
-        console.log("lose money ");
+        console.log("lose money " + money);
         this.setState({
-          money: this.state.money - price,
+          money: previousmoney - price,
         });
     });
 

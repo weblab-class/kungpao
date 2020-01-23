@@ -22,7 +22,7 @@ function CustomChatbot(props) {
           post("/api/buyfish", body).then(res => console.log(res));
           console.log('yay' + purchasedfish.price)
           props.boughtFish(body);
-          props.changeMoney(purchasedfish.price);
+          props.changeMoney(purchasedfish.price, props.money);
 
         }
         
@@ -36,7 +36,7 @@ function CustomChatbot(props) {
       return {
         value: f,
         label: f.name + "$#$" + "$" + f.price + "$#$"+props.displayFish(f.type),
-        trigger: props.money > f.price ? "sure?" : "poor"
+        trigger: props.money >= f.price ? "sure?" : "poor"
       }
     })
    fishOfferings.push({ 
