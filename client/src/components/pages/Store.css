@@ -60,9 +60,13 @@ html {
 }
 
 .Money {
+  /* TODO: add min max width, figure out size */
     box-sizing: border-box;
     z-index: -1;
-    position:relative;
+    position: absolute;
+    left: 90%;
+    right: 5.62%;
+    top: 15.31%;
     flex-grow: 1;
 
     background: #F6F7FA;

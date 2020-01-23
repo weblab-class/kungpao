@@ -7,6 +7,7 @@ import "../../utilities.css";
 import "./Store.css";
 import CustomChatbot from "../modules/CustomChatbot.js";
 import Fish from "../modules/Fish.js";
+import { createHistory } from "@reach/router";
 
 //import { get } from "mongoose";
 
@@ -15,10 +16,11 @@ class Store extends Component {
         super(props);
         this.state = {
             fishtoday: [],
-            money: 0,
+            money: -1,
             messages: [],
 
         }
+        this.changeMoney = this.changeMoney.bind(this);
     }
 
     loadMessageHistory(value) {
@@ -45,16 +47,26 @@ class Store extends Component {
                 post("/api/money", body).then((f)=> console.log(f));
             } else {
                 console.log('nomoney');
-                // this.setState({
-                    
-                //     money: res.money,
-                // });
+                this.setState({
+                  money: res.money,
+                });
 
             };
             
                 
         });
           
+    }
+
+    changeMoney(price, previousmoney){
+      
+      post("/api/incrementMoney", {amount: -price}).then((money) => {
+        console.log("lose money " + money);
+        this.setState({
+          money: previousmoney - price,
+        });
+    });
+
     }
 
 
@@ -74,10 +86,7 @@ class Store extends Component {
     render() {
         return ( 
         // <div>
-        //     <div className = "Money">
-        //         {this.state.money}
-
-        //     </div>
+        //     
         //     <div className="ChatContainer">
         //     Buy stuff with sand dollars.
         //     <button
@@ -98,14 +107,18 @@ class Store extends Component {
             
             
         // </div>
-        <>
+      <>
+        <div className = "Money">
+          {this.state.money}
+
+        </div>
         <div className="ChatContainer">
-        {this.state.fishtoday.length > 0 ? <CustomChatbot displayFish={this.props.displayFish} fish={this.state.fishtoday} boughtFish={this.props.boughtFish}/> : <div/>}
+          {(this.state.fishtoday.length > 0 && this.state.money > -1) ? <CustomChatbot displayFish={this.props.displayFish} changeMoney = {this.changeMoney} fish={this.state.fishtoday} boughtFish={this.props.boughtFish} money={this.state.money}/> : <div/>}
         
-      </div>
-      {this.props.fishList.map((f) => (
-        <Fish image={this.props.displayFish(f.type)}/>
-      ))}
+        </div>
+          {this.props.fishList.map((f) => (
+            <Fish image={this.props.displayFish(f.type)}/>
+          ))}
       </>
             
         );
