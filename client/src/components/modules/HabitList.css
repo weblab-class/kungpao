@@ -1,11 +1,29 @@
-.habitlist {
+.habitlist-container {
+    display: flex;
+    font-size: 14px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.panel {
     background-color: #F6F7FA;
     padding: 10px 20px;
     margin: 10px;
     width: 400px;
-    font-size: 14px;
-    font-family: 'Quicksand', sans-serif;
+    height: fit-content;
+    
     border-radius: 10px;
+}
+
+.balance {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.balance img {
+    width: 20px;
+    height: 20px;
+    margin: 0 10px;
 }
 
 .newhabitandbutton {
@@ -18,7 +36,5 @@
     padding: 10px 10px;
     margin: 10px 0;
     border-radius: 10px;
-    font-size: 14px;
-    font-family: 'Quicksand', sans-serif;
     border: none;
 }

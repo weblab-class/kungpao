@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Habit from "./Habit.js";
+import sanddollar from "../data/sanddollar.png";
 
 
 import "./HabitList.css";
@@ -93,33 +94,44 @@ class HabitList extends Component {
 
   render() {
     return (
-      <div className="habitlist">
-        {this.state.habits.map(item => (
-        <Habit
-            key={`Habit_${item._id}`}
-            content={item.content}
-            isDone={item.isDone}
-            updateDatabaseIsDone={isDone => this.updateHabitIsDone(item._id, isDone)}
-        />
-        ))}
-        <div className="newhabitandbutton" >
-          <form>
-              <input
-                type="text"
-                class="text"
-                placeholder="Add a new daily habit"
-                value={this.state.inputText}
-                onChange={this.handleInputChange}
-              />
-              <input
-                type="submit"
-                class="button"
-                value="+"
-                onClick={this.submitHabit}
-              />
-          </form>
+      <div className="habitlist-container">
+          
+        <div className="panel">
+          {this.state.habits.map(item => (
+          <Habit
+              key={`Habit_${item._id}`}
+              content={item.content}
+              isDone={item.isDone}
+              updateDatabaseIsDone={isDone => this.updateHabitIsDone(item._id, isDone)}
+          />
+          ))}
+
+          <div className="newhabitandbutton" >
+            <form>
+                <input
+                  type="text"
+                  className="text"
+                  placeholder="Add a new daily habit"
+                  value={this.state.inputText}
+                  onChange={this.handleInputChange}
+                />
+                <input
+                  type="submit"
+                  className="button"
+                  value="+"
+                  onClick={this.submitHabit}
+                />
+            </form>
+          </div>
         </div>
-        <div>Balance: {this.state.balance}</div>
+
+        <div className="panel">
+          <div className="balance">
+            <div>Balance: {this.state.balance}</div>
+            <img src={sanddollar} alt="sanddollar"></img>
+          </div>
+          <div>Use sanddollars in the store to buy fish for your aquarium.</div>
+        </div>
       </div>
     );
   }
