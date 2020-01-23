@@ -15,9 +15,6 @@ class Habits extends Component {
 
     render() {
         return ( <>
-            <button className="button" type="button">daily</button>
-            <button className="button" type="button">weekly</button>
-            <button className="button" type="button">monthly</button>
             <HabitList />
             </>
         );
