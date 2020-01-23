@@ -8,7 +8,7 @@ class FishPopup extends React.Component {
 
   constructor(props) {
     super(props);
-    console.log(this.props.availFish.length);
+    // console.log(this.props.availFish.length);
   }
 
   componentDidMount () {

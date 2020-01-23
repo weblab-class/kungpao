@@ -6,14 +6,17 @@
 }
 
 .window {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.3);
     height: fit-content;
     width: 200px;
     padding: 5px 10px 10px 5px;
     margin-left: calc(50vw - 100px);
     margin-top: calc(100vh - 800px);
+    border-style: solid;
+    border-color: white;
+    border-width: 2px;
     border-radius: 10px;
-    color: grey;
+    color: white;
     animation: popIn;
     animation-duration: 0.1s;
     font-family: "Quicksand";
@@ -22,7 +25,7 @@
 
 .no-items {
     font-family: "Quicksand";
-    color: rgb(150, 150, 150);
+    color: rgb(226, 226, 226);
     padding: 0px 0px 5px 0px;
 }
 
@@ -36,7 +39,8 @@
     background-color:  rgba(255, 255, 255, 0.3);
     align-content: center;
     border-radius: 5px;
-    font-family: "Quicksand"
+    font-family: "Quicksand";
+    color: white;
 }
 
 .fishButton {

@@ -131,7 +131,7 @@ router.post("/buyfish", (req, res) => {
 
 router.get("/todaysfish", async (req, res) => {
   const dateNow = new Date();
-  const dateNowString = `aa${dateNow.getFullYear()}${dateNow.getMonth()}${dateNow.getDate()}`
+  const dateNowString = `aaa${dateNow.getFullYear()}${dateNow.getMonth()}${dateNow.getDate()}`
   const todayFishes = await TodayFish.findOne({date: dateNowString});
   if (todayFishes !== null) {
     return res.json(todayFishes.fishes);
@@ -143,12 +143,8 @@ router.get("/todaysfish", async (req, res) => {
     "name": "dory",
   }, {
     "type": "blueyellowfish",
-    "price": 20,
+    "price": 10,
     "name": "angel",
-  }, {
-    "type": "purplecoral",
-    "price": 14,
-    "name": "coral",
   },{
     "type": "clownfish",
     "price": 30,
@@ -156,37 +152,32 @@ router.get("/todaysfish", async (req, res) => {
   },
   {
     "type": "greenyellowpuffer",
-    "price": 5,
+    "price": 20,
     "name": "green puff",
   },
   {
     "type": "peachpuffer",
-    "price": 5,
+    "price": 15,
     "name": "peach puff",
   },
   {
     "type": "patchyfish",
-    "price": 7,
+    "price": 20,
     "name": "patch",
   },
   {
     "type": "pinkfish",
-    "price": 10,
+    "price": 5,
     "name": "pinky",
   },
   {
     "type": "purplepeachfish",
-    "price": 45,
+    "price": 10,
     "name": "purp peach",
   },
   {
-    "type": "seaweed",
-    "price": 3,
-    "name": "seaweed",
-  },
-  {
     "type": "yellowfish",
-    "price": 15,
+    "price": 5,
     "name": "yellow",
   },
 ];

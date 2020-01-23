@@ -9,25 +9,30 @@
 .NavBar-sidebar {
   padding: 10px;
   margin-left: 0;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.3);
   height: 140px;
   width: 150px;
   border-radius: 0px 0px 10px 0px;
   top: 0;
+  border-style: none solid solid none;
+  border-width: 2px;
+  border-color: white;
 }
 
 .NavBar-title-container {
-  color: rgb(73, 73, 73);
+  /* color: rgb(73, 73, 73); */
   width: 225px;
   height: 50px;
-  background-color: rgba(255, 255, 255, 0.5);
+  /* background-color: rgba(255, 255, 255, 0.5); */
   border-radius: 0px 0px 10px 10px;
   text-align: center;
   font-family: 'Croissant One', cursive;
+  /* border-color: black; */
 }
 .NavBar-title {
-  color: rgb(73, 73, 73);
-  font-size: 20px;
+  /* color: rgb(73, 73, 73); */
+  color: white;
+  font-size: 30px;
   margin-top: 5px;
   padding: 10px;
   font-family: 'Croissant One', cursive;
@@ -52,13 +57,14 @@
 }
 
 .menu-item ::before {
-  content: "◯ ";
+  content: "🐠 ";
   }
 
 
 .NavBar-link,
 .NavBar-link:visited {
-  color: gray;
+  /* color: rgb(77, 77, 77); */
+  color: white;
   opacity: 0.8;
   text-decoration: none;
   font-family: 'Quicksand', sans-serif;
