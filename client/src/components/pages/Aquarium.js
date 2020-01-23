@@ -8,10 +8,10 @@ import bubble from "./bubble.png";
 import Popup from "../modules/Popup.js";
 import FishPopup from "../modules/FishPopup.js";
 
-import purplecoral from "../data/purplecoral.png";
-import seaweed from "../data/seaweed.png";
 import heart from "./redheart.png";
 
+
+import ReactInputPosition, {MOUSE_ACTIVATION, TOUCH_ACTIVATION} from "react-input-position";
 
 
 class Aquarium extends Component {
@@ -20,12 +20,12 @@ class Aquarium extends Component {
         super(props);
         console.log(this.props.fishList);
         this.state = {
-          releasedHeart : false,
+          x : 0,
+          y: 0,
+          placeItem: false,
         }
 
     }
-
-    
 
     componentDidMount() {
         this.handleResize();
@@ -39,28 +39,16 @@ class Aquarium extends Component {
         })
       }
 
-
-      setProperty = (item, mar) => {
-        item.style.setProperty('--img-position', mar + 'px');
-      }
-
-      heartReleased = () => {
+      getMouseCoor = (e) => {
         this.setState({
-          releasedHeart : true
+          x : e.nativeEvent.clientX,
+          y: e.nativeEvent.clientY,
+          placeItem: true,
         });
-        console.log("heart released");
       }
-
-      
 
       render() {
-        // let pos = Math.random();
-        // let pcoral = <img src={purplecoral} alt="coral"></img>
-        // pcoral, pos => this.setProperty(pcoral, pos);
-        // let pos2 = Math.random();
-        // let sw = <img src={seaweed} alt="seaweed"></img>
-        // sw, pos2 => this.setProperty(sw, pos2);
-
+        
         return (
           <div>
             <div className="full-window">
@@ -70,28 +58,17 @@ class Aquarium extends Component {
               <div></div>
               <div className="button-container">
                 <button onClick={this.props.pickFish ? this.props.pickingFish : this.props.checkifFed}
-                   > Feed fish</button>
+                   >Feed fish</button>
               </div>
               <div className="button-container">
-                <button onClick={this.props.showPopup ? this.props.togglePopup : this.props.pickingFish}>Place Items</button>
+                <button onClick={this.props.showPopup ? this.props.togglePopup  : this.props.pickingFish}>Place Items</button>
               </div>
             
               </div>
             </div>
 
+
             {this.props.fishList.map((f) => (
-              // f.type == "purplecoral" ? 
-              //   <div className="ocean-decor">
-              //   <img src={purplecoral} alt="coral"></img>
-              //   {/* {pcoral} */}
-              //   </div>
-              // :
-              // f.type == "seaweed" ?
-              // <div className="ocean-decor">
-              //   <img src={seaweed} alt="seaweed"></img>
-              //   {/* {sw} */}
-              //   </div>
-              // :
               <Fish image={this.props.displayFish(f.type)}/>
             ))}
 
@@ -99,14 +76,15 @@ class Aquarium extends Component {
           onCloseP={this.props.togglePopup}>
         </Popup> : null}
         {this.props.pickFish ? <FishPopup onCloseFP={this.props.pickingFish} availFish = {this.props.notplaced} addingFish ={byfish => this.props.addingFish(byfish)} displayFish = {this.props.displayFish}></FishPopup> : null}
-            <div className='water' style={{ ...this.state, zIndex:-1 }}>
-              <div className='bubble'>
-                <img src={bubble} alt="bubble"></img>
-              </div>
-              {/* {this.props.popText == "Yay! You have fed your fish." ? (this.state.releasedHeart == false ? <div className="feed-heart">
-                <img src={heart} alt="heart"></img> 
-                {this.heartReleased}
-              </div> : null) : null} */}
+            <div className='water' onClick={this.getMouseCoor
+              } style={{ ...this.state, zIndex:-1 }}>
+                <div>
+                  <img className='bubble' src={bubble} alt="bubble"></img>
+                </div>
+                
+              {/* {this.props.releasedHeart ? (!this.state.releasedHeart ? <div>
+                <img className="feed-heart" src={heart} alt="heart"></img> </div>
+                : null) : null} */}
             </div>
           </div>
         );

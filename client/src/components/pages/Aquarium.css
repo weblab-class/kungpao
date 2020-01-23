@@ -8,6 +8,11 @@
   height: 100%;
 }
 
+.sand {
+  width: 100%;
+  margin-top: 70%;
+}
+
 img.fish {
     position: absolute;
     height: 28px;
@@ -54,7 +59,7 @@ img.fish {
     padding: 0;
   }
 
-  .bubble img{
+  .bubble {
     max-width: 5%;
     max-height: 5%;
     margin-bottom: 0;
@@ -65,12 +70,12 @@ img.fish {
     
   }
 
-  .feed-heart img {
+  .feed-heart {
     max-width: 5%;
     max-height: 5%;
     margin-left: 50vh;
     margin-top: 80vh;
-    animation: float2;
+    animation: releaseUp;
     animation-duration: 3s;
     animation-iteration-count: 1;
   }
@@ -80,7 +85,7 @@ img.fish {
     to {margin-left: 200px; margin-top: 0vh;}
   }
 
-  @keyframes float2 {
+  @keyframes releaseUp {
     from {margin-top: 80vh; margin-left: 50vw;}
     to {margin-top: 0vh; margin-left: 50vw;}
   }

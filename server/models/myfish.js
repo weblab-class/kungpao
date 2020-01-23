@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 const MyFishSchema = new mongoose.Schema({
     type: String,
     googleid: String,
+    xcoor: { type: Number, default: undefined},
+    ycoor: {type: Number, default: undefined}
 });
 
 // compile model from schema

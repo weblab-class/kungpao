@@ -53,8 +53,10 @@ class NavBar extends Component {
           </NavLink>
           </div>
         </div>
-        <div className="NavBar-title">
-            Habit Aquarium
+        <div className="NavBar-title-container">
+          <div className="NavBar-title">
+              Habit Aquarium
+          </div>
         </div>
         <div className="logout-button">
         {this.props.userId ? (

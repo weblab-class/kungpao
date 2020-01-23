@@ -51,6 +51,7 @@ class App extends Component {
       pickFish: false,
       placedfish: [],
       notplaced: [],
+      releasedHeart: false,
     };
   }
 
@@ -141,22 +142,24 @@ class App extends Component {
     }
     else if (this.state.lastFed == 0){
       post("/api/feedfish");
-      this.togglePopup();
       this.setState({
         popText: "Yay! You have fed your fish.",
+        releasedHeart: true,
       });
+      this.togglePopup();
     }
-    else if (Date.now() - Date.parse(this.state.lastFed.lastfed) > 86400000){
+    else if (Date.now() - Date.parse(this.state.lastFed.lastfed) > 82800000){
       post("/api/feedfish");
-      this.togglePopup();
       this.setState({
         popText: "Yay! You have fed your fish.",
+        releasedHeart: true,
       });
+      this.togglePopup();
     }
     else {
       this.togglePopup();
       this.setState({
-        popText: "You have already fed your fish in the last 24 hours.",
+        popText: "You have already fed your fish in the last 23 hours.",
       });
     }
     });
@@ -191,6 +194,7 @@ class App extends Component {
     //need to delete from notplacedfish
     post("/api/removefish", body).then(res => console.log(res));
     console.log('addedfish')
+    this.pickingFish;
   }
 
   boughtFish = (newfish) => {
@@ -266,6 +270,7 @@ class App extends Component {
             notplaced = {this.state.notplaced}
             addingFish = {this.addingFish}
             displayFish = {this.displayFish}
+            releasedHeart = {this.state.releasedHeart}
             />
           <Habits
             path="/habits"
@@ -277,13 +282,8 @@ class App extends Component {
             />
           <NotFound default />
         </Router> 
-        {/* {this.state.showPopup ? <Popup popText={this.state.popText}
-          onClose={this.togglePopup}>
-        </Popup> : null}
-        {this.state.pickFish ? <FishPopup onClose={this.pickingFish} availFish = {this.state.notplaced} addingFish ={byfish => this.addingFish(byfish)}></FishPopup> : null} */}
         </div>
         </>
-        
         : 
         <>
         <Login handleLogin = {this.handleLogin}/>
