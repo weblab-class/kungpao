@@ -63,7 +63,7 @@ class Store extends Component {
       post("/api/incrementMoney", {amount: -price}).then((money) => {
         console.log("lose money " + money);
         this.setState({
-          money: previousmoney - price,
+          money: this.state.money - price,
         });
     });
 
