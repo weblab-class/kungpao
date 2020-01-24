@@ -8,6 +8,10 @@
   height: 100%;
 }
 
+.fishies {
+  z-index: -1;
+}
+
 .sand {
   width: 100%;
   margin-top: 70%;
@@ -19,6 +23,7 @@ img.fish {
     width: 49px;
     left: 0;
     top: 0;
+    z-index: inherit;
   }
 
   .both-buttons {
