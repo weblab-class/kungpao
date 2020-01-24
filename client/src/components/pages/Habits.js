@@ -16,6 +16,9 @@ class Habits extends Component {
 
     render() {
         return ( <>
+            {this.props.fishList.map((f) => (
+              <Fish image={this.props.displayFish(f.type)}/>
+            ))}
             <HabitList />
             </>
         );
