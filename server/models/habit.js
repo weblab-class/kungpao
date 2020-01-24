@@ -5,6 +5,7 @@ const HabitSchema = new mongoose.Schema({
     content: String,
     isDone: Boolean,
     date: Date,
+    type: String, // "daily", "weekly", or "monthly"
 });
 
 // compile model from schema
