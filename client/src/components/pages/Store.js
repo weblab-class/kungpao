@@ -43,12 +43,15 @@ class Store extends Component {
         // this.loadMessageHistory();
 
         get("/api/money").then((res) => {
-            if(typeof res==='undefined'){
-                console.log('ihavemoney');
+            if(typeof res.money==='undefined' || res.name==null){
+                console.log('zeromoneytostart');
                 const body = { money: 0};
                 post("/api/money", body).then((f)=> console.log(f));
+                this.setState({
+                  money: 0,
+                });
             } else {
-                console.log('nomoney');
+                console.log('ihadmoneybefore??');
                 this.setState({
                   money: res.money,
                 });

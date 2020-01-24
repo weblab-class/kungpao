@@ -4,7 +4,6 @@ const MoneySchema = new mongoose.Schema({
     // googleid: String,
     creator_id: String,
     money: Number,
-    name: String,
 });
 
 // compile model from schema
