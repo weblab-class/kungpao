@@ -1,17 +1,20 @@
-.full-window {
-    width: 100%;
-    height: 100%;
+.big-window {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
-.window {
-    position: 'absolute';
+/* .window {
+    position: 'relative';
     background-color: white;
     height: 50px;
     width: 200px;
     z-index: 2;
-}
+} */
 
 .closeButton {
-    position: 'relative';
+    position: 'absolute';
     padding: 100; 
     background-color:  rgba(255, 255, 255, 0.3);
     align-content: center;

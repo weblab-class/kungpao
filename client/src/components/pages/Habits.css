@@ -8,6 +8,7 @@ html {
     background-image: url("./coral-reef.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    z-index: 0;
 }
 
 .button {

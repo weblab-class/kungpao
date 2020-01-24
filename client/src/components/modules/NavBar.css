@@ -17,6 +17,7 @@
   border-style: none solid solid none;
   border-width: 2px;
   border-color: white;
+  z-index: 1;
 }
 
 .NavBar-title-container {
@@ -28,6 +29,7 @@
   text-align: center;
   font-family: 'Croissant One', cursive;
   /* border-color: black; */
+  z-index: 1;
 }
 .NavBar-title {
   /* color: rgb(73, 73, 73); */

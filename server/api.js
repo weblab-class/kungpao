@@ -78,7 +78,7 @@ router.get("/buyfish", (req, res) => {
 });
 
 router.get("/habit", (req, res) => {
-  Habit.find({ "creator_id": req.user._id }).then((habits) => {
+  Habit.find({ "creator_id": req.user._id, "type": req.query.type }).then((habits) => {
     res.send(habits);
   });
 })
@@ -87,6 +87,7 @@ router.post("/habit", (req, res) => {
   const newHabit = new Habit({
     creator_id: req.user._id,
     content: req.body.content,
+    type: req.body.type,
     date: new Date(),
   });
   newHabit.save().then((habit) => {

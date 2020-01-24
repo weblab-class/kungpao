@@ -1,17 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Croissant+One|Open+Sans|Open+Sans+Condensed:300|Quicksand&display=swap');
 
-.full-window {
-    width: 100%;
-    height: 100%;
-}
 
 .window {
+    position: relative;
     background-color: rgba(255, 255, 255, 0.3);
     height: fit-content;
+    max-height: 400px;
+    overflow-y: scroll;
     width: 200px;
     padding: 5px 10px 10px 5px;
     margin-left: calc(50vw - 100px);
-    margin-top: calc(100vh - 800px);
+    margin-top: calc(100vh - 500px);
     border-style: solid;
     border-color: white;
     border-width: 2px;
@@ -34,13 +33,14 @@
   }
 
 .closeButton {
-    position: 'relative';
+    position: 'absolute';
     padding: 100; 
     background-color:  rgba(255, 255, 255, 0.3);
     align-content: center;
     border-radius: 5px;
     font-family: "Quicksand";
     color: white;
+    
 }
 
 .fishButton {
@@ -51,5 +51,7 @@
     padding: 100; 
     background-color:  rgba(255, 255, 255, 0.3);
     border-radius: 5px;
-    font-family: "Quicksand"
+    font-family: "Quicksand";
+    z-index: 2;
+    color: white;
 }

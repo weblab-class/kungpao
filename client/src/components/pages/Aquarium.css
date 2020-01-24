@@ -8,6 +8,10 @@
   height: 100%;
 }
 
+.fishies {
+  z-index: -1;
+}
+
 .sand {
   width: 100%;
   margin-top: 70%;
@@ -32,6 +36,7 @@ img.fish {
   .button-container{
     padding: 10px;
     min-width: fit-content;
+    z-index: 1;
   }
 
   .button-container button {
@@ -42,6 +47,7 @@ img.fish {
     font-size: 15px;
     color: white;
     min-width: 100px;
+    z-index: 1;
   }
   
   .water {

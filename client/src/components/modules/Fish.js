@@ -110,7 +110,7 @@ class Fish extends Component {
     // 2 - (this.state.z / Constant.min_z);
     let xScale = ( this.state.xDirection === 'left' ? yScale : -yScale );
     let fishScale = {transform: `scaleX(${xScale}) scaleY(${yScale})`};
-    let fishStyle = { ...fishScale, left: this.state.x, top: this.state.y, zIndex: -0.2}
+    let fishStyle = { ...fishScale, left: this.state.x, top: this.state.y, zIndex: 0}
 
     return (
       <img className='fish' style={fishStyle} src={this.props.image}/>
