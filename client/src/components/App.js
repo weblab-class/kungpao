@@ -108,7 +108,16 @@ class App extends Component {
             console.log(money);
           });
         }
-      })
+      });
+      get("api/name").then((name) => {
+        console.log('namerip ' + name.name);
+        if (name.name == null) {
+          console.log("creating name");
+          post("api/newName").then((name) => {
+            console.log(name);
+          });
+        }
+      });
     });
   };
 
