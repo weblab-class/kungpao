@@ -231,6 +231,23 @@ class App extends Component {
 
   checkifFed = () => {
     console.log(this.state.gId);
+
+    get("/api/feedfish", {googleid: this.state.gId}).then((ff) => {
+      let temp = 0;
+      if (typeof ff == undefined) {
+        temp = 0;
+      }
+      else if (ff.length == 0) {
+        temp = 0;
+      }
+      else {
+        temp  = ff[ff.length -1];
+        console.log("what?");
+      }
+      this.setState( {
+        lastFed : temp,
+      });
+      console.log(this.state.lastFed);
     
     if (this.state.placedfish.length == 0) {
       this.setState({
@@ -260,6 +277,7 @@ class App extends Component {
         popText: "You have already fed your fish in the last 23 hours.",
       });
     }
+  });
   }
 
 
