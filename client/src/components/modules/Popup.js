@@ -10,7 +10,7 @@ class Popup extends React.Component {
 
   render() {
     return (
-      <div className="full-window" onClick={this.props.onCloseP}>
+      <div className="big-window" onClick={this.props.onCloseP}>
       <div className="window">
           <p> {this.props.popText}</p>
         <button className="closeButton" onClick={this.props.onCloseP}>

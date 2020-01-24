@@ -17,8 +17,8 @@ class FishPopup extends React.Component {
 
   render() {
     return (
-      <div className="full-window"  onClick={this.props.onCloseFP}>
-      <div className="window">
+      <div className="big-window"  onClick={this.props.onCloseFP}>
+      <div className="window" onClick={(event) => event.stopPropagation()}>
           <p> What do you want to put in your aquarium? </p>
           {this.props.availFish.length == 0 ? null : <button className="fishButton" onClick={this.props.addAllFish}> Add ALL fish! </button>}
           {this.props.availFish.length == 0 ? <div className="no-items">You don't have any items! Maintain habits to gain sand dollars to use in the store :)</div> : 
