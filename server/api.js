@@ -19,6 +19,7 @@ const AlmostMyFish = require("./models/almostmyfish.js");
 const AllFish = require("./models/allfish.js");
 const Money = require("./models/money.js");
 const TodayFish = require("./models/todayfish");
+const Name = require("./models/name.js");
 
 const ObjectID = require('mongodb').ObjectID;
 
@@ -221,6 +222,35 @@ router.post("/createmoney", (req, res) => {
     res.send(money);
   });
 })
+
+router.post("/name", (req, res) => {
+  Name.updateOne(
+    {"creator_id": req.user._id},
+    {$set: {name: req.body.name}}
+  ).then((money) => res.send(money));
+})
+
+router.post("/newName", (req, res) => {
+  const newName = new Name({
+    creator_id: req.user._id,
+    name: null,
+  });
+  newName.save().then((name) => {
+    res.send(name);
+  });
+})
+
+router.get("/name", (req, res) => {
+  Name.findOne({"creator_id": req.user._id }).then((n) => {
+    if (n === null) {
+      res.send({name: null});
+    }
+    else {
+      res.send(n);
+    }
+    
+  });
+});
 
 router.post("/money", (req, res) => {
   Money.updateOne(

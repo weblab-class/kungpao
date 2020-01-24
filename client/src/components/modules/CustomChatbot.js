@@ -14,6 +14,8 @@ function CustomChatbot(props) {
       botAvatar: ray,
       handleEnd: (response) => {
         const confirmIndex = response.values.indexOf("confirm");
+        console.log(response.values[0]);
+        //console.log(response.values);
         if(confirmIndex!==-1){
           const purchasedfish = response.values[confirmIndex-1];
           
@@ -25,12 +27,17 @@ function CustomChatbot(props) {
           props.changeMoney(purchasedfish.price, props.money);
 
         }
+        if(props.name==null){
+          props.changeName(response.values[0]);
+        }
         
       }
       // cache: true
       // height: "400px",
       // floating: true
     };
+
+    let myName = props.name;
 
     const fishOfferings = props.fish.map((f,i) => {
       return {
@@ -43,37 +50,60 @@ function CustomChatbot(props) {
         value: "No",
         label: "No thanks",
         trigger: "none",
+        hideInput: true,
       } )
   const steps = [
       {
        id: "Greet",
        message: "Hi I'm Ray and I own the fish store! ",
-       trigger: "offer"
+       trigger: myName==null ? "firsttime":"offer",
+       hideInput: true,
+      },
+      {
+        id: "firsttime",
+        message: "Oh you're new around here. What's your name?",
+        trigger: "name",
+      },
+      {
+        id: 'name',
+        user: true,
+        trigger: 'firsttimeoffer',
+      },
+      {
+        id: "firsttimeoffer",
+        message: "Here's what I've got, {previousValue}",
+        trigger: 'fish',
       },
       {
        id: "offer",
-       message: "Here's what we have today:",
-       trigger: "fish"
+       message: myName+", here's what I have for you today:",
+       trigger: "fish",
+       hideInput: true,
       },
       {
         id: "reoffer",
         message: "Would you like anything else?",
         trigger: "offer",
+        hideInput: true,
 
       },
       {
         id: "fish",
-        options: fishOfferings
+        hideInput: true,
+        options: fishOfferings,
+        
       },
       {
         id: "none",
         message: "Have a great day !!",
         end: true,
+        hideInput: true,
        },
        {
          id: "poor",
          message: "You don't have enough money to purchase this fish! Why don't you get a different one?",
          trigger: "offer",
+         hideInput: true,
        },
       {
        id: "Done",
@@ -84,9 +114,11 @@ function CustomChatbot(props) {
         id: "sure?",
         message: "Are you sure?",
         trigger: "confirm",
+        hideInput: true,
       },
       {
         id: "confirm",
+        hideInput: true,
         options: [{
           value: "confirm",
           trigger: "Done",

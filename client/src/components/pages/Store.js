@@ -18,18 +18,20 @@ class Store extends Component {
             fishtoday: [],
             money: -1,
             messages: [],
+            name: "#@!",
 
         }
         this.changeMoney = this.changeMoney.bind(this);
+        this.changeName = this.changeName.bind(this);
     }
 
-    loadMessageHistory(value) {
-        get("/api/chat").then((messages) => {
-          this.setState({
-            messages : messages,
-          });
-        });
-      }
+    // loadMessageHistory(value) {
+    //     get("/api/chat").then((messages) => {
+    //       this.setState({
+    //         messages : messages,
+    //       });
+    //     });
+    //   }
 
     componentDidMount(){
         console.log('yay');
@@ -38,7 +40,7 @@ class Store extends Component {
               fishtoday: res,
             });
           });
-        this.loadMessageHistory();
+        // this.loadMessageHistory();
 
         get("/api/money").then((res) => {
             if(typeof res==='undefined'){
@@ -50,11 +52,24 @@ class Store extends Component {
                 this.setState({
                   money: res.money,
                 });
-
-            };
-            
-                
+            };   
         });
+        get("/api/name").then((res) => {
+          if(typeof res.name=='undefined' || res.name==null){
+              console.log('nonameyet');
+              const body = { name: null};
+              post("/api/name", body).then((f)=> console.log(f));
+              this.setState({
+                name: null,
+              });
+          } else {
+              console.log('theresaname');
+              console.log('mynameis' + res.name);
+              this.setState({
+                name: res.name,
+              });
+          };   
+      });
           
     }
 
@@ -66,7 +81,15 @@ class Store extends Component {
           money: this.state.money - price,
         });
     });
+    }
 
+    changeName(name){
+      post("/api/name", {name: name}).then((name)=>{
+        console.log("setName!");
+        this.setState({
+          name: name,
+        });
+      });
     }
 
 
@@ -113,11 +136,11 @@ class Store extends Component {
 
         </div>
         <div className="ChatContainer">
-          {(this.state.fishtoday.length > 0 && this.state.money > -1) ? <CustomChatbot displayFish={this.props.displayFish} changeMoney = {this.changeMoney} fish={this.state.fishtoday} boughtFish={this.props.boughtFish} money={this.state.money}/> : <div/>}
+          {(this.state.fishtoday.length > 0 && this.state.money > -1 && this.state.name != "#@!") ? <CustomChatbot name={this.state.name} changeName={this.changeName} displayFish={this.props.displayFish} changeMoney = {this.changeMoney} fish={this.state.fishtoday} boughtFish={this.props.boughtFish} money={this.state.money}/> : <div/>}
         
         </div>
-          {this.props.fishList.map((f) => (
-            <Fish image={this.props.displayFish(f.type)}/>
+          {this.props.fishList.map((f, i) => (
+            <Fish key={i} image={this.props.displayFish(f.type)}/>
           ))}
       </>
             
