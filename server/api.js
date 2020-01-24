@@ -18,8 +18,9 @@ const MyFish = require("./models/myfish.js");
 const AlmostMyFish = require("./models/almostmyfish.js");
 const AllFish = require("./models/allfish.js");
 const Money = require("./models/money.js");
-const TodayFish = require("./models/todayfish");
+const TodayFish = require("./models/todayfish.js");
 const Name = require("./models/name.js");
+const DeadFish = require("./models/deadfish.js");
 
 const ObjectID = require('mongodb').ObjectID;
 
@@ -287,6 +288,29 @@ router.post("/removeFish", (req, res) => {
     console.log(`deleted fish ${req.body.type} from almostmyfish`);
   });
 });
+
+router.post("/deadFish", (req, res) => {
+  MyFish.deleteOne({"type": req.body.type, "googleid": req.body.googleid}).then ((deleted) => {
+    res.send(deleted);
+    console.log(`deleted fish ${req.body.type} from myfish`);
+  });
+});
+
+router.post("/killFish", (req, res) => {
+  const deadFish = new DeadFish({
+    type: req.body.type,
+    googleid: req.body.googleid,
+    timestamp: Date.now(),
+  })
+  deadFish.save().then((f) => res.send(f));
+});
+
+router.get("/killFish", (req, res) => {
+  DeadFish.find({googleid: req.query.googleid}).then((f) => {
+    res.send(f);
+  });
+});
+
 
 router.post("/chat", (req, res) => {
   const newMessage = new Message({

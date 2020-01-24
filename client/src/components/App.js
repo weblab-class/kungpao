@@ -52,6 +52,9 @@ class App extends Component {
       placedfish: [],
       notplaced: [],
       releasedHeart: false,
+      fishDie: false,
+      lastDead: undefined,
+      deadFish: undefined,
     };
   }
 
@@ -75,6 +78,45 @@ class App extends Component {
           console.log("placedfish");
           console.log(this.state.placedfish);
         });
+        get("/api/feedfish", {googleid: this.state.gId}).then((ff) => {
+          let temp = 0;
+          if (typeof ff == undefined) {
+            temp = 0;
+          }
+          else if (ff.length == 0) {
+            temp = 0;
+          }
+          else {
+            temp  = ff[ff.length -1];
+            console.log("what?");
+          }
+          this.setState( {
+            lastFed : temp,
+          });
+
+          get("/api/killFish", {googleid: this.state.gId}).then((f) => {
+            this.setState({
+              lastDead: f,
+            });
+            if (Date.now() - Date.parse(temp.lastfed) > 259200000 && temp != 0) {
+              if (typeof this.state.lastDead == undefined || this.state.lastDead.length == 0){
+                this.setState({
+                  popText: "You haven't fed your fish for three days... unfortunately your oldest fish has died.",
+                });
+                this.fishDieToggle();
+              }
+              else if (Date.now() - Date.parse(f[f-1].timestamp) > 259200000){
+                this.setState({
+                  popText: "You haven't fed your fish for three days... unfortunately your oldest fish has died.",
+                });
+                this.fishDieToggle();
+              }
+              
+            };
+          });
+          console.log(this.state.lastFed);
+          
+        });
         
       }
     });
@@ -94,30 +136,72 @@ class App extends Component {
       });
       get("/api/placefish", {googleid: user.googleid}).then((f) => {
         this.setState({placedfish : f});
-      });
-      // get("/api/feedfish", {googleid: this.state.gId}).then((ff) => {
-      //   this.setState( {
-      //     lastFed : ff,
-      //   });
-      // });
-      get("api/money").then((money) => {
-        console.log('MONEYRIP ' + money.money);
-        if (money.money == null) {
-          console.log("creating money");
-          post("api/createMoney").then((money) => {
-            console.log(money);
+        get("/api/feedfish", {googleid: this.state.gId}).then((ff) => {
+          let temp = 0;
+          if (typeof ff == undefined) {
+            temp = 0;
+          }
+          else if (ff.length == 0) {
+            temp = 0;
+          }
+          else {
+            temp  = ff[ff.length -1];
+            console.log("what?");
+          }
+          this.setState( {
+            lastFed : temp,
           });
-        }
+          console.log(this.state.lastFed);
+          if (f.length > 0) {
+            get("/api/killFish", {googleid: this.state.gId}).then((d) => {
+              this.setState({
+                lastDead: d,
+              });
+              console.log(d);
+              if (Date.now() - Date.parse(temp.lastfed) > 259200000 && temp != 0) {
+                console.log(Date.now());
+                console.log(Date.parse(temp.lastfed))
+                if (typeof d == undefined || d.length == 0){
+                  console.log("suppp");
+                  this.setState({
+                    popText: "You haven't fed your fish for three days... unfortunately your oldest fish has died.",
+                  });
+                  this.fishDieToggle();
+                }
+                else if (Date.now() - Date.parse(d[d.length-1].timestamp) > 259200000){
+                  console.log('?????');
+                  this.setState({
+                    popText: "You haven't fed your fish for three days... unfortunately your oldest fish has died.",
+                  });
+                  this.fishDieToggle();
+                }
+                
+              };
+            
+            });
+          };
+        });
+      
+        get("api/money").then((money) => {
+          console.log('MONEYRIP ' + money.money);
+          if (money.money == null) {
+            console.log("creating money");
+            post("api/createMoney").then((money) => {
+              console.log(money);
+            });
+          }
+        });
+        get("api/name").then((name) => {
+          console.log('namerip ' + name.name);
+          if (name.name == null) {
+            console.log("creating name");
+            post("api/newName").then((name) => {
+              console.log(name);
+            });
+          }
+        });
       });
-      get("api/name").then((name) => {
-        console.log('namerip ' + name.name);
-        if (name.name == null) {
-          console.log("creating name");
-          post("api/newName").then((name) => {
-            console.log(name);
-          });
-        }
-      });
+      
     });
   };
 
@@ -129,21 +213,7 @@ class App extends Component {
 
   checkifFed = () => {
     console.log(this.state.gId);
-    get("/api/feedfish", {googleid: this.state.gId}).then((ff) => {
-      let temp = 0;
-      if (typeof ff == 'undefined') {
-        temp = 0;
-      }
-      else if (ff.length == 0) {
-        temp = 0;
-      }
-      else {
-        temp  = ff[ff.length -1];
-      }
-      this.setState( {
-        lastFed : temp,
-      });
-      console.log(this.state.lastFed);
+    
     if (this.state.placedfish.length == 0) {
       this.setState({
         popText: "You don't have any fish in your aquarium!",
@@ -172,7 +242,6 @@ class App extends Component {
         popText: "You have already fed your fish in the last 23 hours.",
       });
     }
-    });
   }
 
 
@@ -191,6 +260,41 @@ class App extends Component {
     
   }
 
+  killFish = () => {
+    console.log("we made it.");
+    const body = {type: this.state.placedfish[0].type, googleid: this.state.gId};
+    post("/api/deadFish", body).then(res => console.log(res));
+    console.log('fish died');
+    this.setState({
+      fishDie: false,
+    });
+    post("/api/killFish", body).then(res => console.log(res));
+    console.log('recorded in db AKA dont show popup again pls');
+    var temp = this.state.placedfish;
+    temp.splice(0, 1);
+    this.setState({
+      placedfish : temp,
+    });
+  }
+
+  fishDieToggle = () => {
+    this.setState({
+      fishDie : !this.state.fishDie,
+      deadFish: this.state.placedfish[0],
+      
+    });
+    console.log(this.state.fishDie);
+  }
+
+  closeFishDiePopup = () => {
+    this.setState({
+      fishDie : !this.state.fishDie,
+    });
+    this.killFish();
+  }
+
+
+
   addingFish = (newfish) => {
     const ind = this.state.notplaced.indexOf(newfish);
     var temp = this.state.notplaced;
@@ -203,7 +307,10 @@ class App extends Component {
     post("/api/placefish", body).then(res => console.log(res));
     //need to delete from notplacedfish
     post("/api/removefish", body).then(res => console.log(res));
-    console.log('addedfish')
+    console.log('addedfish');
+    this.setState({
+      fishDie: "null",
+    });
     // this.pickingFish;
   }
 
@@ -297,6 +404,11 @@ class App extends Component {
             displayFish = {this.displayFish}
             releasedHeart = {this.state.releasedHeart}
             addAllFish = {this.addAllFish}
+            fishDie = {this.state.fishDie}
+            killFish = {this.killFish}
+            fishDieToggle = {this.fishDieToggle}
+            deadFish = {this.state.deadFish}
+            closeFishDiePopup = {this.closeFishDiePopup}
             />
           <Habits
             path="/habits"
