@@ -2,6 +2,7 @@
     display: flex;
     font-size: 14px;
     font-family: 'Quicksand', sans-serif;
+    z-index: 2;
 }
 
 .panel {
@@ -10,8 +11,9 @@
     margin: 10px;
     width: 400px;
     height: fit-content;
-    
+    position: relative;
     border-radius: 10px;
+    z-index: 1;
 }
 
 .balance {

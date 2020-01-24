@@ -23,7 +23,6 @@ img.fish {
     width: 49px;
     left: 0;
     top: 0;
-    z-index: inherit;
   }
 
   .both-buttons {
@@ -37,6 +36,7 @@ img.fish {
   .button-container{
     padding: 10px;
     min-width: fit-content;
+    z-index: 1;
   }
 
   .button-container button {
@@ -47,6 +47,7 @@ img.fish {
     font-size: 15px;
     color: white;
     min-width: 100px;
+    z-index: 1;
   }
   
   .water {
