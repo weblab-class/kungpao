@@ -19,9 +19,6 @@ class Habits extends Component {
             {this.props.fishList.map((f) => (
               <Fish image={this.props.displayFish(f.type)}/>
             ))}
-            <button className="button" type="button">daily</button>
-            <button className="button" type="button">weekly</button>
-            <button className="button" type="button">monthly</button>
             <HabitList />
             </>
         );

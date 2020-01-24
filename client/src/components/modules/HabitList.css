@@ -32,6 +32,7 @@
 
 .newhabitandbutton .text {
     position: relative;
+    width: 320px;
     background-color: #FFFFFF;
     padding: 10px 10px;
     margin: 10px 0;
@@ -39,4 +40,9 @@
     border: none;
     font-size: 14px;
     font-family: 'Quicksand', sans-serif;
+}
+
+.newhabitandbutton .button {
+    width: 50px;
+    margin: 10px 0 10px 10px;
 }
