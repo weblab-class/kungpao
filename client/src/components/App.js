@@ -33,6 +33,13 @@ import pink from "./data/pinkfish.png";
 import purplepeach from "./data/purplepeachfish.png";
 import seaweed from "./data/seaweed.png";
 import yfish from "./data/yellowfish.png";
+import algae from "./data/algae.png";
+import mcfish from "./data/multicolorfish.png";
+import plankton from "./data/plankton.png";
+import ppfish from "./data/purplepatternedfish.png";
+import shrimp from "./data/shrimp.png";
+import striped from "./data/stripedfish.png";
+import turtle from "./data/turtle.png";
 
 /**
  * Define the "App" component as a class.
@@ -410,6 +417,27 @@ class App extends Component {
     }
     else if (fishname == 'seaweed') {
       return seaweed;
+    }
+    else if (fishname == 'algae'){
+      return algae;
+    }
+    else if (fishname == 'multicolorfish'){
+      return mcfish;
+    }
+    else if (fishname == 'plankton'){
+      return plankton;
+    }
+    else if (fishname == 'purplepatternedfish'){
+      return ppfish;
+    }
+    else if (fishname == 'shrimp'){
+      return shrimp;
+    }
+    else if (fishname == 'stripedfish') {
+      return striped;
+    }
+    else if (fishname == 'turtle'){
+      return turtle;
     }
   }
 
