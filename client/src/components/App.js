@@ -346,9 +346,6 @@ class App extends Component {
     //need to delete from notplacedfish
     post("/api/removefish", body).then(res => console.log(res));
     console.log('addedfish');
-    this.setState({
-      fishDie: "null",
-    });
     // this.pickingFish;
   }
 
