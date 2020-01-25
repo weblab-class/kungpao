@@ -23,7 +23,7 @@ class FishCard extends Component {
 };
 
   buyFish = (value) => {
-    const body = { type: this.props.fish.type };
+    const body = { type: this.props.fish.type , price: this.props.fish.price};
     post("/api/buyfish", body).then(res => console.log(res));
     console.log('good')
     this.props.boughtFish(body);

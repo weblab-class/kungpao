@@ -19,7 +19,7 @@ function CustomChatbot(props) {
         if(confirmIndex!==-1){
           const purchasedfish = response.values[confirmIndex-1];
           
-          const body = { type: purchasedfish.type };
+          const body = { type: purchasedfish.type , price: purchasedfish.price};
           
           post("/api/buyfish", body).then(res => console.log(res));
           console.log('yay' + purchasedfish.price)

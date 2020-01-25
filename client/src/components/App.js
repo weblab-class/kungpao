@@ -349,7 +349,7 @@ class App extends Component {
       placedfish: this.state.placedfish.concat(newfish),
       notplaced: temp,
     });
-    const body = { type: newfish.type , googleid: this.state.gId};
+    const body = { type: newfish.type , price: newfish.price, googleid: this.state.gId};
     post("/api/placefish", body).then(res => console.log(res));
     //need to delete from notplacedfish
     post("/api/removefish", body).then(res => console.log(res));
@@ -361,7 +361,7 @@ class App extends Component {
     var f;
     for (f = 0; f < this.state.notplaced.length; f++){
       let currentFish = this.state.notplaced[f];
-      const body = { type: currentFish.type , googleid: this.state.gId};
+      const body = { type: currentFish.type , price: currentFish.price, googleid: this.state.gId};
       post("/api/placefish", body).then(res => console.log(res));
       post("/api/removefish", body).then(res => console.log(res));
       console.log('addedfish')

@@ -124,6 +124,7 @@ router.post("/buyfish", (req, res) => {
   const newfish = new AlmostMyFish({
     type: req.body.type,
     googleid: req.user.googleid,
+    price: req.body.price,
   });
   console.log(`HELLOOOOO`);
   newfish.save().then((f) => {
@@ -272,6 +273,7 @@ router.post("/placefish", (req, res) => {
   const aquafish = new MyFish({
     type: req.body.type,
     googleid: req.user.googleid,
+    price: req.body.price,
   });
   console.log(`placed fish in Aquarium!`);
   aquafish.save().then((f) => {

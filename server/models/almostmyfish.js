@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const AlmostMyFishSchema = new mongoose.Schema({
     type: String,
     googleid: String,
+    price: Number,
 });
 
 // compile model from schema
