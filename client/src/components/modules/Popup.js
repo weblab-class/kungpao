@@ -11,7 +11,7 @@ class Popup extends React.Component {
   render() {
     return (
       <div className="big-window" onClick={this.props.onCloseP}>
-      <div className="window">
+      <div className="window" onClick={(event) => event.stopPropagation()}>
           <p> {this.props.popText}</p>
         <button className="closeButton" onClick={this.props.onCloseP}>
             Close

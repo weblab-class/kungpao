@@ -7,6 +7,7 @@ import Fish from "../modules/Fish.js";
 import bubble from "./bubble.png";
 import Popup from "../modules/Popup.js";
 import FishPopup from "../modules/FishPopup.js";
+import FishDiePopup from "../modules/FishDiePopup.js";
 
 import heart from "./redheart.png";
 
@@ -73,8 +74,8 @@ class Aquarium extends Component {
               </div>
 
 
-            
-        
+        {console.log(this.props.fishDie)}
+        {!this.props.fishDie ? null : <FishDiePopup onCloseFDP={this.props.closeFishDiePopup} popText = {this.props.popText} deadFish={this.props.deadFish} displayFish={this.props.displayFish}></FishDiePopup>}
         {this.props.showPopup ? <Popup popText={this.props.popText}
           onCloseP={this.props.togglePopup}>
         </Popup> : null}
