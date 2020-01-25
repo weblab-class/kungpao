@@ -126,11 +126,13 @@ class Inventory extends Component {
                     Although we all love and adore our fish, we understand that sometimes too many is too many. Select any fish you want to sell back to Ray, and click on any fish in the box below to cancel the selection.
                 </div>
                 <button onClick={this.sellingFish} className="Inventory-sell-button">Sell Selected</button>
-                {this.state.selectedTotal}
+                <div className="Inventory-selected-balance">
+                <p>Selected Balance: {this.state.selectedTotal}</p>
+                </div>
                 <div className="Inventory-selling-selected">
                     <div className="InventoryCardGroup">
                     
-                        {this.state.selected.length == 0 ? <p>No fish selected</p> : 
+                        {this.state.selected.length == 0 ? <div className="none-selected">No fish selected</div> : 
                         this.state.selected.map((f) => (
                             <>
                             <div>

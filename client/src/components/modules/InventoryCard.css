@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Croissant+One|Open+Sans|Open+Sans+Condensed:300|Quicksand&display=swap');
+
+
 .InventoryCard {
     box-sizing: border-box;
     background: var(--pastelpink);
@@ -5,7 +8,7 @@
     border-radius: 18px;
     z-index: 1;
     position:relative;
-    margin: 3px;
+    margin: 6px;
 }
 
 .InventoryCard:hover {
@@ -15,15 +18,20 @@
 .InventoryCard-price {
     z-index: 1;
     width: 100%;
-    background: #F6F7FA;
+    background: rgba(122, 122, 122, 0.3);
     position: center;
+    color: white;
+    font-family: "Quicksand";
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 5px;
     /* border: 1px solid #CFD9E4;
     border-radius: 1px; */
 
 
 }
 
-.InventoryCard-price ::before {
+.InventoryCard-price::before {
     content: "$ ";
 }
 
