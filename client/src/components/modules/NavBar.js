@@ -53,6 +53,11 @@ class NavBar extends Component {
             Store
           </NavLink>
           </div>
+          <div className="menu-item">
+          <NavLink to="/inventory" className="NavBar-link">
+            Inventory
+          </NavLink>
+          </div>
         </div>
         <div className="NavBar-title-container">
           <div className="NavBar-title">

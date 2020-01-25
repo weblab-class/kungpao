@@ -1,0 +1,18 @@
+.inventory-window {
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 80%;
+    flex: none;
+}
+
+.inventory-card {
+    box-sizing: border-box;
+    background: var(--pastelpink);
+    border: thick solid #FFFFFF;
+    border-radius: 18px;
+    z-index: 1;
+    position:relative;
+    margin: 1%;
+}

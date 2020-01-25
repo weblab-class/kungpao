@@ -6,6 +6,7 @@ import Skeleton from "./pages/Skeleton.js";
 import Aquarium from "./pages/Aquarium.js";
 import Habits from "./pages/Habits.js";
 import Store from "./pages/Store.js";
+import Inventory from "./pages/Inventory.js";
 import Popup from "./modules/Popup.js";
 import FishPopup from "./modules/FishPopup.js";
 import Login from "./pages/Login.js";
@@ -455,6 +456,11 @@ class App extends Component {
             boughtFish = {this.boughtFish}
             displayFish = {this.displayFish}
             fishList={this.state.placedfish}
+            />
+          <Inventory
+            path="/inventory"
+            fishList = {this.state.placedfish}
+            displayFish = {this.displayFish}
             />
           <NotFound default />
         </Router> 
