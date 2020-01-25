@@ -75,6 +75,11 @@ function CustomChatbot(props) {
         trigger: 'fish',
       },
       {
+        id: "firsttimereoffer",
+        message: "Here's what we have today:",
+        trigger: "fish",
+      },
+      {
        id: "offer",
        message: myName+", here's what I have for you today:",
        trigger: "fish",
@@ -95,14 +100,14 @@ function CustomChatbot(props) {
       },
       {
         id: "none",
-        message: "Have a great day !!",
+        message: myName==null ? "Have a great day!!":"Come back soon " +myName+"!",
         end: true,
         hideInput: true,
        },
        {
          id: "poor",
          message: "You don't have enough money to purchase this fish! Why don't you get a different one?",
-         trigger: "offer",
+         trigger: myName==null ? "firsttimereoffer":"offer",
          hideInput: true,
        },
       {
@@ -126,7 +131,7 @@ function CustomChatbot(props) {
         },
         {
           value: "No",
-          trigger: "reoffer",
+          trigger: myName==null ? "firsttimereoffer":"reoffer",
           label: "cancel",
 
         }]
