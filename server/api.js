@@ -97,19 +97,10 @@ router.post("/habit", (req, res) => {
 })
 
 router.post("/updateHabit", (req, res) => {
-  if (req.body.date) {
-    Habit.updateOne(
-      {"_id": ObjectID(req.body.id)},
-      {$set: {isDone: req.body.isDone}},
-      {$set: {date: req.body.date}},
-    ).then((habit) => res.send(habit));
-  }
-  else {
-    Habit.updateOne(
-      {"_id": ObjectID(req.body.id)},
-      {$set: {isDone: req.body.isDone}},
-    ).then((habit) => res.send(habit));
-  }
+  Habit.updateOne(
+    {"_id": ObjectID(req.body.id)},
+    {$set: {isDone: req.body.isDone, date: req.body.date}},
+  ).then((habit) => res.send(habit));
 })
 
 // TODO: will not pass a security review. fix. 

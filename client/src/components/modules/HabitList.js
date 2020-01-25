@@ -22,32 +22,9 @@ class HabitList extends Component {
   }
 
   componentDidMount() {
-    var habitsToReset = [];
     const todaysDate = new Date();
     this.setState( { title: toDay(todaysDate) });
-    get("/api/habit", {type: this.state.type} ).then((habitObjs) => {
-      habitObjs.map((habitObj) => {
-        var parsedDate = new Date(habitObj.date);
-        const todaysDate = new Date();
-        console.log("is there date " + habitObj.date);
-        if (habitObj.date === undefined || todaysDate.getFullYear() !== parsedDate.getFullYear() ||
-            todaysDate.getMonth() !== parsedDate.getMonth() ||
-            todaysDate.getDate() !== parsedDate.getDate()) {
-          habitObj.date = todaysDate;
-          habitObj.isDone = false;
-            
-          habitsToReset.push({id: habitObj._id, isDone: false, date: todaysDate});
-        }
-        this.setState({ habits: this.state.habits.concat([habitObj]) });
-      });
-
-      for (var index in habitsToReset) {
-        console.log(habitsToReset[index].id);
-        post("/api/updateHabit", habitsToReset[index]);
-      }
-    });
-
-    
+    this.reloadHabitList("daily");
     
     get("/api/money").then((moneyObj) => {
       console.log("balance: " + moneyObj.money);
@@ -60,11 +37,11 @@ class HabitList extends Component {
     this.setState({
       inputText: value
     });
-    console.log(event.keyCode);
+
     if (event.keyCode === 13) {
       // Cancel the default action, if needed
       event.preventDefault();
-      console.log("enter pressed")
+
       // Trigger the button element with a click
       document.getElementById("submitHabitButton").click();
     }
@@ -86,10 +63,9 @@ class HabitList extends Component {
   };
 
   updateHabitIsDone = (habitId, isDone) => {
-    const body = {id: habitId, isDone: isDone};
+    const body = {id: habitId, isDone: isDone, date: new Date()};
     post("/api/updateHabit", body).then((habit) => {
       post("/api/incrementMoney", {amount: isDone ? 1 : -1}).then((money) => {
-        console.log("increment money " + money.creator_id);
         this.setState({
           balance: this.state.balance + (isDone ? 1 : -1),
         });
@@ -100,7 +76,7 @@ class HabitList extends Component {
   reloadHabitList = (type) => {
     var habitsToReset = [];
     var habits = [];
-    const todaysDate = new Date();
+    var todaysDate = new Date();
     if (type === "daily") {
       this.setState( { title: toDay(todaysDate) });
     }
@@ -113,8 +89,7 @@ class HabitList extends Component {
     get("/api/habit", {type: type} ).then((habitObjs) => {
       habitObjs.map((habitObj) => {
         var parsedDate = new Date(habitObj.date);
-        const todaysDate = new Date();
-        console.log("is there date " + habitObj.date);
+        var todaysDate = new Date();
         if (habitObj.date === undefined || todaysDate.getFullYear() !== parsedDate.getFullYear() ||
             todaysDate.getMonth() !== parsedDate.getMonth() ||
             todaysDate.getDate() !== parsedDate.getDate()) {
@@ -128,8 +103,8 @@ class HabitList extends Component {
 
       this.setState( { habits: habits, type: type });
 
+
       for (var index in habitsToReset) {
-        console.log(habitsToReset[index].id);
         post("/api/updateHabit", habitsToReset[index]);
       }
     });
