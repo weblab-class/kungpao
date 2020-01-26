@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Croissant+One|Open+Sans|Open+Sans+Condensed:300|Quicksand&display=swap');
 
 /* Create a custom checkbox */
 
@@ -40,8 +41,11 @@
 .habit-container button {
     position: absolute;
     right: 10px;
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
+    background-color: transparent;
+    border: none;
+    color: #00CBD9;
     font-size: 15px;
+    font-weight: bold;
     z-index: 1;
+    font-family: "Quicksand";
 }

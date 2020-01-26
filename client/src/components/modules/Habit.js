@@ -22,7 +22,7 @@ class Habit extends Component {
         />
         <span className="checkmark"></span>
         <span className="text">{this.props.content}</span>
-        <button onClick={this.props.deleteHabit} type="button">x</button>
+        <button onClick={this.props.deleteHabit} type="button">X</button>
       </label>
     );
   }
