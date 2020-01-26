@@ -122,6 +122,14 @@ class HabitList extends Component {
     this.reloadHabitList("monthly");
   }
 
+  deleteHabit = (id) => {
+    post("api/deleteHabit", {id: id}).then((habit) => {
+      const { habits } = this.state;
+      const newHabits = habits.filter(item => item._id !== id);
+      this.setState({ habits: newHabits });
+    });
+  }
+
   render() {
     return (
       <div className="habitlist-container">
@@ -141,6 +149,7 @@ class HabitList extends Component {
                 content={item.content}
                 isDone={item.isDone}
                 updateDatabaseIsDone={isDone => this.updateHabitIsDone(item._id, isDone)}
+                deleteHabit={() => this.deleteHabit(item._id)}
             />
             ))}
 

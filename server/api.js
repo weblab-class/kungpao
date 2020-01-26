@@ -103,6 +103,10 @@ router.post("/updateHabit", (req, res) => {
   ).then((habit) => res.send(habit));
 })
 
+router.post("/deleteHabit", (req, res) => {
+  Habit.deleteOne({"_id": ObjectID(req.body.id)}).then((habit) => res.send(habit));
+})
+
 // TODO: will not pass a security review. fix. 
 router.post("/incrementMoney", (req, res) => {
   Money.updateOne(

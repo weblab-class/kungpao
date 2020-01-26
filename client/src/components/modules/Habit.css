@@ -4,6 +4,7 @@
 .habit-container {
     position: relative;
     display: flex;
+    align-items: center;
     background-color: #FFFFFF;
     padding: 10px 0;
     margin: 10px 0;
@@ -31,12 +32,16 @@
     background-color: #FFFFFF;
 }
 
-/* On mouse-over*/
-.habit-container:hover input ~ .checkmark {
-    background-color: rgba(0, 203, 217, 0.26);
-}
-
 /* When the checkbox is checked*/
 .habit-container input:checked ~ .checkmark {
     background-color: #00CBD9;
+}
+
+.habit-container button {
+    position: absolute;
+    right: 10px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    font-size: 15px;
+    z-index: 1;
 }
