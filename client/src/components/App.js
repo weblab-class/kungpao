@@ -2,15 +2,11 @@ import React, { Component } from "react";
 import { Router } from "@reach/router";
 import NavBar from "./modules/NavBar.js"
 import NotFound from "./pages/NotFound.js";
-import Skeleton from "./pages/Skeleton.js";
 import Aquarium from "./pages/Aquarium.js";
 import Habits from "./pages/Habits.js";
 import Store from "./pages/Store.js";
 import Inventory from "./pages/Inventory.js";
-import Popup from "./modules/Popup.js";
-import FishPopup from "./modules/FishPopup.js";
 import Login from "./pages/Login.js";
-import GoogleLogin, { GoogleLogout } from "react-google-login";
 
 const GOOGLE_CLIENT_ID = "707474204069-ibaig6vr8u2gf995465eel35t6kf6u1r.apps.googleusercontent.com";
 
@@ -24,14 +20,12 @@ import { unstable_renderSubtreeIntoContainer } from "react-dom";
 
 import doryfish from "./data/doryfish.png";
 import byfish from "./data/blueyellowfish.png";
-import purplecoral from "./data/purplecoral.png";
 import cfish from "./data/clownfish.png";
 import gyp from "./data/greenyellowpuffer.png";
 import patch from "./data/patchyfish.png";
 import peach from "./data/peachpuffer.png";
 import pink from "./data/pinkfish.png";
 import purplepeach from "./data/purplepeachfish.png";
-import seaweed from "./data/seaweed.png";
 import yfish from "./data/yellowfish.png";
 import algae from "./data/algae.png";
 import mcfish from "./data/multicolorfish.png";
@@ -401,9 +395,6 @@ class App extends Component {
     else if (fishname == 'blueyellowfish') {
       return byfish;
     }
-    else if (fishname == 'purplecoral') {
-      return purplecoral;
-    }
     else if (fishname == 'greenyellowpuffer') {
       return gyp;
     }
@@ -424,9 +415,6 @@ class App extends Component {
     }
     else if (fishname == 'yellowfish') {
       return yfish;
-    }
-    else if (fishname == 'seaweed') {
-      return seaweed;
     }
     else if (fishname == 'algae'){
       return algae;

@@ -1,7 +1,7 @@
 .habitlist-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
     font-size: 14px;
     font-family: 'Quicksand', sans-serif;
     z-index: 2;
@@ -13,9 +13,27 @@
     margin: 10px;
     width: 400px;
     height: fit-content;
+    max-height: 350px;
     position: relative;
     border-radius: 10px;
     z-index: 1;
+    overflow-y: scroll;
+}
+
+.panel2 {
+    background-color: #F6F7FA;
+    padding: 10px 20px;
+    margin: 10px;
+    width: 400px;
+    height: 100px;
+    position: relative;
+    border-radius: 10px;
+    z-index: 1;
+    overflow-y: scroll;
+}
+
+.left-container {
+    max-height: 100vh;
 }
 
 .balance {

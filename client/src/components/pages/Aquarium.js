@@ -9,7 +9,6 @@ import Popup from "../modules/Popup.js";
 import FishPopup from "../modules/FishPopup.js";
 import FishDiePopup from "../modules/FishDiePopup.js";
 
-import heart from "./redheart.png";
 
 
 import ReactInputPosition, {MOUSE_ACTIVATION, TOUCH_ACTIVATION} from "react-input-position";

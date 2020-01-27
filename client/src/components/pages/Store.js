@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SingleMessage from "../modules/SingleMessage.js";
 import { get, post } from "../../utilities";
+import { Link } from "@reach/router";
 
 
 import "../../utilities.css";
@@ -134,6 +135,7 @@ class Store extends Component {
             
         // </div>
       <>
+          <Link to="/" className="return-button">Return to Aquarium</Link>
         <div className = "Money">
           {this.state.money}
 
