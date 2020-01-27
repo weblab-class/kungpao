@@ -39,7 +39,7 @@ class Inventory extends Component {
         else {
             console.log('p1');
             console.log(fish);
-            var temp = this.props.fishList;
+            var temp = this.props.fishList.slice();
             let ind = this.props.fishList.indexOf(fish);
             temp.splice(ind, 1);
             console.log(ind);
@@ -80,8 +80,10 @@ class Inventory extends Component {
     sellingFish = () => {
         var f;
         for (f = 0; f < this.state.selected.length; f++){
-            const body = {type: this.state.selected[f].type, googleid: this.state.gId};
+            console.log(this.state.selected[f]);
+            const body = {type: this.state.selected[f].type, googleid: this.props.gId};
             post("/api/deadFish", body).then(res => console.log(res));
+            this.props.soldFish(this.state.selected[f]);
             console.log('sold fish');
         }
         post("/api/incrementMoney", {amount: this.state.selectedTotal}).then((money) => {
@@ -91,6 +93,7 @@ class Inventory extends Component {
             selected : [],
             selectedTotal : 0,
         });
+        
     }
 
     render() {
@@ -103,23 +106,31 @@ class Inventory extends Component {
               </>
             ))}
         <div className="Inventory-container">
+            <div className="fishGroup">
             <div className="InventoryCardGroup">
             
-            {this.state.switched ? 
-            this.state.inventoryList.map((f) => (<>
-                <div>
-                  <InventoryCard displayFish={this.props.displayFish} fish={f} clickFx={f => this.addToSelect(f)}/>
-                  </div>
-              </>
-            )) : 
+            {this.state.switched ? (
+                this.state.inventoryList.length == 0 ? 
+                <div className="no-fish">You don't have any fish!</div> :
+                this.state.inventoryList.map((f) => (<>
+                    <div>
+                      <InventoryCard displayFish={this.props.displayFish} fish={f} clickFx={f => this.addToSelect(f)}/>
+                      </div>
+                  </>
+                ))
+            )
+             : 
+             (this.props.fishList.length == 0 ? <div className="no-fish">You don't have any fish!</div> :
             this.props.fishList.map((f) => (<>
                 <div>
                   <InventoryCard displayFish={this.props.displayFish} fish={f} clickFx={f => this.addToSelect(f)}/>
                   </div>
               </>
             ))
+             )
             }
             
+            </div>
             </div>
             <div className="Inventory-selling-container">
                 <div className="Inventory-selling-text">
