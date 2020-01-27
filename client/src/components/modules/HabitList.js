@@ -134,7 +134,7 @@ class HabitList extends Component {
     return (
       <div className="habitlist-container">
 
-        <div>
+        <div className="left-container">
           <button className="button" onClick={this.dailyTab} type="button">daily</button>
           <button className="button" onClick={this.weeklyTab} type="button">weekly</button>
           <button className="button" onClick={this.monthlyTab} type="button">monthly</button>
@@ -175,7 +175,7 @@ class HabitList extends Component {
         </div>  
           
         <div>
-          <div className="panel">
+          <div className="panel2">
             <div className="balance">
               <div>Balance: {this.state.balance}</div>
               <img src={sanddollar} alt="sanddollar"></img>

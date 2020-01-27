@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Croissant+One|Open+Sans|Open+Sans+Condensed:300|Quicksand&display=swap');
+
+
 html {
     position: relative;
     width: 100%;
@@ -74,4 +77,17 @@ html {
     border-radius: 4px;
 
 
+}
+
+.return-button {
+  background-color: rgba(255, 255, 255, 0.3);
+  font-family: "Quicksand";
+  font-size: 18px;
+  color: white;
+  width: 200px;
+  height: 30px;
+  position: absolute;
+  left: 5%;
+  bottom: 8%;
+  border-radius: 10px;
 }

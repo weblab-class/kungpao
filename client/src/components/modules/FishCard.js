@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import doryfish from "../data/doryfish.png";
-import blueyellowfish from "../data/blueyellowfish.png";
 import { get, post } from "../../utilities";
 
 import "./FishCard.css";
