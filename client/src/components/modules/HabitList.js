@@ -65,9 +65,16 @@ class HabitList extends Component {
   updateHabitIsDone = (habitId, isDone) => {
     const body = {id: habitId, isDone: isDone, date: new Date()};
     post("/api/updateHabit", body).then((habit) => {
-      post("/api/incrementMoney", {amount: isDone ? 1 : -1}).then((money) => {
+      var amount = isDone ? 1 : -1;
+      if (this.state.type === "weekly") {
+        amount = amount * 5;
+      }
+      else if (this.state.type === "monthly") {
+        amount = amount * 15;
+      }
+      post("/api/incrementMoney", {amount: amount}).then((money) => {
         this.setState({
-          balance: this.state.balance + (isDone ? 1 : -1),
+          balance: this.state.balance + amount,
         });
       })
     });
