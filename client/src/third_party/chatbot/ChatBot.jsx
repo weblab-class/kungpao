@@ -75,7 +75,7 @@ class ChatBot extends Component {
     const defaultUserSettings = {
       delay: userDelay,
       avatar: userAvatar,
-      hideInput: false,
+      hideInput: true,
       hideExtraControl: false
     };
     const defaultCustomSettings = { delay: customDelay };
@@ -248,9 +248,11 @@ class ChatBot extends Component {
     if (data && data.value) {
       currentStep.value = data.value;
     }
-    if (data && data.hideInput) {
+    // console.log(currentStep, data)
+    if (data && !data.hideInput) {
       currentStep.hideInput = data.hideInput;
     }
+    console.log(currentStep.hideInput, currentStep.trigger)
     if (data && data.hideExtraControl) {
       currentStep.hideExtraControl = data.hideExtraControl;
     }
@@ -309,6 +311,9 @@ class ChatBot extends Component {
 
       previousStep = currentStep;
       currentStep = nextStep;
+
+      // goddamnit this is a hack i give up
+      currentStep.hideInput = !(currentStep.trigger === 'firsttimeoffer');
 
       this.setState({ renderedSteps, currentStep, previousStep }, () => {
         if (nextStep.user) {
