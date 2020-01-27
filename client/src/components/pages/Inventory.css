@@ -12,27 +12,39 @@
 }
 
 .InventoryCardGroup {
+    z-index: 2;
     display:flex;
     flex-direction: row;
     justify-content: flex-start;
     flex-wrap: wrap;
-    width: 40%;
+    width: 95%;
     height: 100%;
     flex: none;
     overflow-y: scroll;
-    scrollbar-base-color: rgba(160, 194, 255, 0.897);
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.3);
     border-radius: 10px;
     padding: 10px;
     border-style: solid;
     border-width: 3px;
     border-color: white;
+    
+}
+
+.fishGroup {
+    width: 40%;
+    align-content: center;
     z-index: 1;
+}
+
+.no-fish {
+    font-family: "Quicksand";
+    width: 200px;
+    color: white;
 }
 
 .Inventory-selling-container {
     height: 100%;
-    width: 40%;
+    width: 42%;
     background-color: rgba(255, 255, 255, 0.3);
     color: rgb(238, 238, 238);
     z-index: 1;
@@ -64,8 +76,9 @@
 
 }
 .Inventory-selling-selected {
-    height: 50%;
-    width: 75vw;
+    height: 40%;
+    padding: 10px;
+    width: 95%;
     overflow-y: scroll;
     font-family: "Quicksand";
     display:flex;
