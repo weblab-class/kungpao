@@ -138,8 +138,8 @@ class Store extends Component {
           {this.state.money}
 
         </div>
-        <div className="ChatContainer">
-          {(this.state.fishtoday.length > 0 && this.state.money > -1 && this.state.name != "#@!") ? <CustomChatbot name={this.state.name} changeName={this.changeName} displayFish={this.props.displayFish} changeMoney = {this.changeMoney} fish={this.state.fishtoday} boughtFish={this.props.boughtFish} money={this.state.money}/> : <div/>}
+        <div className="ChatContainer" style={{"padding-top": "60px"}}>
+          {(this.state.fishtoday.length > 0 && this.state.money > -1 && this.state.name != "#@!") ? <CustomChatbot name={this.state.name} changeName={this.changeName} displayFish={this.props.displayFish} changeMoney = {this.changeMoney} fish={this.state.fishtoday} boughtFish={this.props.boughtFish} money={this.state.money} /> : <div/>}
         
         </div>
           {this.props.fishList.map((f, i) => (

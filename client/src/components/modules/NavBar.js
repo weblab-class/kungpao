@@ -58,6 +58,9 @@ class NavBar extends Component {
             Inventory
           </NavLink>
           </div>
+          <div className="menu-item">
+            <a className="NavBar-link">Logout</a>
+          </div>
         </div>
         <div className="NavBar-title-container">
           <div className="NavBar-title">
