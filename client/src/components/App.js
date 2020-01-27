@@ -302,6 +302,14 @@ class App extends Component {
     
   }
 
+  soldFish = (fish) => {
+    let ind = this.state.placedfish.indexOf(fish);
+    this.state.placedfish.splice(ind, 1);
+    this.setState ({
+      placedfish : this.state.placedfish,
+    });
+  }
+
   killFish = () => {
     console.log("we made it.");
     var f;
@@ -481,6 +489,8 @@ class App extends Component {
             path="/inventory"
             fishList = {this.state.placedfish}
             displayFish = {this.displayFish}
+            gId = {this.state.gId}
+            soldFish = {this.soldFish}
             />
           <NotFound default />
         </Router> 
