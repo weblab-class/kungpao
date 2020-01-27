@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import doryfish from "../data/doryfish.png";
-import blueyellowfish from "../data/blueyellowfish.png";
 import { get, post } from "../../utilities";
 
 import "./FishCard.css";
@@ -39,13 +37,13 @@ class FishCard extends Component {
           <span className="FishCard-name">
             {this.props.fish.name}
           </span>
-          
+
           <span className="FishCard-price">
             {this.props.fish.price}
           </span>
           </div>
-          
-        </div>    
+
+        </div>
       </div>
     );
   }
