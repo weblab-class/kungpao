@@ -38,6 +38,8 @@ import ppfish from "./data/purplepatternedfish.png";
 import shrimp from "./data/shrimp.png";
 import striped from "./data/stripedfish.png";
 import turtle from "./data/turtle.png";
+import octopus from "./data/octopus.png";
+import seahorse from "./data/seahorse.png";
 
 /**
  * Define the "App" component as a class.
@@ -438,6 +440,12 @@ class App extends Component {
     }
     else if (fishname == 'turtle'){
       return turtle;
+    }
+    else if (fishname == 'octopus'){
+      return octopus;
+    }
+    else if (fishname == 'seahorse') {
+      return seahorse;
     }
   }
 
