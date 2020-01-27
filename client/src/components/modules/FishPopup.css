@@ -7,9 +7,9 @@
     height: fit-content;
     max-height: 400px;
     overflow-y: scroll;
-    width: 200px;
+    width: 400px;
     padding: 5px 10px 10px 5px;
-    margin-left: calc(50vw - 100px);
+    margin-left: calc(50vw - 200px);
     margin-top: calc(100vh - 500px);
     border-style: solid;
     border-color: white;
