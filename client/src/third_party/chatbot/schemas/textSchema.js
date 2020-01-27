@@ -40,6 +40,12 @@ export default [
     required: false
   },
   {
+    key: 'showInput',
+    types: ['boolean'],
+    required: false
+  },
+
+  {
     key: 'hideExtraControl',
     types: ['boolean'],
     required: false
