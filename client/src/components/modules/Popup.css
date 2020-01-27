@@ -5,13 +5,26 @@
     top: 0;
     left: 0;
 }
-/* .window {
-    position: 'relative';
-    background-color: white;
-    height: 50px;
+.feed-window {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.3);
+    height: fit-content;
+    max-height: 400px;
+    overflow-y: scroll;
     width: 200px;
+    padding: 5px 10px 10px 5px;
+    margin-left: calc(50vw - 100px);
+    margin-top: calc(100vh - 500px);
+    border-style: solid;
+    border-color: white;
+    border-width: 2px;
+    border-radius: 10px;
+    color: white;
+    animation: popIn;
+    animation-duration: 0.1s;
+    font-family: "Quicksand";
     z-index: 2;
-} */
+}
 
 .closeButton {
     position: 'absolute';

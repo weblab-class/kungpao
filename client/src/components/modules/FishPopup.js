@@ -3,6 +3,7 @@ import React from 'react';
 import "./FishPopup.css";
 import byfish from '../data/blueyellowfish.png';
 import doryfish from '../data/doryfish.png';
+import InventoryCard from "./InventoryCard.js";
 
 class FishPopup extends React.Component {
 
@@ -24,8 +25,11 @@ class FishPopup extends React.Component {
           {this.props.availFish.length == 0 ? <div className="no-items">You don't have any items! Maintain habits to gain sand dollars to use in the store :)</div> : 
           this.props.availFish.map((f) =>(
             <>
-            <img src={this.props.displayFish(f.type)} alt='fishy' height="100%" width="100%"></img>
-            <button className="fishButton" onClick={() => this.props.addingFish(f)}> Add this fish! </button>
+            <div>
+              <InventoryCard displayFish={this.props.displayFish} fish={f} clickFx={f => this.props.addingFish(f)}/>
+            </div>
+            {/* <img src={this.props.displayFish(f.type)} alt='fishy' height="100%" width="100%"></img>
+            <button className="fishButton" onClick={() => this.props.addingFish(f)}> Add this fish! </button> */}
             </>
           ))}
           
