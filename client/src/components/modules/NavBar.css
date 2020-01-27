@@ -7,17 +7,16 @@
 }
 
 .NavBar-sidebar {
+  display: flex;
   padding: 10px;
-  margin-left: 0;
-  background-color: rgba(255, 255, 255, 0.3);
-  height: 220px;
-  width: 150px;
-  border-radius: 0px 0px 10px 0px;
+  margin: 0;
+  background-color: rgba(255, 255, 255, 0.0);
+  height: auto;
+  width: 100vw;
   top: 0;
-  border-style: none solid solid none;
-  border-width: 2px;
-  border-color: white;
   z-index: 1;
+  justify-content: space-evenly;
+  flex-direction: row;
 }
 
 .NavBar-title-container {

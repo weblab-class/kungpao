@@ -192,11 +192,6 @@ router.get("/todaysfish", async (req, res) => {
     "name": "peach puff",
   },
   {
-    "type": "patchyfish",
-    "price": 20,
-    "name": "patch",
-  },
-  {
     "type": "pinkfish",
     "price": 5,
     "name": "pinky",
