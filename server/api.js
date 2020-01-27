@@ -130,13 +130,45 @@ router.post("/buyfish", (req, res) => {
 
 router.get("/todaysfish", async (req, res) => {
   const dateNow = new Date();
-  const dateNowString = `aaa${dateNow.getFullYear()}${dateNow.getMonth()}${dateNow.getDate()}`
+  const dateNowString = `${dateNow.getFullYear()}${dateNow.getMonth()}${dateNow.getDate()}`
   const todayFishes = await TodayFish.findOne({date: dateNowString});
   if (todayFishes !== null) {
     return res.json(todayFishes.fishes);
   }
   console.log("fail");
   let allFish = [{
+    "type": "turtle",
+    "price": 1,
+    "name": "turtle",
+  },{
+    "type": "stripedfish",
+    "price": 4,
+    "name": "stripes",
+  },{
+    "type": "shrimp",
+    "price": 3,
+    "name": "shrimp",
+  },{
+    "type": "purplepatternedfish",
+    "price": 3,
+    "name": "purp pattern",
+  },{
+    "type": "plankton",
+    "price": 1,
+    "name": "plankton",
+  },{
+    "type": "patchyfish",
+    "price": 2,
+    "name": "patchy",
+  },{
+    "type": "multicolorfish",
+    "price": 2,
+    "name": "multi color",
+  },{
+    "type": "algae",
+    "price": 1,
+    "name": "algae",
+  },{
     "type": "doryfish",
     "price": 25,
     "name": "dory",
