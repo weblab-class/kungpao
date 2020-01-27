@@ -1,5 +1,7 @@
 .habitlist-container {
     display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
     font-size: 14px;
     font-family: 'Quicksand', sans-serif;
     z-index: 2;
