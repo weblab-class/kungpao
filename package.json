@@ -15,8 +15,8 @@
   "author": "",
   "license": "ISC",
   "homepage": "",
-  "engines": {
-    "node": ">=12.0.0"
+  "engine": {
+    "node": ">10.0.0"
   },
   "dependencies": {
     "@reach/router": "^1.2.1",
