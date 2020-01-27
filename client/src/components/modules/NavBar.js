@@ -29,9 +29,18 @@ const NavLink = props => (
 class NavBar extends Component {
   constructor(props) {
     super(props);
+    this.logout = this.logout.bind(this)
   }
 
-  
+
+  logout() {
+    const auth2 = window.gapi.auth2.getAuthInstance();
+    const contextThis = this;
+    auth2.signOut().then(function () {
+      auth2.disconnect();
+      contextThis.props.handleLogout()
+    });
+  }
 
   render() {
     return (
@@ -58,8 +67,8 @@ class NavBar extends Component {
             Inventory
           </NavLink>
           </div>
-          <div className="menu-item">
-            <a className="NavBar-link">Logout</a>
+          <div className="menu-item" onClick={this.logout}>
+            <a className="NavBar-link" href="#" >Logout</a>
           </div>
         </div>
         <div className="NavBar-title-container">
@@ -69,13 +78,7 @@ class NavBar extends Component {
         </div>
         <div className="logout-button">
         {this.props.userId ? (
-            <GoogleLogout
-              clientId={GOOGLE_CLIENT_ID}
-              buttonText="Logout"
-              onLogoutSuccess={this.props.handleLogout}
-              onFailure={(err) => console.log(err)}
-              className="NavBar-link NavBar-login"
-            />
+          <div></div>
           ) : (
             <GoogleLogin
               clientId={GOOGLE_CLIENT_ID}
