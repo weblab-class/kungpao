@@ -90,14 +90,17 @@ class HabitList extends Component {
       habitObjs.map((habitObj) => {
         var parsedDate = new Date(habitObj.date);
         var todaysDate = new Date();
-        if (habitObj.date === undefined || todaysDate.getFullYear() !== parsedDate.getFullYear() ||
+        if (type === "daily") { // reset dailies every day
+          if (habitObj.date === undefined || todaysDate.getFullYear() !== parsedDate.getFullYear() ||
             todaysDate.getMonth() !== parsedDate.getMonth() ||
             todaysDate.getDate() !== parsedDate.getDate()) {
-          habitObj.date = todaysDate;
-          habitObj.isDone = false;
-            
-          habitsToReset.push({id: habitObj._id, isDone: false, date: todaysDate});
+            habitObj.date = todaysDate;
+            habitObj.isDone = false;
+              
+            habitsToReset.push({id: habitObj._id, isDone: false, date: todaysDate});
+          }
         }
+        
         habits.push(habitObj);
       });
 
