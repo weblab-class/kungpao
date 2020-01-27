@@ -451,12 +451,14 @@ class App extends Component {
       <>
       {this.state.userId ?
       <>
-      <NavBar
+      
+        
+        <div className="App-container">
+        <NavBar
           handleLogin={this.handleLogin}
           handleLogout={this.handleLogout}
           userId={this.state.userId}
         />
-        <div className="App-container">
         <Router>
           <Aquarium
             path="/"
@@ -498,6 +500,9 @@ class App extends Component {
             />
           <NotFound default />
         </Router> 
+        <div className="signature">
+          made with love (and lots of fish) by Claire, Andrea, and Cindy
+        </div>
         </div>
         </>
         : 

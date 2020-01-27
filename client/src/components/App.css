@@ -1,6 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Croissant+One|Open+Sans|Open+Sans+Condensed:300|Quicksand&display=swap');
+
+
 .App-container {
-    max-width: 100%;
-    padding: var(--m) var(--m);
-    margin: auto;
+    max-width: 200%;
+    max-height: 200%;
+    width: 100vw;
+    height: 100vh;
+    /* padding: var(--m) var(--m); */
+    /* margin: auto; */
+  }
+
+  .signature {
+    margin-top: 40vh;
+    width: 500px;
+    margin-left: calc(50vw - 250px);
+    color: lightcyan;
+    font-family: "Quicksand";
+
   }
   
