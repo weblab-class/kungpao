@@ -11,8 +11,9 @@
   }
 
   .signature {
-    margin-top: 40vh;
+    margin-top: 30%;
     width: 500px;
+    height: 10px;
     margin-left: calc(50vw - 250px);
     color: lightcyan;
     font-family: "Quicksand";
