@@ -73,6 +73,25 @@ class HabitList extends Component {
     });
   }
 
+  sameWeek = (date1, date2) => {
+    // sunday is the beginning of the week
+    
+    var date1Sunday = new Date();
+    var date2Sunday = new Date();
+
+    var dayOfWeek1 = date1.getDay();
+    var dayOfWeek2 = date2.getDay();
+
+    const millisecondsPerDay = 1000 * 60 * 60 * 24;
+
+    date1Sunday.setTime(date1.getTime() - millisecondsPerDay * dayOfWeek1);
+    date2Sunday.setTime(date2.getTime() - millisecondsPerDay * dayOfWeek2);
+
+    return date1Sunday.getFullYear() === date2Sunday.getFullYear() &&
+          date1Sunday.getMonth() === date2Sunday.getMonth() &&
+          date1Sunday.getDate() === date2Sunday.getDate();
+  }
+
   reloadHabitList = (type) => {
     var habitsToReset = [];
     var habits = [];
@@ -96,6 +115,25 @@ class HabitList extends Component {
             todaysDate.getDate() !== parsedDate.getDate()) {
             habitObj.date = todaysDate;
             habitObj.isDone = false;
+              
+            habitsToReset.push({id: habitObj._id, isDone: false, date: todaysDate});
+          }
+        }
+        else if (type === "weekly") { //reset weeklies every week
+          if (!this.sameWeek(todaysDate, parsedDate)) {
+            habitObj.date = todaysDate;
+            habitObj.isDone = false;
+            console.log("resetting weekly");
+              
+            habitsToReset.push({id: habitObj._id, isDone: false, date: todaysDate});
+          }
+        }
+        else { // reset monthlies every month
+          if (habitObj.date === undefined || todaysDate.getFullYear() !== parsedDate.getFullYear() ||
+            todaysDate.getMonth() !== parsedDate.getMonth()) {
+            habitObj.date = todaysDate;
+            habitObj.isDone = false;
+            console.log("resetting monthly");
               
             habitsToReset.push({id: habitObj._id, isDone: false, date: todaysDate});
           }
