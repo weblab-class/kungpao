@@ -24,14 +24,12 @@ import { unstable_renderSubtreeIntoContainer } from "react-dom";
 
 import doryfish from "./data/doryfish.png";
 import byfish from "./data/blueyellowfish.png";
-import purplecoral from "./data/purplecoral.png";
 import cfish from "./data/clownfish.png";
 import gyp from "./data/greenyellowpuffer.png";
 import patch from "./data/patchyfish.png";
 import peach from "./data/peachpuffer.png";
 import pink from "./data/pinkfish.png";
 import purplepeach from "./data/purplepeachfish.png";
-import seaweed from "./data/seaweed.png";
 import yfish from "./data/yellowfish.png";
 import algae from "./data/algae.png";
 import mcfish from "./data/multicolorfish.png";
@@ -391,9 +389,6 @@ class App extends Component {
     else if (fishname == 'blueyellowfish') {
       return byfish;
     }
-    else if (fishname == 'purplecoral') {
-      return purplecoral;
-    }
     else if (fishname == 'greenyellowpuffer') {
       return gyp;
     }
@@ -414,9 +409,6 @@ class App extends Component {
     }
     else if (fishname == 'yellowfish') {
       return yfish;
-    }
-    else if (fishname == 'seaweed') {
-      return seaweed;
     }
     else if (fishname == 'algae'){
       return algae;
