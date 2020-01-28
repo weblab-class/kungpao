@@ -504,6 +504,7 @@ class App extends Component {
           made with love (and lots of fish) by Claire, Andrea, and Cindy
         </div>
         </div>
+        
         </>
         : 
         <>
