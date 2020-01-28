@@ -13,7 +13,7 @@ const GOOGLE_CLIENT_ID = "707474204069-ibaig6vr8u2gf995465eel35t6kf6u1r.apps.goo
 const steps = [
   {
     selector: '',
-    content: 'Welcome to Habit Aquarium! *insert description of usage here*',
+    content: "Welcome to Habit Aquarium! Let's go through a quick introduction.",
   },
   {
     selector: '[data-tut="navbarhabits"]',
@@ -557,7 +557,7 @@ class App extends Component {
             handleLogout={this.handleLogout}
             userId={this.state.userId}
           />
-          <button onClick={this.openTour}>Tour</button>
+          
           <Router>
             <Aquarium
               path="/"
@@ -600,6 +600,7 @@ class App extends Component {
               />
             <NotFound default />
           </Router> 
+          <button className="tour-button" onClick={this.openTour}>Tour</button>
           <div className="signature">
             made with love (and lots of fish) by Claire, Andrea, and Cindy
           </div>

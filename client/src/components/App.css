@@ -23,4 +23,20 @@
     bottom: 3%;
 
   }
+
+  .tour-button {
+    position: fixed;
+    margin-top: 30%;
+    left: 92%;
+    bottom: 3%;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    border-style: solid;
+    border-color: white;
+    border-width: 1px;
+    height: 20px;
+    width: 40px;
+    color: white;
+    font-family: "Quicksand";
+  }
   
