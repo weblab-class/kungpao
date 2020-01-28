@@ -82,6 +82,10 @@ class Aquarium extends Component {
             <div className='water' style={{ ...this.state, zIndex:-1 }}>
                 <div>
                   <img className='bubble' src={bubble} alt="bubble"></img>
+
+                </div>
+                <div>
+                  <img className='bubble2' src={bubble} alt="bubble"></img>
                 </div>
                 
               {/* {this.props.releasedHeart ? (!this.state.releasedHeart ? <div>
