@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Random from 'random-id';
 import { CustomStep, OptionsStep, TextStep } from './steps_components';
 import schema from './schemas/schema';
+import { Link } from "@reach/router";
 import * as storage from './storage';
 import {
   ChatBotContainer,
@@ -628,6 +629,7 @@ class ChatBot extends Component {
     const header = headerComponent || (
       <Header className="rsc-header">
         <HeaderTitle className="rsc-header-title">{headerTitle}</HeaderTitle>
+        <Link to="/">Return to Aquarium</Link>
         {floating && (
           <HeaderIcon className="rsc-header-close-button" onClick={() => this.toggleChatBot(false)}>
             <CloseIcon />
@@ -799,7 +801,7 @@ ChatBot.defaultProps = {
   footerStyle: {},
   handleEnd: undefined,
   headerComponent: undefined,
-  headerTitle: 'Chat',
+  headerTitle: 'Chatting with Ray...',
   height: '520px',
   hideBotAvatar: false,
   hideHeader: false,
