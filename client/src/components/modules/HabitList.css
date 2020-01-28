@@ -1,9 +1,9 @@
 .habitlist-container {
     display: flex;
     justify-content: space-around;
-    margin-top: 5vh;
-    margin-left: 5vw;
-    margin-right: 5vw;
+    margin-top: 0vh;
+    margin-left: 10vw;
+    margin-right: 10vw;
     
     font-size: 14px;
     font-family: 'Quicksand', sans-serif;
@@ -11,8 +11,9 @@
 }
 
 .left-container {
-    flex: 2;
-    margin: 0 10vw 0 0;
+    flex: 5;
+    margin: 0 20vw 0 0;
+    z-index: 2;
 }
 
 .panel {
@@ -22,19 +23,17 @@
     background-color: #F6F7FA;
     
     border-radius: 10px;
-    z-index: 1;
     overflow-y: scroll;
 }
 
 .panel2 {
-    flex: 1;
+    flex: 4;
     height: fit-content;
     padding: 10px 20px;
     border-radius: 10px;
 
     background-color: #F6F7FA;
-    
-    z-index: 1;
+    z-index: 2;
 }
 
 .balance {
@@ -53,16 +52,12 @@
     justify-content: space-between;
     height: fit-content;
     align-items: stretch;
-    /* padding: 0 10px; */
-    /* 
-    width: 400px;
-     */
-    /* background: gray; */
+    margin: 10px 0;
 }
 
 .newhabitandbutton .text {
     flex: 1;
-    margin: 10px 10px 10px 0;
+    margin: 10px 0;
     padding: 0 10px;
     background-color: #FFFFFF;
     border-radius: 10px;
@@ -82,9 +77,9 @@
 
 .habittabs {
     display: flex;
-    padding: 10px 0;
+    margin: 20px 0;
 }
 
 .habittabs button {
-    margin: 0 10px 0 0;
+    margin: 0 20px 0 0;
 }
