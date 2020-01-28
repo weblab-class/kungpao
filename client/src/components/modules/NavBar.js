@@ -16,7 +16,8 @@ const NavLink = props => (
       
       return {
         style: {
-        textShadow: isCurrent ? "0.5px 0.5px 0 white" : "none",
+         //"font-weight": isCurrent ? 900 : "inherit",
+         textShadow: isCurrent ? "0 0 3px white" : "none",
         }
       };
     }}
