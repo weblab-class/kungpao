@@ -179,8 +179,8 @@ class Store extends Component {
         {(this.state.conversationRestartEligible ? (
           <StorePopup popText="Return to your Aquarium or talk to Ray again!"
           onCloseP={this.toggleStorePopup} restart={this.restartConversation} ></StorePopup>
-          
-          
+
+
           // console.log("hello?")
           // <a href="#" onClick={this.restartConversation} className="return-button">Talk to Ray again</a>
         ) : null)}
@@ -202,7 +202,7 @@ class Store extends Component {
                            money={this.state.money}
                            randomState={this.state.random} // Adding a random state to force refresh when needed
                            endConversationCallback={this.endConversation}
-            /> :
+            /> : 
             <CircleLoader
               css={override}
                 size={150}
@@ -213,7 +213,7 @@ class Store extends Component {
             <Fish key={i} image={this.props.displayFish(f.type)}/>
           ))}
 
-          
+
       </>
 
         );
