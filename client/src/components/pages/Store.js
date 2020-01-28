@@ -12,6 +12,7 @@ import { createHistory } from "@reach/router";
 
 //import { get } from "mongoose";
 
+
 class Store extends Component {
     constructor(props) {
         super(props);
@@ -135,12 +136,15 @@ class Store extends Component {
             
         // </div>
       <>
-          <Link to="/" className="return-button">Return to Aquarium</Link>
+        
+          
+          
         <div className = "Money">
           {this.state.money}
-
         </div>
-        <div className="ChatContainer" style={{"padding-top": "60px"}}>
+        
+          <div className="ChatContainer" style={{"padding-top": "60px"}}>
+      
           {(this.state.fishtoday.length > 0 && this.state.money > -1 && this.state.name != "#@!") ? <CustomChatbot name={this.state.name} changeName={this.changeName} displayFish={this.props.displayFish} changeMoney = {this.changeMoney} fish={this.state.fishtoday} boughtFish={this.props.boughtFish} money={this.state.money} /> : <div/>}
         
         </div>
