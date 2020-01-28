@@ -15,6 +15,16 @@
     color: rgb(238, 238, 238);
 }
 
+.habit-label {
+    display: flex;
+    align-items: center;
+}
+
+.habit-label:hover .checkmark {
+    border-width: 3px;
+    padding: 0;
+}
+
 .habit-container input {
     position: absolute;
     opacity: 0;
@@ -30,6 +40,7 @@
     height: 15px;
     width: 15px;
     margin: 0 15px;
+    padding: 1px;
     border-radius: 100%;
     border: rgb(238, 238, 238) 2px solid;
     background-color: none;
@@ -37,6 +48,7 @@
 
 .checkmark:hover {
     cursor: pointer;
+    border-width: 3px;
 }
 
 label:hover {
