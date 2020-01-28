@@ -33,6 +33,14 @@
     background-color: #FFFFFF;
 }
 
+.checkmark:hover {
+    cursor: pointer;
+}
+
+label:hover {
+    cursor: pointer;
+}
+
 /* When the checkbox is checked*/
 .habit-container input:checked ~ .checkmark {
     background-color: #00CBD9;

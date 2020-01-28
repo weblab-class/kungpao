@@ -147,10 +147,10 @@ function CustomChatbot(props) {
           label: "Cancel",
 
         },
-          {
-            label: "Unused state" + props.randomState,
-            id: "unusedState"
-          }
+          // {
+          //   label: "Unused state" + props.randomState,
+          //   id: "unusedState"
+          // }
         ]
       }
     ];
