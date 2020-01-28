@@ -7,6 +7,7 @@ import Habits from "./pages/Habits.js";
 import Store from "./pages/Store.js";
 import Inventory from "./pages/Inventory.js";
 import Login from "./pages/Login.js";
+import Tour from 'reactour'
 
 const GOOGLE_CLIENT_ID = "707474204069-ibaig6vr8u2gf995465eel35t6kf6u1r.apps.googleusercontent.com";
 
@@ -59,6 +60,8 @@ class App extends Component {
       fishDie: false,
       lastDead: undefined,
       deadFish: [],
+      isTourOpen: true,
+      redirect: false,
     };
   }
 
@@ -382,6 +385,18 @@ class App extends Component {
     })
   }
 
+  closeTour = () =>{
+    this.setState({
+      isTourOpen: false,
+    })
+  };
+
+  openTour = () => {
+    this.setState({
+      isTourOpen: true
+    });
+  };
+
   /**
    * return an image
    */
@@ -452,13 +467,19 @@ class App extends Component {
       {this.state.userId ?
       <>
       
-        
+      
+      <Tour
+        steps={steps}
+        isOpen={this.state.isTourOpen}
+        onRequestClose={this.closeTour} 
+        />
         <div className="App-container">
         <NavBar
           handleLogin={this.handleLogin}
           handleLogout={this.handleLogout}
           userId={this.state.userId}
         />
+        <button onClick={this.openTour}>Tour</button>
         <Router>
           <Aquarium
             path="/"
@@ -517,5 +538,55 @@ class App extends Component {
     );
   }
 }
+
+const steps = [
+  {
+    selector: '',
+    content: 'Welcome to Habit Aquarium! *insert description of usage here*',
+  },
+  {
+    selector: '[data-tut="navbarhabits"]',
+    content: "Let's get started with some habits.",
+  },
+  {
+    selector: '[data-tut="newhabit"]',
+    content: "Time to create your first daily habit! Think of something you'd like to do every day, then hit enter or use the + to add your habit.",
+    //action: this.setState({redirect: true}),
+    //disableInteraction: false,
+  },
+  {
+    selector: '[data-tut="habittabs"]',
+    content: "Switch between tabs to add goals you'd like to complete every day, week, or month."
+  },
+  {
+    selector: '[data-tut="habitbalance"]',
+    content: "Maintain your habits to earn sand dollars.",
+  },
+  {
+    selector:'[data-tut="navbarstore"]',
+    content: "What can you do with sand dollars? Talk to Ray, our friendly fish store associate to buy fish for your aquarium.",
+  },
+  {
+    selector:'[data-tut="navbaraquarium"]',
+    content: "Let's take a look at your aquarium. This is where all your fish will live!",
+  },
+  {
+    selector: '[data-tut="placeitemsbutton"]',
+    content:"Place items you've bought into your aquarium using the place items button.",
+    
+  },
+  {
+    selector:'[data-tut="feedfishbutton"]',
+    content: "Remember to feed your fish everyday! If you don't feed your fish in 3 days, your oldest fish dies.",
+  },
+  {
+    selector:'[data-tut="navbarinventory"]',
+    content:"Got too many fish? Sell some back to Ray on the Inventory page!",
+  },
+  {
+    selector:'',
+    content:"Here's one sand dollar to help you get your aquarium started! Best of luck building new habits!",
+  }
+]
 
 export default App;

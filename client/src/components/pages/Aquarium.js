@@ -62,11 +62,11 @@ class Aquarium extends Component {
               <div></div>
               <div></div>
               <div></div>
-              <div className="button-container">
+              <div className="button-container" data-tut="feedfishbutton">
                 <button onClick={this.props.pickFish ? this.props.pickingFish : this.props.checkifFed}
                    >Feed fish</button>
               </div>
-              <div className="button-container">
+              <div className="button-container" data-tut="placeitemsbutton">
                 <button onClick={this.props.showPopup ? this.props.togglePopup  : this.props.pickingFish}>Place Items</button>
               </div>
             
