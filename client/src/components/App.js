@@ -551,7 +551,10 @@ const steps = [
   {
     selector: '[data-tut="newhabit"]',
     content: "Time to create your first daily habit! Think of something you'd like to do every day, then hit enter or use the + to add your habit.",
-    //action: this.setState({redirect: true}),
+    action: node => {
+      // by using this, focus trap is temporary disabled
+      console.log(node)
+    },
     //disableInteraction: false,
   },
   {
