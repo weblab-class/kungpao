@@ -44,7 +44,6 @@
 .balance img {
     width: 20px;
     height: 20px;
-    margin: 0 10px;
 }
 
 .newhabitandbutton {
@@ -68,6 +67,8 @@
 
 .newhabitandbutton .button {
     margin: 10px 0 10px 10px;
+    font-size: 24px;
+    padding: 1px 0 5px 0;
     width: 50px;
 }
 
