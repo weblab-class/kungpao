@@ -114,6 +114,7 @@ class App extends Component {
       deadFish: [],
       isTourOpen: null,
       completedTutorial: null,
+      tutorialMoneyIndicator: false,
     };
   }
 
@@ -463,7 +464,9 @@ class App extends Component {
       this.setState({
         completedTutorial: true,
       });
-      post("api/incrementMoney", { amount: 1 });
+      post("api/incrementMoney", { amount: 1 }).then((money) => {
+        this.setState({ tutorialMoneyIndicator: true });
+      });
       console.log("i did the tutorial")
     }
   };
@@ -583,6 +586,7 @@ class App extends Component {
               path="/habits"
               fishList={this.state.placedfish}
               displayFish = {this.displayFish}
+              tutorialMoneyIndicator = {this.state.tutorialMoneyIndicator}
             />
             <Store
               path="/store"
@@ -590,6 +594,7 @@ class App extends Component {
               displayFish = {this.displayFish}
               fishList={this.state.placedfish}
               togglePopup = {this.togglePopup}
+              tutorialMoneyIndicator = {this.state.tutorialMoneyIndicator}
               />
             <Inventory
               path="/inventory"
