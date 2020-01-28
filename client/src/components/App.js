@@ -206,7 +206,7 @@ class App extends Component {
         console.log(this.state.notplaced[0]);
       });
       get("/api/tutorial", {googleid: user.googleid}).then((f) => {
-        console.log(f);
+        //console.log(f);
         if (f.googleid == null) {
           console.log("never been here")
           console.log(this.state.isTourOpen)

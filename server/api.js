@@ -59,7 +59,12 @@ router.post("/initsocket", (req, res) => {
 
 router.get("/tutorial",(req,res) => {
   Tutorial.findOne({googleid: req.query.googleid}).then((lol) =>{
-    res.send(lol);
+    if (lol === null) {
+      res.send({googleid: null});
+    }
+    else {
+      res.send(lol);
+    }
   });
 });
 
