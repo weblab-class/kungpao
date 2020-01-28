@@ -20,7 +20,7 @@
     width: 95%;
     height: 100%;
     flex: none;
-    overflow-y: scroll;
+    overflow-y: auto;
     background-color: rgba(255, 255, 255, 0.3);
     border-radius: 10px;
     padding: 10px;
@@ -79,7 +79,7 @@
     height: 40%;
     padding: 10px;
     width: 95%;
-    overflow-y: scroll;
+    overflow-y: auto;
     font-family: "Quicksand";
     display:flex;
     flex-direction: row;

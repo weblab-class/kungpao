@@ -10,8 +10,13 @@ html {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.popup-holder {
+  position: absolute;
+  z-index: 5;
+}
 .ChatContainer {
-    position: absolute;
+    position: relative;
     left: 4.44%;
     right: 5.62%;
     top: 10%;

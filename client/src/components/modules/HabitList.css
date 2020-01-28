@@ -18,7 +18,7 @@
     position: relative;
     border-radius: 10px;
     z-index: 1;
-    overflow-y: scroll;
+    overflow-y: auto;
     /* scroll-margin-right: 5px; */
 }
 

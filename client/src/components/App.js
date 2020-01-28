@@ -511,6 +511,7 @@ class App extends Component {
             boughtFish = {this.boughtFish}
             displayFish = {this.displayFish}
             fishList={this.state.placedfish}
+            togglePopup = {this.togglePopup}
             />
           <Inventory
             path="/inventory"
