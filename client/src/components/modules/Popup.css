@@ -34,3 +34,7 @@
     border-radius: 5px;
     font-family: "Quicksand"
 }
+
+.closeButton :hover {
+    cursor: pointer;
+}

@@ -35,6 +35,10 @@ img.fish {
     z-index: 1;
   }
 
+  .button-container button:hover{
+    cursor: pointer;
+  }
+
   .button-container button {
     background-color: rgba(255, 255, 255, 0.3);
     border-radius: 10px;

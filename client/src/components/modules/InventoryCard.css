@@ -13,6 +13,7 @@
 
 .InventoryCard:hover {
     background: #FFFFFF;
+    cursor: pointer;
 }
 
 .InventoryCard-price {
