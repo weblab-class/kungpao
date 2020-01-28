@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import close from "../data/close.png";
+
 import "./Habit.css";
 
 class Habit extends Component {
@@ -22,7 +24,7 @@ class Habit extends Component {
         />
         <span className="checkmark"></span>
         <span className="text">{this.props.content}</span>
-        <button onClick={this.props.deleteHabit} type="button">X</button>
+        <button onClick={this.props.deleteHabit} type="button"><img className="close" src={close} alt="close"></img></button>
       </label>
     );
   }

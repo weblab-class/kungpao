@@ -57,3 +57,8 @@ label:hover {
     z-index: 1;
     font-family: "Quicksand";
 }
+
+.close {
+    width: 15px;
+    fill: #00CBD9;
+}
