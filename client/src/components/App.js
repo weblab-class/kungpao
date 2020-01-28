@@ -10,6 +10,58 @@ import Login from "./pages/Login.js";
 import Tour from 'reactour'
 
 const GOOGLE_CLIENT_ID = "707474204069-ibaig6vr8u2gf995465eel35t6kf6u1r.apps.googleusercontent.com";
+const steps = [
+  {
+    selector: '',
+    content: 'Welcome to Habit Aquarium! *insert description of usage here*',
+  },
+  {
+    selector: '[data-tut="navbarhabits"]',
+    content: "Let's get started with some habits.",
+  },
+  {
+    selector: '[data-tut="newhabit"]',
+    content: "Time to create your first daily habit! Think of something you'd like to do every day, then hit enter or use the + to add your habit.",
+    action: node => {
+      // by using this, focus trap is temporary disabled
+      console.log(node)
+    },
+    //disableInteraction: false,
+  },
+  {
+    selector: '[data-tut="habittabs"]',
+    content: "Switch between tabs to add goals you'd like to complete every day, week, or month."
+  },
+  {
+    selector: '[data-tut="habitbalance"]',
+    content: "Maintain your habits to earn sand dollars.",
+  },
+  {
+    selector:'[data-tut="navbarstore"]',
+    content: "What can you do with sand dollars? Talk to Ray, our friendly fish store associate to buy fish for your aquarium.",
+  },
+  {
+    selector:'[data-tut="navbaraquarium"]',
+    content: "Let's take a look at your aquarium. This is where all your fish will live!",
+  },
+  {
+    selector: '[data-tut="placeitemsbutton"]',
+    content:"Place items you've bought into your aquarium using the place items button.",
+    
+  },
+  {
+    selector:'[data-tut="feedfishbutton"]',
+    content: "Remember to feed your fish everyday! If you don't feed your fish in 3 days, your oldest fish dies.",
+  },
+  {
+    selector:'[data-tut="navbarinventory"]',
+    content:"Got too many fish? Sell some back to Ray on the Inventory page!",
+  },
+  {
+    selector:'',
+    content:"Here's one sand dollar to help you get your aquarium started! Best of luck building new habits!",
+  }
+];
 
 import "./App.css";
 import "../utilities.css";
@@ -61,7 +113,7 @@ class App extends Component {
       lastDead: undefined,
       deadFish: [],
       isTourOpen: true,
-      redirect: false,
+      completedTutorial: true,
     };
   }
 
@@ -75,6 +127,7 @@ class App extends Component {
         //     lastFed : ff,
         //   });
         // });
+        
         get("/api/buyfish", {googleid: user.googleid}).then((f) => {
           this.setState({notplaced : f});
           console.log(this.state.notplaced);
@@ -152,6 +205,20 @@ class App extends Component {
         console.log(this.state.notplaced);
         console.log(this.state.notplaced[0]);
       });
+      get("/api/tutorial", {googleid: user.googleid}).then((f) => {
+        if (f.name == null) {
+          console.log("never been here")
+          console.log(this.state.isTourOpen)
+          this.setState({completedTutorial: false, isTourOpen: true})
+          console.log(this.state.isTourOpen)
+
+        }
+        else {
+          console.log('itsmeagain')
+          this.setState({completedTutorial: true, isTourOpen: false})
+        }
+      });
+
       get("/api/placefish", {googleid: user.googleid}).then((f) => {
         this.setState({placedfish : f});
         get("/api/feedfish", {googleid: this.state.gId}).then((ff) => {
@@ -464,133 +531,78 @@ class App extends Component {
     
     return (
       <>
-      {this.state.userId ?
+      {!this.state.userId ?
+        <Login handleLogin = {this.handleLogin}/> : 
+        
+      (this.state.completedTutorial=='null' || this.state.isTourOpen=='null') ? <p>loading</p> : 
       <>
-      
-      
-      <Tour
-        steps={steps}
-        isOpen={this.state.isTourOpen}
-        onRequestClose={this.closeTour} 
-        />
-        <div className="App-container">
-        <NavBar
-          handleLogin={this.handleLogin}
-          handleLogout={this.handleLogout}
-          userId={this.state.userId}
-        />
-        <button onClick={this.openTour}>Tour</button>
-        <Router>
-          <Aquarium
-            path="/"
-            fishList={this.state.placedfish}
-            checkifFed={this.checkifFed}
-            pickingFish = {this.pickingFish}
-            showPopup = {this.state.showPopup}
-            popText = {this.state.popText}
-            togglePopup = {this.togglePopup}
-            pickFish = {this.state.pickFish}
-            notplaced = {this.state.notplaced}
-            addingFish = {this.addingFish}
-            displayFish = {this.displayFish}
-            releasedHeart = {this.state.releasedHeart}
-            addAllFish = {this.addAllFish}
-            fishDie = {this.state.fishDie}
-            killFish = {this.killFish}
-            fishDieToggle = {this.fishDieToggle}
-            deadFish = {this.state.deadFish}
-            closeFishDiePopup = {this.closeFishDiePopup}
-            />
-          <Habits
-            path="/habits"
-            fishList={this.state.placedfish}
-            displayFish = {this.displayFish}
+        <Tour
+          steps={steps}
+          isOpen={this.state.isTourOpen}
+          onRequestClose={this.closeTour} 
           />
-          <Store
-            path="/store"
-            boughtFish = {this.boughtFish}
-            displayFish = {this.displayFish}
-            fishList={this.state.placedfish}
-            togglePopup = {this.togglePopup}
+          <div className="App-container">
+          <NavBar
+            handleLogin={this.handleLogin}
+            handleLogout={this.handleLogout}
+            userId={this.state.userId}
+          />
+          <button onClick={this.openTour}>Tour</button>
+          <Router>
+            <Aquarium
+              path="/"
+              fishList={this.state.placedfish}
+              checkifFed={this.checkifFed}
+              pickingFish = {this.pickingFish}
+              showPopup = {this.state.showPopup}
+              popText = {this.state.popText}
+              togglePopup = {this.togglePopup}
+              pickFish = {this.state.pickFish}
+              notplaced = {this.state.notplaced}
+              addingFish = {this.addingFish}
+              displayFish = {this.displayFish}
+              releasedHeart = {this.state.releasedHeart}
+              addAllFish = {this.addAllFish}
+              fishDie = {this.state.fishDie}
+              killFish = {this.killFish}
+              fishDieToggle = {this.fishDieToggle}
+              deadFish = {this.state.deadFish}
+              closeFishDiePopup = {this.closeFishDiePopup}
+              />
+            <Habits
+              path="/habits"
+              fishList={this.state.placedfish}
+              displayFish = {this.displayFish}
             />
-          <Inventory
-            path="/inventory"
-            fishList = {this.state.placedfish}
-            displayFish = {this.displayFish}
-            gId = {this.state.gId}
-            soldFish = {this.soldFish}
-            />
-          <NotFound default />
-        </Router> 
-        <div className="signature">
-          made with love (and lots of fish) by Claire, Andrea, and Cindy
+            <Store
+              path="/store"
+              boughtFish = {this.boughtFish}
+              displayFish = {this.displayFish}
+              fishList={this.state.placedfish}
+              togglePopup = {this.togglePopup}
+              />
+            <Inventory
+              path="/inventory"
+              fishList = {this.state.placedfish}
+              displayFish = {this.displayFish}
+              gId = {this.state.gId}
+              soldFish = {this.soldFish}
+              />
+            <NotFound default />
+          </Router> 
+          <div className="signature">
+            made with love (and lots of fish) by Claire, Andrea, and Cindy
+          </div>
         </div>
-        </div>
+        </>
+          }
         
         </>
-        : 
-        <>
-        <Login handleLogin = {this.handleLogin}/>
-        
-</>
-      }
-        
-        </>
-    );
-  }
+      
+
+      
+    )
 }
 
-const steps = [
-  {
-    selector: '',
-    content: 'Welcome to Habit Aquarium! *insert description of usage here*',
-  },
-  {
-    selector: '[data-tut="navbarhabits"]',
-    content: "Let's get started with some habits.",
-  },
-  {
-    selector: '[data-tut="newhabit"]',
-    content: "Time to create your first daily habit! Think of something you'd like to do every day, then hit enter or use the + to add your habit.",
-    action: node => {
-      // by using this, focus trap is temporary disabled
-      console.log(node)
-    },
-    //disableInteraction: false,
-  },
-  {
-    selector: '[data-tut="habittabs"]',
-    content: "Switch between tabs to add goals you'd like to complete every day, week, or month."
-  },
-  {
-    selector: '[data-tut="habitbalance"]',
-    content: "Maintain your habits to earn sand dollars.",
-  },
-  {
-    selector:'[data-tut="navbarstore"]',
-    content: "What can you do with sand dollars? Talk to Ray, our friendly fish store associate to buy fish for your aquarium.",
-  },
-  {
-    selector:'[data-tut="navbaraquarium"]',
-    content: "Let's take a look at your aquarium. This is where all your fish will live!",
-  },
-  {
-    selector: '[data-tut="placeitemsbutton"]',
-    content:"Place items you've bought into your aquarium using the place items button.",
-    
-  },
-  {
-    selector:'[data-tut="feedfishbutton"]',
-    content: "Remember to feed your fish everyday! If you don't feed your fish in 3 days, your oldest fish dies.",
-  },
-  {
-    selector:'[data-tut="navbarinventory"]',
-    content:"Got too many fish? Sell some back to Ray on the Inventory page!",
-  },
-  {
-    selector:'',
-    content:"Here's one sand dollar to help you get your aquarium started! Best of luck building new habits!",
-  }
-]
-
+}
 export default App;

@@ -21,6 +21,7 @@ const Money = require("./models/money.js");
 const TodayFish = require("./models/todayfish.js");
 const Name = require("./models/name.js");
 const DeadFish = require("./models/deadfish.js");
+const Tutorial = require("./models/tutorial.js");
 
 const ObjectID = require('mongodb').ObjectID;
 
@@ -55,6 +56,19 @@ router.post("/initsocket", (req, res) => {
 // |------------------------------|
 
 // anything else falls to this "not found" case
+
+router.get("/tutorial",(req,res) => {
+  Tutorial.find({googleid: req.query.googleid}).then((lol) =>{
+    res.send(lol);
+  });
+});
+
+router.post("/tutorial", (req,res) =>{
+  const name = new Tutorial({
+    googleid: req.user.googleid,
+  });
+  name.save();
+})
 
 router.get("/feedfish", (req, res) => {
   FedFish.find({googleid: req.query.googleid}).then((ff) => {
