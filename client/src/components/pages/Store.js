@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import SingleMessage from "../modules/SingleMessage.js";
 import { get, post } from "../../utilities";
 import { Link } from "@reach/router";
+import {css} from "@emotion/core";
+import CircleLoader from "react-spinners/CircleLoader";
 
 
 import "../../utilities.css";
@@ -11,6 +13,12 @@ import Fish from "../modules/Fish.js";
 import { createHistory } from "@reach/router";
 
 //import { get } from "mongoose";
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
 
 class Store extends Component {
     constructor(props) {
@@ -178,8 +186,13 @@ class Store extends Component {
                            money={this.state.money}
                            randomState={this.state.random} // Adding a random state to force refresh when needed
                            endConversationCallback={this.endConversation}
-            /> : <div/>}
-        </div>
+            /> : 
+            <CircleLoader
+              css={override}
+                size={150}
+                color={"white"}
+              />
+        }</div>
           {this.props.fishList.map((f, i) => (
             <Fish key={i} image={this.props.displayFish(f.type)}/>
           ))}

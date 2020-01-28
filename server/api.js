@@ -130,7 +130,7 @@ router.post("/buyfish", (req, res) => {
 
 router.get("/todaysfish", async (req, res) => {
   const dateNow = new Date();
-  const dateNowString = `${dateNow.getFullYear()}${dateNow.getMonth()}${dateNow.getDate()}`
+  const dateNowString = `aa${dateNow.getFullYear()}${dateNow.getMonth()}${dateNow.getDate()}`
   const todayFishes = await TodayFish.findOne({date: dateNowString});
   if (todayFishes !== null) {
     return res.json(todayFishes.fishes);
