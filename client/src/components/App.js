@@ -7,21 +7,76 @@ import Habits from "./pages/Habits.js";
 import Store from "./pages/Store.js";
 import Inventory from "./pages/Inventory.js";
 import Login from "./pages/Login.js";
-import Tour from 'reactour'
+import Tour from 'reactour';
 
 const GOOGLE_CLIENT_ID = "707474204069-ibaig6vr8u2gf995465eel35t6kf6u1r.apps.googleusercontent.com";
-const steps = [
+const firstTimeSteps = [
   {
     selector: '',
     content: "Welcome to Habit Aquarium! Let's go through a quick introduction.",
   },
   {
     selector: '[data-tut="navbarhabits"]',
-    content: "Let's get started with some habits.",
+    content: "Let's get started with some habits. Click here to navigate to the Habits page and then continue the tutorial.",
   },
   {
     selector: '[data-tut="newhabit"]',
     content: "Time to create your first daily habit! Think of something you'd like to do every day, then hit enter or use the + to add your habit.",
+    action: node => {
+      // by using this, focus trap is temporary disabled
+      console.log(node)
+    },
+    //disableInteraction: false,
+  },
+  {
+    selector: '[data-tut="habittabs"]',
+    content: "Switch between tabs to add goals you'd like to complete every day, week, or month."
+  },
+  {
+    selector: '[data-tut="habitbalance"]',
+    content: "Maintain your habits to earn sand dollars.",
+  },
+  {
+    selector:'[data-tut="navbarstore"]',
+    content: "What can you do with sand dollars? After the tutorial, talk to Ray, our friendly fish store associate to buy fish for your aquarium. (You currently have no sand dollars!)",
+    disableInteraction: true,
+  },
+  {
+    selector:'[data-tut="navbaraquarium"]',
+    content: "Let's take a look at your aquarium. This is where all your fish will live!",
+  },
+  {
+    selector: '[data-tut="placeitemsbutton"]',
+    content:"Place items you've bought into your aquarium using the place items button.",
+    
+  },
+  {
+    selector:'[data-tut="feedfishbutton"]',
+    content: "Remember to feed your fish everyday! If you don't feed your fish in 3 days, your oldest fish dies.",
+  },
+  {
+    selector:'[data-tut="navbarinventory"]',
+    content:"Got too many fish? Sell some back to Ray on the Inventory page!",
+    disableInteraction: true,
+  },
+  {
+    selector:'',
+    content:"Here's one sand dollar to help you get your aquarium started! Best of luck building new habits!",
+  },
+  {
+    selector:'[data-tut="tourbutton"]',
+    content: "If you ever need a refresher on how to maintain your aquarium, you can access the tour here at any time."
+  }
+];
+
+const steps = [
+  {
+    selector: '[data-tut="navbarhabits"]',
+    content: "Let's get started with some habits. Click here to navigate to the Habits page and then continue the tutorial.",
+  },
+  {
+    selector: '[data-tut="newhabit"]',
+    content: "Create habits by typing them in this field. Hit enter or use the + to add your habit.",
     action: node => {
       // by using this, focus trap is temporary disabled
       console.log(node)
@@ -56,10 +111,11 @@ const steps = [
   {
     selector:'[data-tut="navbarinventory"]',
     content:"Got too many fish? Sell some back to Ray on the Inventory page!",
+    disableInteraction: true,
   },
   {
-    selector:'',
-    content:"Here's one sand dollar to help you get your aquarium started! Best of luck building new habits!",
+    selector:'[data-tut="tourbutton"]',
+    content: "If you ever need a refresher on how to maintain your aquarium, you can access the tour here at any time."
   }
 ];
 
@@ -550,10 +606,10 @@ class App extends Component {
       (this.state.completedTutorial=='null' || this.state.isTourOpen=='null') ? <p>loading</p> : 
       <>
         <Tour
-          steps={steps}
-          isOpen={this.state.isTourOpen}
-          onRequestClose={this.closeTour} 
-          />
+        steps={this.state.completedTutorial ? steps : firstTimeSteps}
+        isOpen={this.state.isTourOpen}
+        onRequestClose={this.closeTour} 
+        />
           <div className="App-container">
           <NavBar
             handleLogin={this.handleLogin}
@@ -605,7 +661,7 @@ class App extends Component {
               />
             <NotFound default />
           </Router> 
-          <button className="tour-button" onClick={this.openTour}>Tour</button>
+          <button className="tour-button" data-tut="tourbutton" onClick={this.openTour}>Tour</button>
           <div className="signature">
             made with love (and lots of fish) by Claire, Andrea, and Cindy
           </div>
