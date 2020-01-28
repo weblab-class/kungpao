@@ -27,7 +27,6 @@ class HabitList extends Component {
     this.reloadHabitList("daily");
     
     get("/api/money").then((moneyObj) => {
-      console.log("balance: " + moneyObj.money);
       this.setState( { balance: moneyObj.money });
     });
   }
@@ -133,7 +132,6 @@ class HabitList extends Component {
           if (!this.sameWeek(todaysDate, parsedDate)) {
             habitObj.date = todaysDate;
             habitObj.isDone = false;
-            console.log("resetting weekly");
               
             habitsToReset.push({id: habitObj._id, isDone: false, date: todaysDate});
           }
@@ -143,7 +141,6 @@ class HabitList extends Component {
             todaysDate.getMonth() !== parsedDate.getMonth()) {
             habitObj.date = todaysDate;
             habitObj.isDone = false;
-            console.log("resetting monthly");
               
             habitsToReset.push({id: habitObj._id, isDone: false, date: todaysDate});
           }
