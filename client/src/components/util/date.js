@@ -3,7 +3,13 @@ export function toDay(date) {
 }
 
 export function toWeek(date) {
-    return "Week of " + toDay(date);
+    var dateSunday = new Date();
+
+    const millisecondsPerDay = 1000 * 60 * 60 * 24;
+
+    dateSunday.setTime(date.getTime() - millisecondsPerDay * date.getDay());
+
+    return "Week of " + toDay(dateSunday);
 }
 
 export function toMonth(date) {
