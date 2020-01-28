@@ -4,6 +4,7 @@ import Option from './Option';
 import OptionElement from './OptionElement';
 import Options from './Options';
 import OptionsStepContainer from './OptionsStepContainer';
+import sanddollar from "../../../../../src/components/data/sanddollar.png";
 
 class OptionsStep extends Component {
   onOptionClick = ({ value }) => {
@@ -22,7 +23,11 @@ class OptionsStep extends Component {
     if (label.includes('$#$')) {
       const [text, price, pic] = label.split('$#$')
       labelRender = (<div><div><span style={{fontFamily: '\'Quicksand\', sans-serif', "text-align": "left"}}>{text}</span>
-      <span style={{fontFamily: '\'Quicksand\', sans-serif', "text-align": "right"}}>{price}</span></div>
+      <span style={{fontFamily: '\'Quicksand\', sans-serif', "text-align": "right"}}>{price}</span>
+      <span><img src={sanddollar} alt="sanddollar" style={{display:"inline-block", width:"20px", height:"20px", margin: "10px 0 -5px 0"}}></img></span>
+
+      </div>
+      
       <img src={pic} style={{"height": "100px"}}></img></div>);
     } else {
       labelRender = label

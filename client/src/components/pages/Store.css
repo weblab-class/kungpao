@@ -86,6 +86,12 @@ html {
 
 }
 
+.Money img {
+  width: 20px;
+  height: 20px;
+  margin: 3px 0 -3px 2px;
+}
+
 .Money::before {
   content: "Balance: ";
 }
