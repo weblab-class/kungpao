@@ -462,7 +462,8 @@ class App extends Component {
       post("/api/tutorial", body).then(res => console.log(res));
       this.setState({
         completedTutorial: true,
-      })
+      });
+      post("api/incrementMoney", { amount: 1 });
       console.log("i did the tutorial")
     }
   };
