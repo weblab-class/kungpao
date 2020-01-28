@@ -11,12 +11,16 @@
   }
 
   .signature {
+    position:fixed;
     margin-top: 30%;
     width: 500px;
     height: 10px;
-    margin-left: calc(50vw - 250px);
+    /* margin-left: calc(50vw - 250px); */
     color: lightcyan;
     font-family: "Quicksand";
+    font-size: 12px;
+    left: 3%;
+    bottom: 3%;
 
   }
   
