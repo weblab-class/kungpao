@@ -21,7 +21,7 @@ class Habits extends Component {
               <Fish image={this.props.displayFish(f.type)}/>
             ))}
             </div>
-            <HabitList />
+            <HabitList tutorialMoneyIndicator={this.props.tutorialMoneyIndicator}/>
             </>
         );
     }

@@ -92,6 +92,20 @@ class Store extends Component {
 
     }
 
+    componentDidUpdate(prevProps) {
+
+      const {tutorialMoneyIndicator} = this.props;
+  
+      if (prevProps) {
+        if (prevProps.tutorialMoneyIndicator !== tutorialMoneyIndicator) {
+          get("/api/money").then((moneyObj) => {
+            this.setState( { money: moneyObj.money });
+          });
+        }
+      }
+    }
+  
+
     changeMoney(price, previousmoney){
 
       post("/api/incrementMoney", {amount: -price}).then((money) => {

@@ -29,6 +29,20 @@ class HabitList extends Component {
     get("/api/money").then((moneyObj) => {
       this.setState( { balance: moneyObj.money });
     });
+
+  }
+
+  componentDidUpdate(prevProps) {
+
+    const {tutorialMoneyIndicator} = this.props;
+
+    if (prevProps) {
+      if (prevProps.tutorialMoneyIndicator !== tutorialMoneyIndicator) {
+        get("/api/money").then((moneyObj) => {
+          this.setState( { balance: moneyObj.money });
+        });
+      }
+    }
   }
 
   handleInputChange = event => {
