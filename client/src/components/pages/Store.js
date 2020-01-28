@@ -20,10 +20,14 @@ class Store extends Component {
             money: -1,
             messages: [],
             name: "#@!",
-
+          random: Math.random(),
+          conversationRestartEligible: false,
+          showChat: true
         }
         this.changeMoney = this.changeMoney.bind(this);
         this.changeName = this.changeName.bind(this);
+      this.endConversation = this.endConversation.bind(this);
+      this.restartConversation = this.restartConversation.bind(this);
     }
 
     // loadMessageHistory(value) {
@@ -87,6 +91,26 @@ class Store extends Component {
     });
     }
 
+  endConversation() {
+      this.setState({
+        conversationRestartEligible: true
+      })
+  }
+
+  restartConversation() {
+      this.setState({
+        random: Math.random(),
+        showChat: false
+      })
+    const contextThis = this;
+    setTimeout(() => {
+      contextThis.setState({
+        showChat: true,
+        conversationRestartEligible: false
+      })
+    }, 500)
+  }
+
     changeName(name){
       post("/api/name", {name: name}).then((name)=>{
         console.log("setName!");
@@ -135,14 +159,26 @@ class Store extends Component {
             
         // </div>
       <>
-          <Link to="/" className="return-button">Return to Aquarium</Link>
+
+        {(this.state.conversationRestartEligible ? (
+          <a href="#" onClick={this.restartConversation} className="return-button">Talk to Ray again</a>
+        ) : null)}
         <div className = "Money">
           {this.state.money}
 
         </div>
         <div className="ChatContainer" style={{"padding-top": "60px"}}>
-          {(this.state.fishtoday.length > 0 && this.state.money > -1 && this.state.name != "#@!") ? <CustomChatbot name={this.state.name} changeName={this.changeName} displayFish={this.props.displayFish} changeMoney = {this.changeMoney} fish={this.state.fishtoday} boughtFish={this.props.boughtFish} money={this.state.money} /> : <div/>}
-        
+          {(this.state.fishtoday.length > 0 && this.state.money > -1 && this.state.name != "#@!" && this.state.showChat) ?
+            <CustomChatbot name={this.state.name}
+                           changeName={this.changeName}
+                           displayFish={this.props.displayFish}
+                           changeMoney = {this.changeMoney}
+                           fish={this.state.fishtoday}
+                           boughtFish={this.props.boughtFish}
+                           money={this.state.money}
+                           randomState={this.state.random} // Adding a random state to force refresh when needed
+                           endConversationCallback={this.endConversation}
+            /> : <div/>}
         </div>
           {this.props.fishList.map((f, i) => (
             <Fish key={i} image={this.props.displayFish(f.type)}/>
