@@ -25,7 +25,7 @@ class HabitList extends Component {
     const todaysDate = new Date();
     this.setState( { title: toDay(todaysDate) });
     this.reloadHabitList("daily");
-    
+
     get("/api/money").then((moneyObj) => {
       console.log("balance: " + moneyObj.money);
       this.setState( { balance: moneyObj.money });
@@ -56,10 +56,13 @@ class HabitList extends Component {
 
   submitHabit = (event) => {
     event.preventDefault();
-    const body = {content: this.state.inputText, type: this.state.type};
-    post("api/habit", body).then((habit) => {
-      this.addNewHabit(habit);
-    });
+    if (this.state.inputText.length !== 0) {
+      const body = {content: this.state.inputText, type: this.state.type};
+      post("api/habit", body).then((habit) => {
+        this.addNewHabit(habit);
+      });
+    }
+
   };
 
   updateHabitIsDone = (habitId, isDone) => {
@@ -82,7 +85,7 @@ class HabitList extends Component {
 
   sameWeek = (date1, date2) => {
     // sunday is the beginning of the week
-    
+
     var date1Sunday = new Date();
     var date2Sunday = new Date();
 
@@ -122,7 +125,7 @@ class HabitList extends Component {
             todaysDate.getDate() !== parsedDate.getDate()) {
             habitObj.date = todaysDate;
             habitObj.isDone = false;
-              
+
             habitsToReset.push({id: habitObj._id, isDone: false, date: todaysDate});
           }
         }
@@ -131,7 +134,7 @@ class HabitList extends Component {
             habitObj.date = todaysDate;
             habitObj.isDone = false;
             console.log("resetting weekly");
-              
+
             habitsToReset.push({id: habitObj._id, isDone: false, date: todaysDate});
           }
         }
@@ -141,11 +144,11 @@ class HabitList extends Component {
             habitObj.date = todaysDate;
             habitObj.isDone = false;
             console.log("resetting monthly");
-              
+
             habitsToReset.push({id: habitObj._id, isDone: false, date: todaysDate});
           }
         }
-        
+
         habits.push(habitObj);
       });
 
@@ -183,15 +186,22 @@ class HabitList extends Component {
       <div className="habitlist-container">
 
         <div className="left-container">
-          <div data-tut="habittabs"> 
+<<<<<<< HEAD
+          <div data-tut="habittabs">
           <button className="button" onClick={this.dailyTab} type="button">daily</button>
           <button className="button" onClick={this.weeklyTab} type="button">weekly</button>
           <button className="button" onClick={this.monthlyTab} type="button">monthly</button>
+=======
+          <div className="habittabs" data-tut="habittabs">
+            <button className="button" onClick={this.dailyTab} type="button">daily</button>
+            <button className="button" onClick={this.weeklyTab} type="button">weekly</button>
+            <button className="button" onClick={this.monthlyTab} type="button">monthly</button>
+>>>>>>> d967153e87a7a29fbc0e092c339e1ae53a034b8b
           </div>
           <div className="panel">
 
             <div>{this.state.title}</div>
-          
+
             {this.state.habits.map(item => (
             <Habit
                 key={`Habit_${item._id}`}
@@ -202,7 +212,8 @@ class HabitList extends Component {
             />
             ))}
 
-            
+
+<<<<<<< HEAD
           </div>
 
           <div className="newhabitandbutton" data-tut="newhabit">
@@ -221,10 +232,29 @@ class HabitList extends Component {
                   onClick={this.submitHabit}
                 />
             </form>
+=======
+>>>>>>> d967153e87a7a29fbc0e092c339e1ae53a034b8b
           </div>
-        
-        </div>  
-          
+
+          <form className="newhabitandbutton" data-tut="newhabit">
+              <input
+                type="text"
+                className="text"
+                placeholder={"Add a new " + this.state.type + " habit"}
+                value={this.state.inputText}
+                onChange={this.handleInputChange}
+              />
+              <input
+                type="submit"
+                className="button"
+                value="+"
+                onClick={this.submitHabit}
+              />
+          </form>
+
+        </div>
+
+<<<<<<< HEAD
         <div>
           <div className="panel2" data-tut="habitbalance">
             <div className="balance">
@@ -232,9 +262,16 @@ class HabitList extends Component {
               <img src={sanddollar} alt="sanddollar"></img>
             </div>
             <div>Use sanddollars in the store to buy fish for your aquarium.</div>
+=======
+        <div className="panel2" data-tut="habitbalance">
+          <div className="balance">
+            <div>Balance: {this.state.balance}</div>
+            <img src={sanddollar} alt="sanddollar"></img>
+>>>>>>> d967153e87a7a29fbc0e092c339e1ae53a034b8b
           </div>
+          <div>Use sanddollars in the store to buy fish for your aquarium.</div>
         </div>
-        
+
       </div>
     );
   }
