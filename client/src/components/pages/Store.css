@@ -23,7 +23,7 @@ html {
     bottom: 11.91%;
     z-index: 100;
     z-index: 1;
-
+    max-width: 90vw;
     /* background: #F6F7FA; */
 
     /* border: 6px solid #CFD9E4; */

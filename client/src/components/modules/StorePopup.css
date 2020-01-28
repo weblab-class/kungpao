@@ -6,6 +6,11 @@
     left: 0;
 }
 
+.btn-containers {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 
 .store-popup-window {
     position: absolute;
@@ -34,6 +39,8 @@
     background-color:  rgba(255, 255, 255, 0.3);
     align-content: center;
     border-radius: 5px;
+    border-color: gray;
     font-family: "Quicksand";
     color: black;
+    font-size: 10px;
 }
