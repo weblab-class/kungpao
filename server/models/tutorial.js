@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const TutorialSchema = new mongoose.Schema({
     googleid: String,
+    done: Boolean,
     //creator_id: String,
     //money: Number,
 });

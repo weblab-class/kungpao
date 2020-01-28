@@ -43,7 +43,7 @@ function CustomChatbot(props) {
     const fishOfferings = props.fish.map((f,i) => {
       return {
         value: f,
-        label: f.name + "$#$" + "$" + f.price + "$#$"+props.displayFish(f.type),
+        label: f.name + "$#$" + " $" + f.price + "$#$"+props.displayFish(f.type),
         trigger: props.money >= f.price ? "sure?" : "poor"
       }
     })

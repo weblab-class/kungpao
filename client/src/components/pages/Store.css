@@ -75,7 +75,7 @@ html {
     /* left: 83%; */
     right: 5.62%;
     top: 15.31%;
-    width: 80px;
+    width: fit-content;
     flex-grow: 1;
     border: 1px solid white;
     border-radius: 10px;

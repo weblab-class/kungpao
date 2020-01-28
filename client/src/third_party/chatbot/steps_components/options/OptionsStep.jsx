@@ -22,7 +22,7 @@ class OptionsStep extends Component {
     if (label.includes('$#$')) {
       const [text, price, pic] = label.split('$#$')
       labelRender = (<div><div><span style={{fontFamily: '\'Quicksand\', sans-serif', "text-align": "left"}}>{text}</span>
-      <span style={{"text-align": "right"}}>{price}</span></div>
+      <span style={{fontFamily: '\'Quicksand\', sans-serif', "text-align": "right"}}>{price}</span></div>
       <img src={pic} style={{"height": "100px"}}></img></div>);
     } else {
       labelRender = label
@@ -32,7 +32,7 @@ class OptionsStep extends Component {
       <Option key={value} className="rsc-os-option">
         <OptionElement
           className="rsc-os-option-element"
-          style={bubbleOptionStyle}
+          style={bubbleOptionStyle, {fontFamily: '\'Quicksand\', sans-serif'}}
           user={user}
           onClick={() => this.onOptionClick({ value })}
         >
