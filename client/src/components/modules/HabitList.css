@@ -68,3 +68,7 @@
     width: 50px;
     margin: 10px 0 10px 10px;
 }
+
+.newhabitandbutton .button:hover {
+    cursor: pointer;
+}
