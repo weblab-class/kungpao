@@ -106,13 +106,13 @@ class HabitList extends Component {
     var habits = [];
     var todaysDate = new Date();
     if (type === "daily") {
-      this.setState( { title: toDay(todaysDate) });
+      this.setState( { type: type, title: toDay(todaysDate) });
     }
     else if (type === "weekly") {
-      this.setState( { title: toWeek(todaysDate) });
+      this.setState( { type: type, title: toWeek(todaysDate) });
     }
     else {
-      this.setState( { title: toMonth(todaysDate) });
+      this.setState( { type: type, title: toMonth(todaysDate) });
     }
     get("/api/habit", {type: type} ).then((habitObjs) => {
       habitObjs.map((habitObj) => {
@@ -149,7 +149,7 @@ class HabitList extends Component {
         habits.push(habitObj);
       });
 
-      this.setState( { habits: habits, type: type });
+      this.setState( { habits: habits });
 
 
       for (var index in habitsToReset) {
