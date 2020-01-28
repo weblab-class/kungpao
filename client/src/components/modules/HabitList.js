@@ -56,10 +56,13 @@ class HabitList extends Component {
 
   submitHabit = (event) => {
     event.preventDefault();
-    const body = {content: this.state.inputText, type: this.state.type};
-    post("api/habit", body).then((habit) => {
-      this.addNewHabit(habit);
-    });
+    if (this.state.inputText.length !== 0) {
+      const body = {content: this.state.inputText, type: this.state.type};
+      post("api/habit", body).then((habit) => {
+        this.addNewHabit(habit);
+      });
+    }
+    
   };
 
   updateHabitIsDone = (habitId, isDone) => {
