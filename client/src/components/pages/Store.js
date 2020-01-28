@@ -115,9 +115,11 @@ class Store extends Component {
   }
 
   restartConversation() {
+    console.log(this.state.name);
       this.setState({
         random: Math.random(),
-        showChat: false
+        showChat: false,
+        name: this.state.name,
       })
     const contextThis = this;
     setTimeout(() => {
@@ -128,11 +130,11 @@ class Store extends Component {
     }, 500)
   }
 
-    changeName(name){
-      post("/api/name", {name: name}).then((name)=>{
+    changeName(nameObj){
+      post("/api/name", {name: nameObj}).then((name)=>{
         console.log("setName!");
         this.setState({
-          name: name,
+          name: nameObj,
         });
       });
     }

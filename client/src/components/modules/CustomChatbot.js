@@ -28,6 +28,7 @@ function CustomChatbot(props) {
 
         }
         if(props.name==null){
+          console.log('heulo');
           props.changeName(response.values[0]);
         }
         props.endConversationCallback()

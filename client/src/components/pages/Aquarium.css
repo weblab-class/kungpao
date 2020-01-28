@@ -73,7 +73,7 @@ img.fish {
     max-width: 5%;
     max-height: 5%;
     margin-bottom: 0;
-    margin-top: 80vh;
+    margin-top: 70%;
     animation: floatUp;
     animation-duration: 10s;
     animation-iteration-count: infinite;
@@ -84,19 +84,19 @@ img.fish {
     max-width: 2%;
     max-height: 2%;
     margin-bottom: 0;
-    margin-top: 80vh;
+    margin-top: 70%;
     animation: floatUp2;
     animation-duration: 8s;
     animation-iteration-count: infinite;
   }
 
   @keyframes floatUp {
-    from {margin-top: 80vh;}
+    from {margin-top: 70%;}
     to {margin-left: 200px; margin-top: 0vh;}
   }
 
   @keyframes floatUp2 {
-    from {margin-top: 50vh; margin-left:10px;}
+    from {margin-top: 70%; margin-left:10px;}
     to {margin-left: 250px; margin-top: 10vh;}
   }
 
