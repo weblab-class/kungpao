@@ -74,7 +74,7 @@ html {
     position: absolute;
     /* left: 83%; */
     right: 5.62%;
-    top: 15.31%;
+    margin-bottom: 5px;
     width: fit-content;
     flex-grow: 1;
     border: 1px solid white;
