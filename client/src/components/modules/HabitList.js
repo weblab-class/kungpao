@@ -201,23 +201,25 @@ class HabitList extends Component {
             />
             ))}
 
-            <div className="newhabitandbutton" >
-              <form>
-                  <input
-                    type="text"
-                    className="text"
-                    placeholder={"Add a new " + this.state.type + " habit"}
-                    value={this.state.inputText}
-                    onChange={this.handleInputChange}
-                  />
-                  <input
-                    type="submit"
-                    className="button"
-                    value="+"
-                    onClick={this.submitHabit}
-                  />
-              </form>
-            </div>
+            
+          </div>
+
+          <div className="newhabitandbutton" >
+            <form>
+                <input
+                  type="text"
+                  className="text"
+                  placeholder={"Add a new " + this.state.type + " habit"}
+                  value={this.state.inputText}
+                  onChange={this.handleInputChange}
+                />
+                <input
+                  type="submit"
+                  className="button"
+                  value="+"
+                  onClick={this.submitHabit}
+                />
+            </form>
           </div>
         
         </div>  

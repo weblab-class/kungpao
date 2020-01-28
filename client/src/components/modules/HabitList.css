@@ -50,11 +50,12 @@
 
 .newhabitandbutton {
     display: flex;
+    padding: 0 10px;
 }
 
 .newhabitandbutton .text {
     position: relative;
-    width: 320px;
+    width: 360px;
     background-color: #FFFFFF;
     padding: 10px 10px;
     margin: 10px 0;
