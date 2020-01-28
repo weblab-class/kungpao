@@ -183,10 +183,11 @@ class HabitList extends Component {
       <div className="habitlist-container">
 
         <div className="left-container">
+          <div data-tut="habittabs"> 
           <button className="button" onClick={this.dailyTab} type="button">daily</button>
           <button className="button" onClick={this.weeklyTab} type="button">weekly</button>
           <button className="button" onClick={this.monthlyTab} type="button">monthly</button>
-
+          </div>
           <div className="panel">
 
             <div>{this.state.title}</div>
@@ -204,7 +205,7 @@ class HabitList extends Component {
             
           </div>
 
-          <div className="newhabitandbutton" >
+          <div className="newhabitandbutton" data-tut="newhabit">
             <form>
                 <input
                   type="text"
@@ -225,7 +226,7 @@ class HabitList extends Component {
         </div>  
           
         <div>
-          <div className="panel2">
+          <div className="panel2" data-tut="habitbalance">
             <div className="balance">
               <div>Balance: {this.state.balance}</div>
               <img src={sanddollar} alt="sanddollar"></img>

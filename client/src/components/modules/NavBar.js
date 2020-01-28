@@ -49,23 +49,23 @@ class NavBar extends Component {
         <div className="NavBar-title">
               Habit Aquarium
           </div>
-          <div className="menu-item">
+          <div className="menu-item" data-tut="navbaraquarium">
           <NavLink to="/" className="NavBar-link">
             Aquarium
           </NavLink>
           </div>
-          <div className="menu-item">
+          <div className="menu-item" data-tut="navbarhabits">
           <NavLink to="/habits" className="NavBar-link">
             Habits
           </NavLink>
           </div>
           
-          <div className="menu-item">
+          <div className="menu-item" data-tut="navbarstore">
           <NavLink to="/store" className="NavBar-link">
             Store
           </NavLink>
           </div>
-          <div className="menu-item">
+          <div className="menu-item" data-tut="navbarinventory">
           <NavLink to="/inventory" className="NavBar-link">
             Inventory
           </NavLink>
