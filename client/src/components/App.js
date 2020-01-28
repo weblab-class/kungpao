@@ -112,8 +112,8 @@ class App extends Component {
       fishDie: false,
       lastDead: undefined,
       deadFish: [],
-      isTourOpen: true,
-      completedTutorial: true,
+      isTourOpen: null,
+      completedTutorial: null,
     };
   }
 
@@ -206,7 +206,8 @@ class App extends Component {
         console.log(this.state.notplaced[0]);
       });
       get("/api/tutorial", {googleid: user.googleid}).then((f) => {
-        if (f.name == null) {
+        console.log(f);
+        if (f.googleid == null) {
           console.log("never been here")
           console.log(this.state.isTourOpen)
           this.setState({completedTutorial: false, isTourOpen: true})
@@ -452,10 +453,18 @@ class App extends Component {
     })
   }
 
-  closeTour = () =>{
+  closeTour = () => {
     this.setState({
       isTourOpen: false,
     })
+    if (!this.state.completedTutorial){
+      const body = {googleid: this.state.gId};
+      post("/api/tutorial", body).then(res => console.log(res));
+      this.setState({
+        completedTutorial: true,
+      })
+      console.log("i did the tutorial")
+    }
   };
 
   openTour = () => {

@@ -58,7 +58,7 @@ router.post("/initsocket", (req, res) => {
 // anything else falls to this "not found" case
 
 router.get("/tutorial",(req,res) => {
-  Tutorial.find({googleid: req.query.googleid}).then((lol) =>{
+  Tutorial.findOne({googleid: req.query.googleid}).then((lol) =>{
     res.send(lol);
   });
 });
