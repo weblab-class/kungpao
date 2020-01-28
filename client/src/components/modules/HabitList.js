@@ -184,9 +184,9 @@ class HabitList extends Component {
 
         <div className="left-container">
           <div className="habittabs" data-tut="habittabs">
-            <button className="button" onClick={this.dailyTab} type="button">daily</button>
-            <button className="button" onClick={this.weeklyTab} type="button">weekly</button>
-            <button className="button" onClick={this.monthlyTab} type="button">monthly</button>
+            <button className={`button ${this.state.type === 'daily' ? 'active' : 'inactive'}`} onClick={this.dailyTab} type="button">daily</button>
+            <button className={`button ${this.state.type === 'weekly' ? 'active' : 'inactive'}`} onClick={this.weeklyTab} type="button">weekly</button>
+            <button className={`button ${this.state.type === 'monthly' ? 'active' : 'inactive'}`} onClick={this.monthlyTab} type="button">monthly</button>
           </div>
           <div className="panel">
 
