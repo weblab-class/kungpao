@@ -17,7 +17,7 @@ class HabitList extends Component {
       type: "daily",
       title: "",
       inputText: "",
-      balance: 0
+      balance: null,
     };
   }
 
@@ -106,13 +106,13 @@ class HabitList extends Component {
     var habits = [];
     var todaysDate = new Date();
     if (type === "daily") {
-      this.setState( { title: toDay(todaysDate) });
+      this.setState( { type: type, title: toDay(todaysDate) });
     }
     else if (type === "weekly") {
-      this.setState( { title: toWeek(todaysDate) });
+      this.setState( { type: type, title: toWeek(todaysDate) });
     }
     else {
-      this.setState( { title: toMonth(todaysDate) });
+      this.setState( { type: type, title: toMonth(todaysDate) });
     }
     get("/api/habit", {type: type} ).then((habitObjs) => {
       habitObjs.map((habitObj) => {
@@ -149,7 +149,7 @@ class HabitList extends Component {
         habits.push(habitObj);
       });
 
-      this.setState( { habits: habits, type: type });
+      this.setState( { habits: habits });
 
 
       for (var index in habitsToReset) {
@@ -225,8 +225,8 @@ class HabitList extends Component {
 
         <div className="panel2" data-tut="habitbalance">
           <div className="balance">
-            <div>Balance: {this.state.balance}</div>
             <img src={sanddollar} alt="sanddollar"></img>
+            <div>{this.state.balance}</div>
           </div>
           <div>Use sanddollars in the store to buy fish for your aquarium.</div>
         </div>

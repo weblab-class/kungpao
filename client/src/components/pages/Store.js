@@ -5,6 +5,7 @@ import { Link } from "@reach/router";
 import {css} from "@emotion/core";
 import CircleLoader from "react-spinners/CircleLoader";
 import StorePopup from "../modules/StorePopup.js";
+import sanddollar from "../data/sanddollar.png";
 
 
 import "../../utilities.css";
@@ -188,8 +189,10 @@ class Store extends Component {
 
       {/* {this.state.showStorePopup ? <StorePopup popText="Return to your Aquarium or talk to Ray again!"
           onCloseP={this.toggleStorePopup}></StorePopup> : null} */}
+
         <div className = "Money">
           {this.state.money}
+          <img src={sanddollar} alt="sanddollar"></img>
         </div>
         <div className="ChatContainer" style={{"padding-top": "60px"}}>
           {(this.state.fishtoday.length > 0 && this.state.money > -1 && this.state.name != "#@!" && this.state.showChat) ?

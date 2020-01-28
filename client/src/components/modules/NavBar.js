@@ -48,7 +48,7 @@ class NavBar extends Component {
       <div className="NavBar-container">
       <div className="NavBar-sidebar">
         <div className="NavBar-title">
-              Habit Aquarium
+              <Link className="title-link" to="/">Habit Aquarium</Link>
           </div>
           <div className="menu-item">
           <NavLink to="/" className="NavBar-link" data-tut="navbaraquarium">

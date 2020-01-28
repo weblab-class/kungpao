@@ -149,7 +149,7 @@ router.post("/buyfish", (req, res) => {
 
 router.get("/todaysfish", async (req, res) => {
   const dateNow = new Date();
-  const dateNowString = `aaaa${dateNow.getFullYear()}${dateNow.getMonth()}${dateNow.getDate()}`
+  const dateNowString = `aaaaaa${dateNow.getFullYear()}${dateNow.getMonth()}${dateNow.getDate()}`
   const todayFishes = await TodayFish.findOne({date: dateNowString});
   if (todayFishes !== null) {
     return res.json(todayFishes.fishes);
@@ -237,16 +237,16 @@ router.get("/todaysfish", async (req, res) => {
   },
 ];
   //randomizes order of allFish array
-  for(let i = allFish.length - 1; i > 0; i--){
-    const j = Math.floor(Math.random() * i)
-    const temp = allFish[i]
-    allFish[i] = allFish[j]
-    allFish[j] = temp
-  }
-  let todaysFish = allFish.slice(-3);
-  let testfish = [1,2,3];
-
-  console.log(todaysFish)
+  // for(let i = allFish.length - 1; i > 0; i--){
+  //   const j = Math.floor(Math.random() * i)
+  //   const temp = allFish[i]
+  //   allFish[i] = allFish[j]
+  //   allFish[j] = temp
+  // }
+  // let todaysFish = allFish.slice(-3);
+  // let testfish = [1,2,3];
+  let todaysFish = allFish;
+  // console.log(todaysFish)
   await TodayFish.create({
     date: dateNowString,
     fishes: todaysFish

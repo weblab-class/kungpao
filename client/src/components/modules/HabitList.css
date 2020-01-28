@@ -4,7 +4,7 @@
     margin-top: 5vh;
     margin-left: 10vw;
     margin-right: 10vw;
-    
+
     font-size: 15px;
     font-family: 'Quicksand', sans-serif;
     z-index: 2;
@@ -19,10 +19,11 @@
 .panel {
     max-height: 40vh;
     padding: 10px 0 0 0;
-    
-    overflow-y: scroll;
 
     color: rgb(238, 238, 238);
+
+    border-radius: 10px;
+    overflow-y: auto;
 }
 
 .panel2 {
@@ -48,7 +49,6 @@
 .balance img {
     width: 20px;
     height: 20px;
-    margin: 0 10px;
 }
 
 .newhabitandbutton {
@@ -72,6 +72,8 @@
 
 .newhabitandbutton .button {
     margin: 10px 0 10px 10px;
+    font-size: 24px;
+    padding: 1px 0 5px 0;
     width: 50px;
 }
 
@@ -97,4 +99,4 @@
 .habittabs .inactive {
     border-width: 3px;
     border-color: transparent;
-}
+} 
