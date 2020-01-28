@@ -6,11 +6,13 @@
     position: relative;
     display: flex;
     align-items: center;
-    background-color: #FFFFFF;
     padding: 10px 0;
     margin: 10px 0;
     border-radius: 10px;
     z-index: 1;
+
+    background-color: rgba(255, 255, 255, 0.3);
+    color: rgb(238, 238, 238);
 }
 
 .habit-container input {
@@ -29,8 +31,8 @@
     width: 15px;
     margin: 0 15px;
     border-radius: 100%;
-    border: #00CBD9 3px solid;
-    background-color: #FFFFFF;
+    border: rgb(238, 238, 238) 2px solid;
+    background-color: none;
 }
 
 .checkmark:hover {
@@ -43,17 +45,18 @@ label:hover {
 
 /* When the checkbox is checked*/
 .habit-container input:checked ~ .checkmark {
-    background-color: #00CBD9;
+    background-color: rgb(238, 238, 238);
 }
 
 .habit-container button {
     position: absolute;
-    right: 10px;
+    right: 5px;
     background-color: transparent;
     border: none;
-    color: #00CBD9;
-    font-size: 15px;
-    font-weight: bold;
     z-index: 1;
-    font-family: "Quicksand";
+}
+
+.close {
+    padding: 3px 0 0 0;
+    width: 12px;
 }

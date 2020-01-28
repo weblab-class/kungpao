@@ -629,7 +629,7 @@ class ChatBot extends Component {
     const header = headerComponent || (
       <Header className="rsc-header">
         <HeaderTitle className="rsc-header-title">{headerTitle}</HeaderTitle>
-        <Link to="/" style={{color:"white", "text-decoration":"none"}}>Return to Aquarium</Link>
+        <Link to="/" style={{color:"white", "text-decoration":"none", "border": "1px solid white", "border-radius": "10px", "padding": "5px"}}>Return to Aquarium</Link>
         {floating && (
           <HeaderIcon className="rsc-header-close-button" onClick={() => this.toggleChatBot(false)}>
             <CloseIcon />

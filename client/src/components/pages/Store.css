@@ -23,7 +23,7 @@ html {
     bottom: 11.91%;
     z-index: 100;
     z-index: 1;
-
+    max-width: 90vw;
     /* background: #F6F7FA; */
 
     /* border: 6px solid #CFD9E4; */
@@ -70,19 +70,24 @@ html {
 
 .Money {
   /* TODO: add min max width, figure out size */
-    box-sizing: border-box;
-    z-index: -1;
+    z-index: 5;
     position: absolute;
-    left: 90%;
+    /* left: 83%; */
     right: 5.62%;
     top: 15.31%;
+    width: 80px;
     flex-grow: 1;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 5px 10px 5px 10px;
+    color: white;
+    font-family: "Quicksand";
+    
 
-    background: #F6F7FA;
-    border: 1px solid #CFD9E4;
-    border-radius: 4px;
+}
 
-
+.Money::before {
+  content: "Balance: ";
 }
 
 .return-button {
