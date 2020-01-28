@@ -10,3 +10,5 @@ Team: Claire Cheng, Andrea Lin, Cindy Wang
 fish motion in the aquarium: https://medium.com/code-monkey/react-aquarium-3b61ce79abae
 
 reactour for the tutorial: https://github.com/elrumordelaluz/reactour
+
+the octopus and the seahorse drawings: Jaeho Kim MIT '20
