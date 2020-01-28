@@ -21,3 +21,7 @@ html {
     font-size: 14px;
     font-family: 'Quicksand', sans-serif;
 }
+
+button:hover {
+    cursor: pointer;
+}
