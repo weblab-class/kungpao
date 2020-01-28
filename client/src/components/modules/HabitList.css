@@ -1,46 +1,45 @@
 .habitlist-container {
     display: flex;
-    flex-direction: row;
     justify-content: space-around;
-
+    margin-top: 5vh;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    
     font-size: 14px;
     font-family: 'Quicksand', sans-serif;
     z-index: 2;
 }
 
+.left-container {
+    flex: 2;
+    margin: 0 10vw 0 0;
+}
+
 .panel {
-    background-color: #F6F7FA;
+    max-height: 50vh;
     padding: 10px 20px;
-    margin: 10px;
-    width: 400px;
-    height: fit-content;
-    max-height: 300px;
-    position: relative;
+
+    background-color: #F6F7FA;
+    
     border-radius: 10px;
     z-index: 1;
     overflow-y: scroll;
-    /* scroll-margin-right: 5px; */
 }
 
 .panel2 {
-    background-color: #F6F7FA;
+    flex: 1;
+    height: fit-content;
     padding: 10px 20px;
-    margin: 10px;
-    width: 400px;
-    height: 100px;
-    position: relative;
     border-radius: 10px;
-    z-index: 1;
-}
 
-.left-container {
-    max-height: 100vh;
+    background-color: #F6F7FA;
+    
+    z-index: 1;
 }
 
 .balance {
     display: flex;
     align-items: center;
-    margin: 10px 0;
 }
 
 .balance img {
@@ -51,15 +50,21 @@
 
 .newhabitandbutton {
     display: flex;
-    padding: 0 10px;
+    justify-content: space-between;
+    height: fit-content;
+    align-items: stretch;
+    /* padding: 0 10px; */
+    /* 
+    width: 400px;
+     */
+    /* background: gray; */
 }
 
 .newhabitandbutton .text {
-    position: relative;
-    width: 360px;
+    flex: 1;
+    margin: 10px 10px 10px 0;
+    padding: 0 10px;
     background-color: #FFFFFF;
-    padding: 10px 10px;
-    margin: 10px 0;
     border-radius: 10px;
     border: none;
     font-size: 14px;
@@ -67,10 +72,19 @@
 }
 
 .newhabitandbutton .button {
-    width: 50px;
     margin: 10px 0 10px 10px;
+    width: 50px;
 }
 
 .newhabitandbutton .button:hover {
     cursor: pointer;
+}
+
+.habittabs {
+    display: flex;
+    padding: 10px 0;
+}
+
+.habittabs button {
+    margin: 0 10px 0 0;
 }
