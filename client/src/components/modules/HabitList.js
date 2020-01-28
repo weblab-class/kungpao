@@ -65,12 +65,38 @@ class HabitList extends Component {
   updateHabitIsDone = (habitId, isDone) => {
     const body = {id: habitId, isDone: isDone, date: new Date()};
     post("/api/updateHabit", body).then((habit) => {
-      post("/api/incrementMoney", {amount: isDone ? 1 : -1}).then((money) => {
+      var amount = isDone ? 1 : -1;
+      if (this.state.type === "weekly") {
+        amount = amount * 5;
+      }
+      else if (this.state.type === "monthly") {
+        amount = amount * 15;
+      }
+      post("/api/incrementMoney", {amount: amount}).then((money) => {
         this.setState({
-          balance: this.state.balance + (isDone ? 1 : -1),
+          balance: this.state.balance + amount,
         });
       })
     });
+  }
+
+  sameWeek = (date1, date2) => {
+    // sunday is the beginning of the week
+    
+    var date1Sunday = new Date();
+    var date2Sunday = new Date();
+
+    var dayOfWeek1 = date1.getDay();
+    var dayOfWeek2 = date2.getDay();
+
+    const millisecondsPerDay = 1000 * 60 * 60 * 24;
+
+    date1Sunday.setTime(date1.getTime() - millisecondsPerDay * dayOfWeek1);
+    date2Sunday.setTime(date2.getTime() - millisecondsPerDay * dayOfWeek2);
+
+    return date1Sunday.getFullYear() === date2Sunday.getFullYear() &&
+          date1Sunday.getMonth() === date2Sunday.getMonth() &&
+          date1Sunday.getDate() === date2Sunday.getDate();
   }
 
   reloadHabitList = (type) => {
@@ -90,14 +116,36 @@ class HabitList extends Component {
       habitObjs.map((habitObj) => {
         var parsedDate = new Date(habitObj.date);
         var todaysDate = new Date();
-        if (habitObj.date === undefined || todaysDate.getFullYear() !== parsedDate.getFullYear() ||
+        if (type === "daily") { // reset dailies every day
+          if (habitObj.date === undefined || todaysDate.getFullYear() !== parsedDate.getFullYear() ||
             todaysDate.getMonth() !== parsedDate.getMonth() ||
             todaysDate.getDate() !== parsedDate.getDate()) {
-          habitObj.date = todaysDate;
-          habitObj.isDone = false;
-            
-          habitsToReset.push({id: habitObj._id, isDone: false, date: todaysDate});
+            habitObj.date = todaysDate;
+            habitObj.isDone = false;
+              
+            habitsToReset.push({id: habitObj._id, isDone: false, date: todaysDate});
+          }
         }
+        else if (type === "weekly") { //reset weeklies every week
+          if (!this.sameWeek(todaysDate, parsedDate)) {
+            habitObj.date = todaysDate;
+            habitObj.isDone = false;
+            console.log("resetting weekly");
+              
+            habitsToReset.push({id: habitObj._id, isDone: false, date: todaysDate});
+          }
+        }
+        else { // reset monthlies every month
+          if (habitObj.date === undefined || todaysDate.getFullYear() !== parsedDate.getFullYear() ||
+            todaysDate.getMonth() !== parsedDate.getMonth()) {
+            habitObj.date = todaysDate;
+            habitObj.isDone = false;
+            console.log("resetting monthly");
+              
+            habitsToReset.push({id: habitObj._id, isDone: false, date: todaysDate});
+          }
+        }
+        
         habits.push(habitObj);
       });
 

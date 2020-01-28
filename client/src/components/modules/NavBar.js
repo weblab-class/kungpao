@@ -17,7 +17,6 @@ const NavLink = props => (
       return {
         style: {
         textShadow: isCurrent ? "0.5px 0.5px 0 white" : "none",
-        paddingLeft: isCurrent ? "15px" : "0px"
         }
       };
     }}
@@ -47,6 +46,9 @@ class NavBar extends Component {
       <>
       <div className="NavBar-container">
       <div className="NavBar-sidebar">
+        <div className="NavBar-title">
+              Habit Aquarium
+          </div>
           <div className="menu-item">
           <NavLink to="/" className="NavBar-link">
             Aquarium
@@ -57,6 +59,7 @@ class NavBar extends Component {
             Habits
           </NavLink>
           </div>
+          
           <div className="menu-item">
           <NavLink to="/store" className="NavBar-link">
             Store
@@ -70,15 +73,13 @@ class NavBar extends Component {
           <div className="menu-item" onClick={this.logout}>
             <a className="NavBar-link" href="#" >Logout</a>
           </div>
-        </div>
-        <div className="NavBar-title-container">
-          <div className="NavBar-title">
-              Habit Aquarium
-          </div>
-        </div>
+      </div>
+        {/* <div className="NavBar-title-container">
+          
+        </div> */}
         <div className="logout-button">
         {this.props.userId ? (
-          <div></div>
+          null
           ) : (
             <GoogleLogin
               clientId={GOOGLE_CLIENT_ID}

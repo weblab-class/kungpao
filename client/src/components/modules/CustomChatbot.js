@@ -116,7 +116,17 @@ function CustomChatbot(props) {
        id: "Done",
        message: "Confirmed! You can choose to place your fish in your aquarium right away by clicking 'Place Items' on the Aquarium tab, or save it for later.",
        end: true,
+       //trigger: "buyanother",
       },
+      // {
+      //   id: "buyanother",
+      //   options: [{
+      //     value: "buyanother",
+      //     trigger: myName==null ? "firsttimereoffer":"offer",
+      //     label: "buy another fish",
+      //     end: true,
+      //   }],
+      // },
       {
         id: "sure?",
         message: "Are you sure?",
@@ -129,12 +139,12 @@ function CustomChatbot(props) {
         options: [{
           value: "confirm",
           trigger: "Done",
-          label: "confirm",
+          label: "Confirm",
         },
         {
           value: "No",
           trigger: myName==null ? "firsttimereoffer":"reoffer",
-          label: "cancel",
+          label: "Cancel",
 
         },
           {

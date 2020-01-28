@@ -8,11 +8,12 @@
     border-radius: 18px;
     z-index: 1;
     position:relative;
-    margin: 6px;
+    margin: 5px;
 }
 
 .InventoryCard:hover {
     background: #FFFFFF;
+    cursor: pointer;
 }
 
 .InventoryCard-price {
@@ -57,7 +58,7 @@
 .square:after {
     content: "";
     display: block;
-    padding-bottom: 100%;
+    /* padding-bottom: 100%; */
 }
 
 .content {

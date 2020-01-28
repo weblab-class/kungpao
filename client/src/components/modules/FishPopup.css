@@ -6,7 +6,7 @@
     background-color: rgba(255, 255, 255, 0.3);
     height: fit-content;
     max-height: 400px;
-    overflow-y: scroll;
+    
     width: 400px;
     padding: 5px 10px 10px 5px;
     margin-left: calc(50vw - 200px);
@@ -20,6 +20,14 @@
     animation-duration: 0.1s;
     font-family: "Quicksand";
     z-index: 2;
+    
+}
+
+.place-fish-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    overflow-y: scroll;
 }
 
 .no-items {
@@ -43,6 +51,10 @@
     
 }
 
+.closeButton:hover {
+    cursor: pointer;
+}
+
 .fishButton {
     position: 'center';
     height: 40px;
@@ -54,4 +66,8 @@
     font-family: "Quicksand";
     z-index: 2;
     color: white;
+}
+
+.fishButton:hover {
+    cursor: pointer;
 }
