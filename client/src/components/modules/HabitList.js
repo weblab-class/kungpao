@@ -25,7 +25,7 @@ class HabitList extends Component {
     const todaysDate = new Date();
     this.setState( { title: toDay(todaysDate) });
     this.reloadHabitList("daily");
-    
+
     get("/api/money").then((moneyObj) => {
       this.setState( { balance: moneyObj.money });
     });
@@ -61,7 +61,7 @@ class HabitList extends Component {
         this.addNewHabit(habit);
       });
     }
-    
+
   };
 
   updateHabitIsDone = (habitId, isDone) => {
@@ -84,7 +84,7 @@ class HabitList extends Component {
 
   sameWeek = (date1, date2) => {
     // sunday is the beginning of the week
-    
+
     var date1Sunday = new Date();
     var date2Sunday = new Date();
 
@@ -124,7 +124,7 @@ class HabitList extends Component {
             todaysDate.getDate() !== parsedDate.getDate()) {
             habitObj.date = todaysDate;
             habitObj.isDone = false;
-              
+
             habitsToReset.push({id: habitObj._id, isDone: false, date: todaysDate});
           }
         }
@@ -145,7 +145,7 @@ class HabitList extends Component {
             habitsToReset.push({id: habitObj._id, isDone: false, date: todaysDate});
           }
         }
-        
+
         habits.push(habitObj);
       });
 
@@ -183,7 +183,7 @@ class HabitList extends Component {
       <div className="habitlist-container">
 
         <div className="left-container">
-          <div className="habittabs" data-tut="habittabs"> 
+          <div className="habittabs" data-tut="habittabs">
             <button className="button" onClick={this.dailyTab} type="button">daily</button>
             <button className="button" onClick={this.weeklyTab} type="button">weekly</button>
             <button className="button" onClick={this.monthlyTab} type="button">monthly</button>
@@ -191,7 +191,7 @@ class HabitList extends Component {
           <div className="panel">
 
             <div>{this.state.title}</div>
-          
+
             {this.state.habits.map(item => (
             <Habit
                 key={`Habit_${item._id}`}
@@ -202,7 +202,7 @@ class HabitList extends Component {
             />
             ))}
 
-            
+
           </div>
 
           <form className="newhabitandbutton" data-tut="newhabit">
@@ -220,9 +220,9 @@ class HabitList extends Component {
                 onClick={this.submitHabit}
               />
           </form>
-        
-        </div>  
-          
+
+        </div>
+
         <div className="panel2" data-tut="habitbalance">
           <div className="balance">
             <div>Balance: {this.state.balance}</div>
@@ -230,7 +230,7 @@ class HabitList extends Component {
           </div>
           <div>Use sanddollars in the store to buy fish for your aquarium.</div>
         </div>
-        
+
       </div>
     );
   }

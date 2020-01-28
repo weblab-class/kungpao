@@ -107,7 +107,7 @@ router.post("/deleteHabit", (req, res) => {
   Habit.deleteOne({"_id": ObjectID(req.body.id)}).then((habit) => res.send(habit));
 })
 
-// TODO: will not pass a security review. fix. 
+// TODO: will not pass a security review. fix.
 router.post("/incrementMoney", (req, res) => {
   Money.updateOne(
     {"creator_id": req.user._id},
@@ -232,7 +232,7 @@ router.get("/todaysfish", async (req, res) => {
     date: dateNowString,
     fishes: todaysFish
   })
-  
+
   res.send(todaysFish);
 });
 
@@ -244,7 +244,7 @@ router.get("/money", (req, res) => {
     else {
       res.send(m);
     }
-    
+
   });
 });
 
@@ -283,7 +283,7 @@ router.get("/name", (req, res) => {
     else {
       res.send(n);
     }
-    
+
   });
 });
 

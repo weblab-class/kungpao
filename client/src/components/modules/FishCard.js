@@ -37,13 +37,13 @@ class FishCard extends Component {
           <span className="FishCard-name">
             {this.props.fish.name}
           </span>
-          
+
           <span className="FishCard-price">
             {this.props.fish.price}
           </span>
           </div>
-          
-        </div>    
+
+        </div>
       </div>
     );
   }

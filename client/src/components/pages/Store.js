@@ -70,7 +70,7 @@ class Store extends Component {
                 this.setState({
                   money: res.money,
                 });
-            };   
+            };
         });
         get("/api/name").then((res) => {
           if(typeof res.name=='undefined' || res.name==null){
@@ -86,13 +86,13 @@ class Store extends Component {
               this.setState({
                 name: res.name,
               });
-          };   
+          };
       });
-          
+
     }
 
     changeMoney(price, previousmoney){
-      
+
       post("/api/incrementMoney", {amount: -price}).then((money) => {
         console.log("lose money " + money);
         this.setState({
@@ -140,20 +140,20 @@ class Store extends Component {
     addMessage(data){//work in progress
         this.setState((prevstate) => ({
             messages: prevstate.activeChat.messages.concat(data),
-            
+
           }));
-        
+
       }
-    
+
     sendMessage = (value) => {
         const body = { recipient: this.props.recipient, content: value };
         post("/api/message", body);
     };
 
     render() {
-        return ( 
+        return (
         // <div>
-        //     
+        //
         //     <div className="ChatContainer">
         //     Buy stuff with sand dollars.
         //     <button
@@ -168,19 +168,19 @@ class Store extends Component {
         //         <SingleMessage fishtoday={this.state.fishtoday} boughtFish={this.props.boughtFish} displayFish = {this.props.displayFish}/>
         //     </div>
 
-            
+
 
         //     </div>
-            
-            
+
+
         // </div>
       <>
       <div className="popup-holder">
         {(this.state.conversationRestartEligible ? (
           <StorePopup popText="Return to your Aquarium or talk to Ray again!"
           onCloseP={this.toggleStorePopup} restart={this.restartConversation} ></StorePopup>
-          
-          
+
+
           // console.log("hello?")
           // <a href="#" onClick={this.restartConversation} className="return-button">Talk to Ray again</a>
         ) : null)}
@@ -190,7 +190,6 @@ class Store extends Component {
           onCloseP={this.toggleStorePopup}></StorePopup> : null} */}
         <div className = "Money">
           {this.state.money}
-
         </div>
         <div className="ChatContainer" style={{"padding-top": "60px"}}>
           {(this.state.fishtoday.length > 0 && this.state.money > -1 && this.state.name != "#@!" && this.state.showChat) ?
@@ -214,9 +213,9 @@ class Store extends Component {
             <Fish key={i} image={this.props.displayFish(f.type)}/>
           ))}
 
-          
+
       </>
-            
+
         );
     }
 
