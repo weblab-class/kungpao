@@ -1,13 +1,15 @@
-.big-window {
+.big-store-window {
     width: 100vw;
     height: 100vh;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
 }
-.feed-window {
+
+
+.store-popup-window {
     position: absolute;
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 1);
     height: fit-content;
     max-height: 400px;
     overflow-y: auto;
@@ -19,7 +21,7 @@
     border-color: white;
     border-width: 2px;
     border-radius: 10px;
-    color: white;
+    color:black;
     animation: popIn;
     animation-duration: 0.1s;
     font-family: "Quicksand";
@@ -32,7 +34,6 @@
     background-color:  rgba(255, 255, 255, 0.3);
     align-content: center;
     border-radius: 5px;
-    font-family: "Quicksand"
+    font-family: "Quicksand";
+    color: black;
 }
-
-

@@ -4,6 +4,7 @@ import { get, post } from "../../utilities";
 import { Link } from "@reach/router";
 import {css} from "@emotion/core";
 import CircleLoader from "react-spinners/CircleLoader";
+import StorePopup from "../modules/StorePopup.js";
 
 
 import "../../utilities.css";
@@ -30,7 +31,8 @@ class Store extends Component {
             name: "#@!",
           random: Math.random(),
           conversationRestartEligible: false,
-          showChat: true
+          showChat: true,
+          showStorePopup: false,
         }
         this.changeMoney = this.changeMoney.bind(this);
         this.changeName = this.changeName.bind(this);
@@ -105,6 +107,12 @@ class Store extends Component {
       })
   }
 
+  toggleStorePopup = () => {
+    this.setState({
+      showStorePopup : !this.state.showStorePopup
+    })
+  }
+
   restartConversation() {
       this.setState({
         random: Math.random(),
@@ -167,10 +175,19 @@ class Store extends Component {
 
         // </div>
       <>
-
+      <div className="popup-holder">
         {(this.state.conversationRestartEligible ? (
-          <a href="#" onClick={this.restartConversation} className="return-button">Talk to Ray again</a>
+          <StorePopup popText="Return to your Aquarium or talk to Ray again!"
+          onCloseP={this.toggleStorePopup} restart={this.restartConversation} ></StorePopup>
+          
+          
+          // console.log("hello?")
+          // <a href="#" onClick={this.restartConversation} className="return-button">Talk to Ray again</a>
         ) : null)}
+        </div>
+
+      {/* {this.state.showStorePopup ? <StorePopup popText="Return to your Aquarium or talk to Ray again!"
+          onCloseP={this.toggleStorePopup}></StorePopup> : null} */}
         <div className = "Money">
           {this.state.money}
         </div>
@@ -195,6 +212,8 @@ class Store extends Component {
           {this.props.fishList.map((f, i) => (
             <Fish key={i} image={this.props.displayFish(f.type)}/>
           ))}
+
+          
       </>
 
         );
