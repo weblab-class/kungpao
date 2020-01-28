@@ -7,7 +7,7 @@ import Habits from "./pages/Habits.js";
 import Store from "./pages/Store.js";
 import Inventory from "./pages/Inventory.js";
 import Login from "./pages/Login.js";
-import Tour from 'reactour'
+import Tour from 'reactour';
 
 const GOOGLE_CLIENT_ID = "707474204069-ibaig6vr8u2gf995465eel35t6kf6u1r.apps.googleusercontent.com";
 const steps = [
