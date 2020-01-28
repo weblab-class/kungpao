@@ -30,6 +30,24 @@
     
 }
 
+.InventoryCardGroup2 {
+    z-index: 2;
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 90%;
+    height: 60%;
+    flex: none;
+    overflow-y: auto;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    padding: 10px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: white;
+}
+
 .fishGroup {
     width: 40%;
     align-content: center;
@@ -57,6 +75,7 @@
     border-style: solid;
     border-width: 3px;
     border-color: white;
+    overflow-y: auto;
 }
 
 .Inventory-sell-button {
@@ -85,6 +104,7 @@
     flex-direction: row;
     justify-content: flex-start;
     flex-wrap: wrap;
+    align-content: center;
     /* color: white; */
     
 }
@@ -95,7 +115,7 @@
 
 .none-selected {
     font-family: "Quicksand";
-    width: 120px;
+    width: fill;
     margin-left: calc(50% - 60px);
     margin-top: 20px;
     color: white;

@@ -140,8 +140,7 @@ class Inventory extends Component {
                 <div className="Inventory-selected-balance">
                 <p>Selected Balance: {this.state.selectedTotal}</p>
                 </div>
-                <div className="Inventory-selling-selected">
-                    <div className="InventoryCardGroup">
+                    <div className="InventoryCardGroup2">
                     
                         {this.state.selected.length == 0 ? <div className="none-selected">No fish selected</div> : 
                         this.state.selected.map((f) => (
@@ -153,7 +152,6 @@ class Inventory extends Component {
                         ))
                         }
                     </div>
-                </div>
             </div>
             
         </div>
