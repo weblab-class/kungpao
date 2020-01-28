@@ -144,7 +144,7 @@ router.post("/buyfish", (req, res) => {
 
 router.get("/todaysfish", async (req, res) => {
   const dateNow = new Date();
-  const dateNowString = `aaa${dateNow.getFullYear()}${dateNow.getMonth()}${dateNow.getDate()}`
+  const dateNowString = `aaaa${dateNow.getFullYear()}${dateNow.getMonth()}${dateNow.getDate()}`
   const todayFishes = await TodayFish.findOne({date: dateNowString});
   if (todayFishes !== null) {
     return res.json(todayFishes.fishes);
@@ -152,83 +152,83 @@ router.get("/todaysfish", async (req, res) => {
   console.log("fail");
   let allFish = [{
     "type": "turtle",
-    "price": 1,
-    "name": "turtle",
+    "price": 50,
+    "name": "Turtle",
   },{
     "type": "stripedfish",
-    "price": 4,
-    "name": "stripes",
+    "price": 35,
+    "name": "Stripey",
   },{
     "type": "shrimp",
     "price": 3,
-    "name": "shrimp",
+    "name": "Shrimp",
   },{
     "type": "purplepatternedfish",
-    "price": 3,
-    "name": "purp pattern",
+    "price": 20,
+    "name": "Porple",
   },{
     "type": "plankton",
     "price": 1,
-    "name": "plankton",
+    "name": "Mr. Plankton",
   },{
     "type": "patchyfish",
-    "price": 2,
-    "name": "patchy",
+    "price": 25,
+    "name": "Ms. Patch",
   },{
     "type": "multicolorfish",
-    "price": 2,
-    "name": "multi color",
+    "price": 20,
+    "name": "Very Many Colors",
   },{
     "type": "algae",
     "price": 1,
-    "name": "algae",
+    "name": "Algae",
   },{
     "type": "doryfish",
-    "price": 25,
-    "name": "dory",
+    "price": 10,
+    "name": "Dory",
   }, {
     "type": "blueyellowfish",
-    "price": 10,
-    "name": "angel",
+    "price": 5,
+    "name": "Blue Yellow Angel",
   },{
     "type": "clownfish",
     "price": 30,
-    "name": "nemo",
+    "name": "Finding Nemo",
   },
   {
     "type": "greenyellowpuffer",
-    "price": 20,
-    "name": "green puff",
+    "price": 15,
+    "name": "Green Puffer",
   },
   {
     "type": "peachpuffer",
-    "price": 15,
-    "name": "peach puff",
+    "price": 10,
+    "name": "Peach Puffer",
   },
   {
     "type": "pinkfish",
     "price": 5,
-    "name": "pinky",
+    "name": "Pink Angel",
   },
   {
     "type": "purplepeachfish",
-    "price": 10,
-    "name": "purp peach",
+    "price": 5,
+    "name": "Purple Peach Angel",
   },
   {
     "type": "yellowfish",
     "price": 5,
-    "name": "yellow",
+    "name": "Yellow Angel",
   },
   {
     "type": "octopus",
-    "price": 60,
-    "name": "tentacles",
+    "price": 100,
+    "name": "Mr. Octopus",
   },
   {
     "type": "seahorse",
-    "price": 55,
-    "name": "seahorse",
+    "price": 80,
+    "name": "Ms. Seahorse",
   },
 ];
   //randomizes order of allFish array

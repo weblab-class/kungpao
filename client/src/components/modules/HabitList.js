@@ -132,7 +132,7 @@ class HabitList extends Component {
           if (!this.sameWeek(todaysDate, parsedDate)) {
             habitObj.date = todaysDate;
             habitObj.isDone = false;
-              
+
             habitsToReset.push({id: habitObj._id, isDone: false, date: todaysDate});
           }
         }
@@ -141,7 +141,7 @@ class HabitList extends Component {
             todaysDate.getMonth() !== parsedDate.getMonth()) {
             habitObj.date = todaysDate;
             habitObj.isDone = false;
-              
+
             habitsToReset.push({id: habitObj._id, isDone: false, date: todaysDate});
           }
         }
