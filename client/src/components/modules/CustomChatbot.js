@@ -30,6 +30,7 @@ function CustomChatbot(props) {
         if(props.name==null){
           props.changeName(response.values[0]);
         }
+        props.endConversationCallback()
         
       }
       // cache: true
@@ -135,7 +136,12 @@ function CustomChatbot(props) {
           trigger: myName==null ? "firsttimereoffer":"reoffer",
           label: "cancel",
 
-        }]
+        },
+          {
+            label: "Unused state" + props.randomState,
+            id: "unusedState"
+          }
+        ]
       }
     ];
   return <ChatBot steps={steps} {...config} />;
