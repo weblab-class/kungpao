@@ -56,10 +56,13 @@ class HabitList extends Component {
 
   submitHabit = (event) => {
     event.preventDefault();
-    const body = {content: this.state.inputText, type: this.state.type};
-    post("api/habit", body).then((habit) => {
-      this.addNewHabit(habit);
-    });
+    if (this.state.inputText.length !== 0) {
+      const body = {content: this.state.inputText, type: this.state.type};
+      post("api/habit", body).then((habit) => {
+        this.addNewHabit(habit);
+      });
+    }
+    
   };
 
   updateHabitIsDone = (habitId, isDone) => {
@@ -183,10 +186,10 @@ class HabitList extends Component {
       <div className="habitlist-container">
 
         <div className="left-container">
-          <div data-tut="habittabs"> 
-          <button className="button" onClick={this.dailyTab} type="button">daily</button>
-          <button className="button" onClick={this.weeklyTab} type="button">weekly</button>
-          <button className="button" onClick={this.monthlyTab} type="button">monthly</button>
+          <div className="habittabs" data-tut="habittabs"> 
+            <button className="button" onClick={this.dailyTab} type="button">daily</button>
+            <button className="button" onClick={this.weeklyTab} type="button">weekly</button>
+            <button className="button" onClick={this.monthlyTab} type="button">monthly</button>
           </div>
           <div className="panel">
 
@@ -205,34 +208,30 @@ class HabitList extends Component {
             
           </div>
 
-          <div className="newhabitandbutton" data-tut="newhabit">
-            <form>
-                <input
-                  type="text"
-                  className="text"
-                  placeholder={"Add a new " + this.state.type + " habit"}
-                  value={this.state.inputText}
-                  onChange={this.handleInputChange}
-                />
-                <input
-                  type="submit"
-                  className="button"
-                  value="+"
-                  onClick={this.submitHabit}
-                />
-            </form>
-          </div>
+          <form className="newhabitandbutton" data-tut="newhabit">
+              <input
+                type="text"
+                className="text"
+                placeholder={"Add a new " + this.state.type + " habit"}
+                value={this.state.inputText}
+                onChange={this.handleInputChange}
+              />
+              <input
+                type="submit"
+                className="button"
+                value="+"
+                onClick={this.submitHabit}
+              />
+          </form>
         
         </div>  
           
-        <div>
-          <div className="panel2" data-tut="habitbalance">
-            <div className="balance">
-              <div>Balance: {this.state.balance}</div>
-              <img src={sanddollar} alt="sanddollar"></img>
-            </div>
-            <div>Use sanddollars in the store to buy fish for your aquarium.</div>
+        <div className="panel2" data-tut="habitbalance">
+          <div className="balance">
+            <div>Balance: {this.state.balance}</div>
+            <img src={sanddollar} alt="sanddollar"></img>
           </div>
+          <div>Use sanddollars in the store to buy fish for your aquarium.</div>
         </div>
         
       </div>
