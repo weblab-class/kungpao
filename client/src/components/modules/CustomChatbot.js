@@ -69,7 +69,7 @@ function CustomChatbot(props) {
         id: 'name',
         user: true,
         trigger: 'firsttimeoffer',
-        hideInput: false
+        //hideInput: false
       },
       {
         id: "firsttimeoffer",
