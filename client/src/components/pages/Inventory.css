@@ -80,7 +80,8 @@
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
+    align-items: flex-start;
     z-index: 1;
     border-style: solid;
     border-width: 3px;
@@ -95,6 +96,7 @@
     color: white;
     border-radius: 5px;
     font-family: "Quicksand";
+    margin-left: 10px;
 }
 
 .Inventory-selling-text {
@@ -121,6 +123,7 @@
 
 .Inventory-selected-balance {
     font-family: "Quicksand";
+    margin-left: 10px;
 }
 
 .none-selected {

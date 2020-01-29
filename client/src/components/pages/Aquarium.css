@@ -69,18 +69,20 @@ img.fish {
     padding: 0;
   }
 
-  .bubble {
+  .bubble{
     max-width: 5%;
     max-height: 5%;
+    
     margin-bottom: 0;
     margin-top: 70%;
     animation: floatUp;
     animation-duration: 10s;
     animation-iteration-count: infinite;
+    overflow: hidden;
     
   }
 
-  .bubble2 {
+  .bubble2{
     max-width: 2%;
     max-height: 2%;
     margin-bottom: 0;
@@ -88,6 +90,7 @@ img.fish {
     animation: floatUp2;
     animation-duration: 8s;
     animation-iteration-count: infinite;
+    
   }
 
   @keyframes floatUp {
