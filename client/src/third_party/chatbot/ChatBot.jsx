@@ -23,6 +23,9 @@ import { isMobile } from './utils';
 import { speakFn } from './speechSynthesis';
 import rgba from './common/rgba';
 
+const linkOrigStyle = {color:"white", "text-decoration":"none", "border": "1px solid white", "border-radius": "10px", "padding": "5px"};
+const linkHoverStyle = {color:"white", "text-decoration":"none", "border": "1px solid white", "border-radius": "10px", "padding": "5px", 'background': '#ffffff80'};
+
 class ChatBot extends Component {
   /* istanbul ignore next */
   constructor(props) {
@@ -53,7 +56,8 @@ class ChatBot extends Component {
       inputInvalid: false,
       speaking: false,
       recognitionEnable: props.recognitionEnable && Recognition.isSupported(),
-      defaultUserSettings: {}
+      defaultUserSettings: {},
+      hover: false,
     };
 
     this.speak = speakFn(props.speechSynthesis);
@@ -532,6 +536,14 @@ class ChatBot extends Component {
     }
   };
 
+  
+
+    toggleHover = () => {
+      this.setState({
+        hover : !this.state.hover,
+      });
+    }
+
   renderStep = (step, index) => {
     const { renderedSteps } = this.state;
     const {
@@ -594,6 +606,8 @@ class ChatBot extends Component {
     );
   };
 
+  
+
   render() {
     const {
       currentStep,
@@ -628,10 +642,20 @@ class ChatBot extends Component {
       height
     } = this.props;
 
+    
+
+    var linkStyle;
+    if (this.state.hover) {
+      linkStyle = linkHoverStyle;
+    }
+    else {
+      linkStyle = linkOrigStyle;
+    }
+
     const header = headerComponent || (
       <Header className="rsc-header">
         <HeaderTitle className="rsc-header-title">{headerTitle}</HeaderTitle>
-        <Link to="/" style={{color:"white", "text-decoration":"none", "border": "1px solid white", "border-radius": "10px", "padding": "5px"}}>Return to Aquarium</Link>
+        <Link to="/" onMouseEnter={this.toggleHover} onMouseLeave={this.toggleHover} style={linkStyle}>Return to Aquarium</Link>
         {floating && (
           <HeaderIcon className="rsc-header-close-button" onClick={() => this.toggleChatBot(false)}>
             <CloseIcon />

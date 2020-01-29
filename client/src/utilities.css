@@ -41,6 +41,7 @@ body {
   padding: 0;
   font-family: 'Rasa', serif;
   font-weight: 300;
+  overflow: hidden;
 }
 
 form {

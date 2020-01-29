@@ -228,9 +228,6 @@ class Store extends Component {
                 color={"white"}
               />
         }</div>
-          {this.props.fishList.map((f, i) => (
-            <Fish key={i} image={this.props.displayFish(f.type)}/>
-          ))}
 
 
       </>
