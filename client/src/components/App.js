@@ -341,6 +341,7 @@ class App extends Component {
             post("api/createMoney").then((money) => {
               console.log(money);
             });
+            this.setState({ tutorialMoneyIndicator: true });
           }
         });
         get("api/name").then((name) => {
@@ -522,9 +523,9 @@ class App extends Component {
       this.setState({
         completedTutorial: true,
       });
-      post("api/incrementMoney", { amount: 1 }).then((money) => {
-        this.setState({ tutorialMoneyIndicator: true });
-      });
+      // post("api/incrementMoney", { amount: 1 }).then((money) => {
+      //   this.setState({ tutorialMoneyIndicator: true });
+      // });
       console.log("i did the tutorial")
     }
   };
