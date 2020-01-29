@@ -183,6 +183,15 @@ class App extends Component {
         //     lastFed : ff,
         //   });
         // });
+        get("/api/tutorial", {googleid: user.googleid}).then((f) => {
+          if (f.googleid == null) {
+            this.setState({completedTutorial: false, isTourOpen: true})
+  
+          }
+          else {
+            this.setState({completedTutorial: true, isTourOpen: false})
+          }
+        });
         
         get("/api/buyfish", {googleid: user.googleid}).then((f) => {
           this.setState({notplaced : f});
