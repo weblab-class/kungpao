@@ -14,7 +14,7 @@
 
 .InventoryCardGroup {
     z-index: 2;
-    margin-right: 50px;
+    margin-right: 32px;
     display:flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -30,7 +30,7 @@
     border-style: solid;
     border-width: 3px;
     border-color: white;
-    gap: 15px 15px;
+    gap: 15px;
     
     
 }
@@ -79,7 +79,7 @@
 .Inventory-selling-container {
     height: 100%;
     /* width: 42%; */
-    margin-left: 50px;
+    margin-left: 32px;
     background-color: rgba(255, 255, 255, 0.3);
     color: rgb(238, 238, 238);
     z-index: 1;

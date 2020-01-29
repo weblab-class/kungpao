@@ -18,8 +18,7 @@ class InventoryCard extends Component {
     return (
             <div onClick={() => this.props.clickFx(this.props.fish)} className="InventoryCard square u-pointer">
                 <div className="content u-textCenter u-pointer">
-                    <img src={this.props.displayFish(this.props.fish.type)} width="100%" >
-                    </img>
+                    <img src={this.props.displayFish(this.props.fish.type)} width="100%" ></img>
                     <div className="InventoryCard-title">
                         <div className="InventoryCard-name">
                             {this.props.fish.name}
