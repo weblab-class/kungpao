@@ -9,12 +9,12 @@ class LargeFish extends Component {
 
     this.state = {
       x: Math.random() * 
-        (window.innerWidth - Constant.max_scale_factor * Constant.image_width),
+        (window.innerWidth - Constant.max_scale_factor * 2.5 * Constant.image_width),
       xDirection: xarray[Math.floor(Math.random() * xarray.length)],
       xVelocity: 2,
 
       y: Math.random() * 
-        (window.innerHeight - Constant.max_scale_factor * Constant.image_height),
+        (window.innerHeight - Constant.max_scale_factor * 2.5 * Constant.image_height),
       yDirection: yarray[Math.floor(Math.random() * yarray.length)],
       yVelocity: 1,
 
