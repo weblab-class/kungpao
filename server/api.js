@@ -266,7 +266,7 @@ router.get("/money", (req, res) => {
 router.post("/createmoney", (req, res) => {
   const newMoney = new Money({
     creator_id: req.user._id,
-    money: 1,
+    money: 10,
   });
   newMoney.save().then((money) => {
     res.send(money);

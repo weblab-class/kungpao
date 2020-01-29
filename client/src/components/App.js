@@ -481,10 +481,6 @@ class App extends Component {
       this.setState({
         completedTutorial: true,
       });
-      // post("api/incrementMoney", { amount: 1 }).then((money) => {
-      //   this.setState({ tutorialMoneyIndicator: true });
-      // });
-      console.log("i did the tutorial")
     }
   };
 
@@ -498,7 +494,6 @@ class App extends Component {
    * return an image
    */
   displayFish = (fishname) => {
-    // TODO: refactor using switch 
     if (fishname == 'doryfish') {
       return doryfish;
     }
