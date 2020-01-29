@@ -106,9 +106,7 @@ class Inventory extends Component {
              : 
              (this.props.fishList.length == 0 ? <div className="no-fish">You don't have any fish!</div> :
             this.props.fishList.map((f) => (<>
-                <div>
                   <InventoryCard displayFish={this.props.displayFish} fish={f} clickFx={f => this.addToSelect(f)}/>
-                  </div>
               </>
             ))
              )
@@ -129,9 +127,7 @@ class Inventory extends Component {
                         {this.state.selected.length == 0 ? <div className="none-selected">No fish selected</div> : 
                         this.state.selected.map((f) => (
                             <>
-                            <div>
                                 <InventoryCard displayFish={this.props.displayFish} fish={f} clickFx={f => this.removeFromSelect(f)}/>
-                            </div>
                         </>
                         ))
                         }
