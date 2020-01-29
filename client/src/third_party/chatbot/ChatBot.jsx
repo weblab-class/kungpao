@@ -254,11 +254,9 @@ class ChatBot extends Component {
     if (data && data.value) {
       currentStep.value = data.value;
     }
-    // console.log(currentStep, data)
     if (data && !data.hideInput) {
       currentStep.hideInput = data.hideInput;
     }
-    console.log(currentStep.hideInput, currentStep.trigger)
     if (data && data.hideExtraControl) {
       currentStep.hideExtraControl = data.hideExtraControl;
     }

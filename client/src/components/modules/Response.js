@@ -20,13 +20,11 @@ class Response extends Component {
 
     buyFish = (value) => {
         const body = { type: this.state.value };
-        post("/api/buyfish", body).then(res => console.log(res));
-        console.log('good')
+        post("/api/buyfish", body);
         };
 
     handleClick = (e) => {
         e.preventDefault();
-        console.log('The link was clicked.');
     };
   
     render() {

@@ -17,7 +17,6 @@ class Aquarium extends Component {
 
     constructor(props) {
         super(props);
-        console.log(this.props.fishList);
         this.state = {
           x : 0,
           y: 0,
@@ -67,7 +66,6 @@ class Aquarium extends Component {
               </div>
 
 
-        {console.log(this.props.fishDie)}
         {!this.props.fishDie ? null : <FishDiePopup onCloseFDP={this.props.closeFishDiePopup} popText = {this.props.popText} deadFish={this.props.deadFish} displayFish={this.props.displayFish}></FishDiePopup>}
         {this.props.showPopup ? <Popup popText={this.props.popText}
           onCloseP={this.props.togglePopup}>

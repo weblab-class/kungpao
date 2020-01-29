@@ -50,7 +50,6 @@ class Store extends Component {
     //   }
 
     componentDidMount(){
-        console.log('yay');
         get("/api/todaysfish").then((res) => {
             this.setState({
               fishtoday: res,
@@ -60,14 +59,12 @@ class Store extends Component {
 
         get("/api/money").then((res) => {
             if(typeof res.money==='undefined' || res.money==null){
-                console.log('zeromoneytostart');
                 const body = { money: 0};
-                post("/api/money", body).then((f)=> console.log(f));
+                post("/api/money", body);
                 this.setState({
                   money: 0,
                 });
             } else {
-                console.log('ihadmoneybefore??');
                 this.setState({
                   money: res.money,
                 });
@@ -75,15 +72,12 @@ class Store extends Component {
         });
         get("/api/name").then((res) => {
           if(typeof res.name=='undefined' || res.name==null){
-              console.log('nonameyet');
               const body = { name: null};
-              post("/api/name", body).then((f)=> console.log(f));
+              post("/api/name", body);
               this.setState({
                 name: null,
               });
           } else {
-              console.log('theresaname');
-              console.log('mynameis' + res.name);
               this.setState({
                 name: res.name,
               });
@@ -109,7 +103,6 @@ class Store extends Component {
     changeMoney(price, previousmoney){
 
       post("/api/incrementMoney", {amount: -price}).then((money) => {
-        console.log("lose money " + money);
         this.setState({
           money: this.state.money - price,
         });
@@ -129,7 +122,6 @@ class Store extends Component {
   }
 
   restartConversation() {
-    console.log(this.state.name);
       this.setState({
         random: Math.random(),
         showChat: false,
@@ -146,7 +138,6 @@ class Store extends Component {
 
     changeName(nameObj){
       post("/api/name", {name: nameObj}).then((name)=>{
-        console.log("setName!");
         this.setState({
           name: nameObj,
         });
@@ -169,42 +160,13 @@ class Store extends Component {
 
     render() {
         return (
-        // <div>
-        //
-        //     <div className="ChatContainer">
-        //     Buy stuff with sand dollars.
-        //     <button
-        //     type="submit"
-        //     className="Chat-button u-pointer"
-        //     value="Submit"
-        //     onClick={console.log("hi i'm a button")}
-        //     >
-        //         fish food
-        //     </button>
-        //     <div>
-        //         <SingleMessage fishtoday={this.state.fishtoday} boughtFish={this.props.boughtFish} displayFish = {this.props.displayFish}/>
-        //     </div>
-
-
-
-        //     </div>
-
-
-        // </div>
       <>
       <div className="popup-holder">
         {(this.state.conversationRestartEligible ? (
           <StorePopup popText="Return to your Aquarium or talk to Ray again!"
           onCloseP={this.toggleStorePopup} restart={this.restartConversation} ></StorePopup>
-
-
-          // console.log("hello?")
-          // <a href="#" onClick={this.restartConversation} className="return-button">Talk to Ray again</a>
         ) : null)}
         </div>
-
-      {/* {this.state.showStorePopup ? <StorePopup popText="Return to your Aquarium or talk to Ray again!"
-          onCloseP={this.toggleStorePopup}></StorePopup> : null} */}
 
         <div className = "Money">
           {this.state.money}

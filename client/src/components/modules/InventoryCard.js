@@ -10,7 +10,6 @@ class InventoryCard extends Component {
 
   handleClick = (e) => {
     e.preventDefault();
-    console.log('The fish was clicked.');
 };
 
 

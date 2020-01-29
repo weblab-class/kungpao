@@ -26,9 +26,7 @@ const firstTimeSteps = [
     content: "Time to create your first daily habit! Think of something you'd like to do every day, then hit enter or use the + to add your habit.",
     action: node => {
       // by using this, focus trap is temporary disabled
-      console.log(node)
     },
-    //disableInteraction: false,
   },
   {
     selector: '[data-tut="habittabs"]',
@@ -81,7 +79,6 @@ const steps = [
     content: "Create habits by typing them in this field. Hit enter or use the + to add your habit.",
     action: node => {
       // by using this, focus trap is temporary disabled
-      console.log(node)
     },
     //disableInteraction: false,
   },
@@ -189,8 +186,6 @@ class App extends Component {
         
         get("/api/buyfish", {googleid: user.googleid}).then((f) => {
           this.setState({notplaced : f});
-          console.log(this.state.notplaced);
-          console.log(this.state.notplaced[0]);
         });
         get("/api/placefish", {googleid: user.googleid}).then((f) => {
           this.setState({placedfish : f});
@@ -204,27 +199,22 @@ class App extends Component {
             }
             else {
               temp  = ff[ff.length -1];
-              console.log("what?");
             }
             this.setState( {
               lastFed : temp,
             });
-            console.log(this.state.lastFed);
             if (f.length > 0) {
               get("/api/killFish", {googleid: this.state.gId}).then((d) => {
                 this.setState({
                   lastDead: d,
                 });
-                console.log(d);
                 if (Date.now() - Date.parse(temp.lastfed) > 259200000 && temp != 0) {
   
                   let numFishDead = Math.floor((Date.now() - Date.parse(temp.lastfed)) / 259200000);
                   if (numFishDead > f.length-1) {
                     numFishDead = f.length - 1;
                   }
-                  console.log(numFishDead);
                   if (typeof d == undefined || d.length == 0){
-                    console.log("suppp");
                     this.setState({
                       popText: "You haven't fed your fish for three days... unfortunately your oldest fish has died.",
                       deadFish: f.slice(0, numFishDead),
@@ -232,7 +222,6 @@ class App extends Component {
                     this.fishDieToggle();
                   }
                   else if (Date.now() - Date.parse(d[d.length-1].timestamp) > 259200000){
-                    console.log('?????');
                     this.setState({
                       popText: "You haven't fed your fish for three days... unfortunately your oldest fish has died.",
                       deadFish: f.slice(0, numFishDead),
@@ -254,27 +243,19 @@ class App extends Component {
   }
 
   handleLogin = (res) => {
-    console.log(`Logged in as ${res.profileObj.name}`);
     const userToken = res.tokenObj.id_token;
     post("/api/login", { token: userToken }).then((user) => {
       this.setState({ userId: user._id, gId: user.googleid, });
       post("/api/initsocket", { socketid: socket.id });
       get("/api/buyfish", {googleid: user.googleid}).then((f) => {
         this.setState({notplaced : f});
-        console.log(this.state.notplaced);
-        console.log(this.state.notplaced[0]);
       });
       get("/api/tutorial", {googleid: user.googleid}).then((f) => {
-        //console.log(f);
         if (f.googleid == null) {
-          console.log("never been here")
-          console.log(this.state.isTourOpen)
           this.setState({completedTutorial: false, isTourOpen: true})
-          console.log(this.state.isTourOpen)
 
         }
         else {
-          console.log('itsmeagain')
           this.setState({completedTutorial: true, isTourOpen: false})
         }
       });
@@ -291,27 +272,22 @@ class App extends Component {
           }
           else {
             temp  = ff[ff.length -1];
-            console.log("what?");
           }
           this.setState( {
             lastFed : temp,
           });
-          console.log(this.state.lastFed);
           if (f.length > 0) {
             get("/api/killFish", {googleid: this.state.gId}).then((d) => {
               this.setState({
                 lastDead: d,
               });
-              console.log(d);
               if (Date.now() - Date.parse(temp.lastfed) > 259200000 && temp != 0) {
 
                 let numFishDead = Math.floor((Date.now() - Date.parse(temp.lastfed)) / 259200000);
                 if (numFishDead > f.length-1) {
                   numFishDead = f.length - 1;
                 }
-                console.log(numFishDead);
                 if (typeof d == undefined || d.length == 0){
-                  console.log("suppp");
                   this.setState({
                     popText: "You haven't fed your fish for three days... unfortunately your oldest fish has died.",
                     deadFish: f.slice(0, numFishDead),
@@ -319,7 +295,6 @@ class App extends Component {
                   this.fishDieToggle();
                 }
                 else if (Date.now() - Date.parse(d[d.length-1].timestamp) > 259200000){
-                  console.log('?????');
                   this.setState({
                     popText: "You haven't fed your fish for three days... unfortunately your oldest fish has died.",
                     deadFish: f.slice(0, numFishDead),
@@ -335,20 +310,14 @@ class App extends Component {
       });
       
         get("api/money").then((money) => {
-          console.log('MONEYRIP ' + money.money);
           if (money.money == null) {
-            console.log("creating money");
             post("api/createMoney").then((money) => {
-              console.log(money);
             });
           }
         });
         get("api/name").then((name) => {
-          console.log('namerip ' + name.name);
           if (name.name == null) {
-            console.log("creating name");
             post("api/newName").then((name) => {
-              console.log(name);
             });
           }
         });
@@ -364,7 +333,6 @@ class App extends Component {
 
 
   checkifFed = () => {
-    console.log(this.state.gId);
 
     get("/api/feedfish", {googleid: this.state.gId}).then((ff) => {
       let temp = 0;
@@ -376,12 +344,10 @@ class App extends Component {
       }
       else {
         temp  = ff[ff.length -1];
-        console.log("what?");
       }
       this.setState( {
         lastFed : temp,
       });
-      console.log(this.state.lastFed);
     
     if (this.state.placedfish.length == 0) {
       this.setState({
@@ -419,7 +385,6 @@ class App extends Component {
     this.setState({
       showPopup: !this.state.showPopup
     });
-    console.log("toggled");
   }
 
 
@@ -439,14 +404,11 @@ class App extends Component {
   }
 
   killFish = () => {
-    console.log("we made it.");
     var f;
     for (f = 0; f < this.state.deadFish.length; f++) {
       const body = {type: this.state.deadFish[f].type, googleid: this.state.gId};
-      post("/api/deadFish", body).then(res => console.log(res));
-      console.log('fish died');
-      post("/api/killFish", body).then(res => console.log(res));
-      console.log('recorded in db AKA dont show popup again pls');
+      post("/api/deadFish", body);
+      post("/api/killFish", body);
     }
     this.setState({
       fishDie: false,
@@ -463,7 +425,6 @@ class App extends Component {
       fishDie : !this.state.fishDie,
       
     });
-    console.log(this.state.fishDie);
   }
 
   closeFishDiePopup = () => {
@@ -484,11 +445,9 @@ class App extends Component {
       notplaced: temp,
     });
     const body = { type: newfish.type , price: newfish.price, googleid: this.state.gId};
-    post("/api/placefish", body).then(res => console.log(res));
+    post("/api/placefish", body);
     //need to delete from notplacedfish
-    post("/api/removefish", body).then(res => console.log(res));
-    console.log('addedfish');
-    // this.pickingFish;
+    post("/api/removefish", body);
   }
 
   addAllFish = () => {
@@ -496,9 +455,8 @@ class App extends Component {
     for (f = 0; f < this.state.notplaced.length; f++){
       let currentFish = this.state.notplaced[f];
       const body = { type: currentFish.type , price: currentFish.price, googleid: this.state.gId};
-      post("/api/placefish", body).then(res => console.log(res));
-      post("/api/removefish", body).then(res => console.log(res));
-      console.log('addedfish')
+      post("/api/placefish", body);
+      post("/api/removefish", body);
     }
     this.setState({
       placedfish: this.state.placedfish.concat(this.state.notplaced),
@@ -518,14 +476,13 @@ class App extends Component {
     })
     if (!this.state.completedTutorial){
       const body = {googleid: this.state.gId};
-      post("/api/tutorial", body).then(res => console.log(res));
+      post("/api/tutorial", body);
       this.setState({
         completedTutorial: true,
       });
       post("api/incrementMoney", { amount: 1 }).then((money) => {
         this.setState({ tutorialMoneyIndicator: true });
       });
-      console.log("i did the tutorial")
     }
   };
 
@@ -540,9 +497,7 @@ class App extends Component {
    */
   displayFish = (fishname) => {
     // TODO: refactor using switch 
-    //console.log(fishname);
     if (fishname == 'doryfish') {
-      //console.log('heLLOOOOo');
       return doryfish;
     }
     else if (fishname == 'blueyellowfish') {
