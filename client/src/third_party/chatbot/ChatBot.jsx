@@ -24,7 +24,7 @@ import { speakFn } from './speechSynthesis';
 import rgba from './common/rgba';
 
 const linkOrigStyle = {color:"white", "text-decoration":"none", "border": "1px solid white", "border-radius": "10px", "padding": "5px"};
-const linkHoverStyle = {color:"white", "text-decoration":"none", "border": "1px solid white", "border-radius": "10px", "padding": "5px", 'background': '#ffffff80'};
+const linkHoverStyle = {color:"white", "text-decoration":"none", "border": "1px solid white", "border-radius": "10px", "padding": "5px", 'background': '#ffffff4d'};
 
 class ChatBot extends Component {
   /* istanbul ignore next */

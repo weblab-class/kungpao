@@ -3,7 +3,7 @@ import rgba from "./common/rgba";
 
 export default {
   // background: '#f5f8fb',
-  background: '#ffffff80',
+  background: '#ffffff4d',
   fontFamily: '\'Quicksand\', sans-serif',
   headerBgColor: '#00CBD9',//'#6e48aa'
   headerFontColor: '#fff',
