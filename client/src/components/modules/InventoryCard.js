@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { get, post } from "../../utilities";
+import sanddollar from "../data/sanddollar.png";
 
 import "./InventoryCard.css";
 
@@ -25,7 +26,9 @@ class InventoryCard extends Component {
                         </div>
                         
                         <div className="InventoryCard-price">
-                            {this.props.fish.price}
+                          <span><img src={sanddollar} style={{display:"inline-block", width:"20px", height:"20px", margin: "5px 0 -5px 0"}}></img></span>
+                          <span>{this.props.fish.price}</span>
+                            
                         </div>
                     </div>
                 

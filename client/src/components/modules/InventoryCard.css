@@ -32,10 +32,6 @@
 
 }
 
-.InventoryCard-price::before {
-    content: "$ ";
-}
-
 .InventoryCard-name {
     box-sizing: border-box;
     position:relative;

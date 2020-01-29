@@ -5,6 +5,8 @@ import Fish from "../modules/Fish.js";
 import InventoryCard from "../modules/InventoryCard.js";
 import { get, post } from "../../utilities";
 
+import sanddollar from "../data/sanddollar.png";
+
 import "./Inventory.css";
 
 class Inventory extends Component {
@@ -122,7 +124,8 @@ class Inventory extends Component {
                 </div>
                 <button onClick={this.sellingFish} className="Inventory-sell-button">Sell Selected</button>
                 <div className="Inventory-selected-balance">
-                <p>Selected Balance: {this.state.selectedTotal}</p>
+                <span>Selected Balance: {this.state.selectedTotal}</span>
+                <span><img src={sanddollar} style={{display:"inline-block", width:"20px", height:"20px", margin: "5px 0 -5px 0"}}></img></span>
                 </div>
                     <div className="InventoryCardGroup2">
                     
