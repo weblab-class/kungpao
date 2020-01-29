@@ -81,7 +81,7 @@ const firstTimeSteps = [
 const steps = [
   {
     selector:'',
-    content: "Welcome back! You've seen this before, so if at any time you'd like to explore more freely, feel free to exit the tutorial at any point or skip to any tutorial page using the dots below.",
+    content: "Welcome back! You've seen this before, so if at any time you'd like to explore on your own, feel free to exit the tutorial at any point or skip to any tutorial page using the dots below.",
   },
   {
     selector: '[data-tut="navbarhabits"]',
