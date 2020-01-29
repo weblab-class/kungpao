@@ -408,7 +408,7 @@ class App extends Component {
     else {
       this.togglePopup();
       this.setState({
-        popText: "You have already fed your fish in the last 23 hours.",
+        popText: "You have already fed your fish in the last day.",
       });
     }
   });
