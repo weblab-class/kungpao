@@ -557,7 +557,7 @@ class App extends Component {
       {!this.state.userId ?
         <Login handleLogin = {this.handleLogin}/> : 
         
-      (this.state.completedTutorial=='null' || this.state.isTourOpen=='null') ? <p>loading</p> : 
+      (this.state.completedTutorial==null || this.state.isTourOpen==null) ? <p>loading</p> : 
       <>
         <Tour
         steps={this.state.completedTutorial ? steps : firstTimeSteps}
