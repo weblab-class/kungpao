@@ -26,8 +26,9 @@ class InventoryCard extends Component {
                         </div>
                         
                         <div className="InventoryCard-price">
+                        <span>{this.props.fish.price}</span>
                           <span><img src={sanddollar} style={{display:"inline-block", width:"20px", height:"20px", margin: "5px 0 -5px 0"}}></img></span>
-                          <span>{this.props.fish.price}</span>
+                          
                             
                         </div>
                     </div>
