@@ -195,6 +195,7 @@ class App extends Component {
             this.setState({completedTutorial: true, isTourOpen: false})
           }
         });
+        
         get("/api/buyfish", {googleid: user.googleid}).then((f) => {
           this.setState({notplaced : f});
         });
