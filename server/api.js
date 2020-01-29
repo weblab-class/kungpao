@@ -87,7 +87,6 @@ router.post("/feedfish", (req, res) => {
     googleid: req.user.googleid,
     lastfed: Date.now(),
   });
-  console.log(`HELLOOOOO`);
   feed.save().then((f) => res.send(f));
 });
 
@@ -140,7 +139,6 @@ router.post("/buyfish", (req, res) => {
     googleid: req.user.googleid,
     price: req.body.price,
   });
-  console.log(`HELLOOOOO`);
   newfish.save().then((f) => {
     res.send(f);
   });
@@ -154,7 +152,6 @@ router.get("/todaysfish", async (req, res) => {
   if (todayFishes !== null) {
     return res.json(todayFishes.fishes);
   }
-  console.log("fail");
   let allFish = [{
     "type": "turtle",
     "price": 50,
@@ -246,7 +243,6 @@ router.get("/todaysfish", async (req, res) => {
   // let todaysFish = allFish.slice(-3);
   // let testfish = [1,2,3];
   let todaysFish = allFish;
-  // console.log(todaysFish)
   await TodayFish.create({
     date: dateNowString,
     fishes: todaysFish
@@ -326,26 +322,20 @@ router.post("/placefish", (req, res) => {
     googleid: req.user.googleid,
     price: req.body.price,
   });
-  console.log(`placed fish in Aquarium!`);
   aquafish.save().then((f) => {
     res.send(f);
   });
 });
 
 router.post("/removeFish", (req, res) => {
-  console.log(req.body.type);
-  console.log(typeof(req.body.type));
-  console.log(req.body.googleid);
   AlmostMyFish.deleteOne({"type": req.body.type, "googleid": req.body.googleid}).then ((deleted) => {
     res.send(deleted);
-    console.log(`deleted fish ${req.body.type} from almostmyfish`);
   });
 });
 
 router.post("/deadFish", (req, res) => {
   MyFish.deleteOne({"type": req.body.type, "googleid": req.body.googleid}).then ((deleted) => {
     res.send(deleted);
-    console.log(`deleted fish ${req.body.type} from myfish`);
   });
 });
 
@@ -372,7 +362,6 @@ router.post("/chat", (req, res) => {
     content: req.body.content,
     timestamp: Date.now(),
   })
-  console.log(`a message!`);
   newMessage.save().then((f) => res.send(f));
 
 });
@@ -385,7 +374,6 @@ router.get("/chat", (req, res) => {
         { "sender": 'ray', "recipient": req.user._id },
       ],
     };
-  //Message.find(query).then((messages) => console.log("these are " + messages));
 
   Message.find(query).then((messages) => res.send(messages));
 });

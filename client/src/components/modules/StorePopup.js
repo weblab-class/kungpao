@@ -7,7 +7,6 @@ class StorePopup extends React.Component {
 
   constructor(props) {
     super(props);
-    console.log("storepopup");
   }
 
   render() {

@@ -19,7 +19,6 @@ class OptionsStep extends Component {
     const { value, label } = option;
 
     let labelRender;
-    // console.log(label)
     if (label.includes('$#$')) {
       const [text, price, pic] = label.split('$#$')
       labelRender = (<div><div><span style={{fontFamily: '\'Quicksand\', sans-serif', "text-align": "left"}}>{text}</span>

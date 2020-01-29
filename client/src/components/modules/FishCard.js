@@ -16,13 +16,11 @@ class FishCard extends Component {
 
   handleClick = (e) => {
     e.preventDefault();
-    console.log('The link was clicked.');
 };
 
   buyFish = (value) => {
     const body = { type: this.props.fish.type , price: this.props.fish.price};
-    post("/api/buyfish", body).then(res => console.log(res));
-    console.log('good')
+    post("/api/buyfish", body);
     this.props.boughtFish(body);
     this.props.sendMessage("I want " + this.props.fish.type, 'ray', this.props.userId);
   };

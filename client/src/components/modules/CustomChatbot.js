@@ -7,29 +7,28 @@ import { PromiseProvider } from "mongoose";
 
 
 function CustomChatbot(props) {
-    console.log(props)
     const config = {
       width: "100%",
       height: "65vh",
       botAvatar: ray,
       handleEnd: (response) => {
         const confirmIndex = response.values.indexOf("confirm");
-        console.log(response.values[0]);
-        //console.log(response.values);
+        const stepIds = response.steps.map(x => x.id)
+        const stepValues = response.steps.map(x => x.value)
+        const nameIndex = stepIds.indexOf("name")
         if(confirmIndex!==-1){
           const purchasedfish = response.values[confirmIndex-1];
           
           const body = { type: purchasedfish.type , price: purchasedfish.price};
           
-          post("/api/buyfish", body).then(res => console.log(res));
-          console.log('yay' + purchasedfish.price)
+          post("/api/buyfish", body);
           props.boughtFish(body);
           props.changeMoney(purchasedfish.price, props.money);
 
         }
         if(props.name==null){
-          console.log('heulo');
-          props.changeName(response.values[0]);
+          let newName = response.values[0];
+          newName ? props.changeName(response.values[0]) : props.changeName("You who must not be named");
         }
         props.endConversationCallback()
         
