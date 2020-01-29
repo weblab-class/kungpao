@@ -379,6 +379,7 @@ class ChatBot extends Component {
       }
 
       const values = previousSteps.filter(step => step.value).map(step => step.value);
+      (steps["name"] && !steps["name"].value) ? values.unshift(null) : null;
 
       handleEnd({ renderedSteps, steps, values });
     }

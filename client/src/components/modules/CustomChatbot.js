@@ -14,8 +14,12 @@ function CustomChatbot(props) {
       botAvatar: ray,
       handleEnd: (response) => {
         const confirmIndex = response.values.indexOf("confirm");
-        console.log(response.values[0]);
-        //console.log(response.values);
+        //console.log(response.steps);
+        const stepIds = response.steps.map(x => x.id)
+        const stepValues = response.steps.map(x => x.value)
+        //console.log(stepValues);
+        const nameIndex = stepIds.indexOf("name")
+        console.log(response.values);
         if(confirmIndex!==-1){
           const purchasedfish = response.values[confirmIndex-1];
           
@@ -29,7 +33,10 @@ function CustomChatbot(props) {
         }
         if(props.name==null){
           console.log('heulo');
-          props.changeName(response.values[0]);
+          let newName = response.values[0];
+          console.log(response.steps["name"].value);
+          console.log("newname = " + newName);
+          newName ? props.changeName(response.values[0]) : props.changeName("You who must not be named");
         }
         props.endConversationCallback()
         
