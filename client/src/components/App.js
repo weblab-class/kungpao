@@ -39,11 +39,11 @@ const firstTimeSteps = [
   },
   {
     selector: '[data-tut="habittabs"]',
-    content: "Switch between tabs to add goals you'd like to complete every day, week, or month. Completing monthly habits will earn you more sand dollars than weekly, which will earn more than daily."
+    content: "Switch between tabs to add goals you'd like to complete every day, week, or month."
   },
   {
     selector: '[data-tut="habitbalance"]',
-    content: "Maintain your habits to earn sand dollars.",
+    content: "Maintaining monthly habits will earn you more sand dollars than weekly, which will earn more than daily.",
   },
   {
     selector:'[data-tut="navbarstore"]',
@@ -97,11 +97,11 @@ const steps = [
   },
   {
     selector: '[data-tut="habittabs"]',
-    content: "Switch between tabs to add goals you'd like to complete every day, week, or month. Completing monthly habits will earn you more sand dollars than weekly, which will earn more than daily."
+    content: "Switch between tabs to add goals you'd like to complete every day, week, or month."
   },
   {
     selector: '[data-tut="habitbalance"]',
-    content: "Maintain your habits to earn sand dollars.",
+    content: "Maintaining monthly habits will earn you more sand dollars than weekly, which will earn more than daily.",
   },
   {
     selector:'[data-tut="navbarstore"]',
