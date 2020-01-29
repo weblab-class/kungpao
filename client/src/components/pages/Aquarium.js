@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import "../../utilities.css";
 import "./Aquarium.css";
 import Fish from "../modules/Fish.js";
+import LargeFish from "../modules/LargeFish.js";
 
 import bubble from "./bubble.png";
 import Popup from "../modules/Popup.js";
@@ -54,6 +55,7 @@ class Aquarium extends Component {
             <div className="full-window">
               <div className="fishies">
             {this.props.fishList.map((f,i) => (
+              f.type == 'octopus' ? <LargeFish key={i} image={this.props.displayFish(f.type)}/> : 
               <Fish key={i} image={this.props.displayFish(f.type)}/>
             ))}
             </div>
