@@ -70,16 +70,16 @@ class LargeFish extends Component {
     } 
 
     if (this.state.x > 
-      (window.innerWidth - Constant.max_scale_factor * Constant.image_width)) {
+      (window.innerWidth - Constant.max_scale_factor * 2.5 * Constant.image_width)) {
       xDirection = 'right';
-    } else if (this.state.x < Constant.max_scale_factor * Constant.image_width) {
+    } else if (this.state.x < Constant.max_scale_factor * 2.5 * Constant.image_width) {
       xDirection = 'left';
     }
 
     if (this.state.y > 
-      ( window.innerHeight - Constant.max_scale_factor * Constant.image_height )) {
+      ( window.innerHeight - Constant.max_scale_factor * 2.5 * Constant.image_height )) {
       yDirection = 'up';
-    } else if (this.state.y < Constant.max_scale_factor * Constant.image_height) {
+    } else if (this.state.y < Constant.max_scale_factor * 2.5 * Constant.image_height) {
       yDirection = 'down';
     }
 

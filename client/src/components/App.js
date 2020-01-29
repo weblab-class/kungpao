@@ -8,6 +8,8 @@ import Store from "./pages/Store.js";
 import Inventory from "./pages/Inventory.js";
 import Login from "./pages/Login.js";
 import Tour from 'reactour';
+import Fish from "./modules/Fish.js";
+import LargeFish from "./modules/LargeFish.js";
 
 const GOOGLE_CLIENT_ID = "707474204069-ibaig6vr8u2gf995465eel35t6kf6u1r.apps.googleusercontent.com";
 const firstTimeSteps = [
@@ -616,6 +618,13 @@ class App extends Component {
             handleLogout={this.handleLogout}
             userId={this.state.userId}
           />
+
+<div className="fishies">
+            {this.state.placedfish.map((f,i) => (
+              f.type == 'octopus' ? <LargeFish key={i} image={this.displayFish(f.type)}/> : 
+              <Fish key={i} image={this.displayFish(f.type)}/>
+            ))}
+            </div>
           
           <Router>
             <Aquarium

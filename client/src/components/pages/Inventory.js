@@ -98,13 +98,7 @@ class Inventory extends Component {
 
     render() {
         return ( <>
-        {this.props.fishList.map((f) => (<>
-            <div>
-              <Fish image={this.props.displayFish(f.type)}/>
-              </div>
-              
-              </>
-            ))}
+        
         <div className="Inventory-container">
             <div className="fishGroup">
             <div className="InventoryCardGroup">
