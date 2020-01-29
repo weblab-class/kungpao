@@ -13,6 +13,12 @@ import LargeFish from "./modules/LargeFish.js";
 
 import {css} from "@emotion/core";
 import CircleLoader from "react-spinners/CircleLoader";
+const override = css`
+  display: block;
+  margin-left: calc(50vw - 75px);
+  margin-top: calc(50vh - 75px);
+  border-color: red;
+`;
 
 const GOOGLE_CLIENT_ID = "707474204069-ibaig6vr8u2gf995465eel35t6kf6u1r.apps.googleusercontent.com";
 const firstTimeSteps = [
