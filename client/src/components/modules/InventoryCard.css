@@ -18,7 +18,7 @@
 
 .InventoryCard-price {
     z-index: 1;
-    width: 150%;
+    width: 160%;
     background: rgba(122, 122, 122, 0.3);
     position: center;
     color: white;
@@ -26,6 +26,7 @@
     border-style: solid;
     border-width: 2px;
     border-radius: 5px;
+    padding: 3px;
     /* border: 1px solid #CFD9E4;
     border-radius: 1px; */
 
