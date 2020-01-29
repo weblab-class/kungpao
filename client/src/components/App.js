@@ -38,7 +38,7 @@ const firstTimeSteps = [
   },
   {
     selector:'[data-tut="navbarstore"]',
-    content: "What can you do with sand dollars? After the tutorial, talk to Ray, our friendly fish store associate to buy fish for your aquarium. (You currently have no sand dollars!)",
+    content: "What can you do with sand dollars? Our friendly fish store associate, Ray, will be happy to talk to you after this tutorial! Catch him on the Store page later.",
     disableInteraction: true,
   },
   {
@@ -61,7 +61,7 @@ const firstTimeSteps = [
   },
   {
     selector:'',
-    content:"Here's one sand dollar to help you get your aquarium started! Best of luck building new habits!",
+    content:"We've given you 10 sand dollars to help you get your aquarium started! Best of luck building new habits!",
   },
   {
     selector:'[data-tut="tourbutton"]',
