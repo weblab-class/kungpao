@@ -71,8 +71,12 @@ const firstTimeSteps = [
 
 const steps = [
   {
+    selector:'',
+    content: "Welcome back! You've seen this before, so if at any time you'd like to explore more freely, feel free to exit the tutorial and your progress will be saved.",
+  },
+  {
     selector: '[data-tut="navbarhabits"]',
-    content: "Let's get started with some habits. If at any time you'd like to explore more freely, feel free to exit the tutorial and your progress will be saved. You can also jump to pages on the tutorial by clicking the dots below. Click here to navigate to the Habits page and then continue the tutorial.",
+    content: "Let's get started with some habits. You can also jump to pages on the tutorial by clicking the dots below. Click here to navigate to the Habits page and then continue the tutorial.",
   },
   {
     selector: '[data-tut="newhabit"]',
@@ -115,6 +119,10 @@ const steps = [
   {
     selector:'[data-tut="tourbutton"]',
     content: "If you ever need a refresher on maintaining your aquarium, you can access the tour here at any time."
+  },
+  {
+    selector:'',
+    content: "Don't forget to invite your friends to create their own habit aquariums! If you have any feedback, let us know at habitaquariumfeedback@gmail.com",
   }
 ];
 

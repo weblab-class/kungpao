@@ -139,12 +139,12 @@ function CustomChatbot(props) {
         options: [{
           value: "confirm",
           trigger: "Done",
-          label: "Confirm",
+          label: "Yes!",
         },
         {
           value: "No",
           trigger: myName==null ? "firsttimereoffer":"reoffer",
-          label: "Cancel",
+          label: "No, I've changed my mind.",
 
         },
           // {
