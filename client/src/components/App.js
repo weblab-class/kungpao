@@ -11,6 +11,15 @@ import Tour from 'reactour';
 import Fish from "./modules/Fish.js";
 import LargeFish from "./modules/LargeFish.js";
 
+import {css} from "@emotion/core";
+import CircleLoader from "react-spinners/CircleLoader";
+const override = css`
+  display: block;
+  margin-left: calc(50vw - 75px);
+  margin-top: calc(50vh - 75px);
+  border-color: red;
+`;
+
 const GOOGLE_CLIENT_ID = "707474204069-ibaig6vr8u2gf995465eel35t6kf6u1r.apps.googleusercontent.com";
 const firstTimeSteps = [
   {
@@ -574,7 +583,12 @@ class App extends Component {
       {!this.state.userId ?
         <Login handleLogin = {this.handleLogin}/> : 
         
-      (this.state.completedTutorial==null || this.state.isTourOpen==null) ? <p>loading</p> : 
+      (this.state.completedTutorial==null || this.state.isTourOpen==null) ? 
+      <CircleLoader
+              css={override}
+                size={150}
+                color={"white"}
+              /> : 
       <>
         <Tour
         steps={this.state.completedTutorial ? steps : firstTimeSteps}
