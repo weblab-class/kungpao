@@ -11,6 +11,9 @@ import Tour from 'reactour';
 import Fish from "./modules/Fish.js";
 import LargeFish from "./modules/LargeFish.js";
 
+import {css} from "@emotion/core";
+import CircleLoader from "react-spinners/CircleLoader";
+
 const GOOGLE_CLIENT_ID = "707474204069-ibaig6vr8u2gf995465eel35t6kf6u1r.apps.googleusercontent.com";
 const firstTimeSteps = [
   {
@@ -183,7 +186,15 @@ class App extends Component {
         //     lastFed : ff,
         //   });
         // });
-        
+        get("/api/tutorial", {googleid: user.googleid}).then((f) => {
+          if (f.googleid == null) {
+            this.setState({completedTutorial: false, isTourOpen: true})
+  
+          }
+          else {
+            this.setState({completedTutorial: true, isTourOpen: false})
+          }
+        });
         get("/api/buyfish", {googleid: user.googleid}).then((f) => {
           this.setState({notplaced : f});
         });
@@ -557,7 +568,12 @@ class App extends Component {
       {!this.state.userId ?
         <Login handleLogin = {this.handleLogin}/> : 
         
-      (this.state.completedTutorial==null || this.state.isTourOpen==null) ? <p>loading</p> : 
+      (this.state.completedTutorial==null || this.state.isTourOpen==null) ? 
+      <CircleLoader
+              css={override}
+                size={150}
+                color={"white"}
+              /> : 
       <>
         <Tour
         steps={this.state.completedTutorial ? steps : firstTimeSteps}
