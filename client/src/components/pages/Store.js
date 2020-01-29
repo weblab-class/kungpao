@@ -18,7 +18,7 @@ import { createHistory } from "@reach/router";
 
 const override = css`
   display: block;
-  margin: 0 auto;
+  margin: 30px auto;
   border-color: red;
 `;
 

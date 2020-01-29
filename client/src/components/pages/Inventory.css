@@ -30,13 +30,15 @@
     border-style: solid;
     border-width: 3px;
     border-color: white;
-    gap: 15px;    
+    gap: 15px 15px;
+    
     
 }
 
 .InventoryCardGroup2 {
     position: relative;
     z-index: 2;
+    margin-top: 20px;
     align-self: center;
     display:flex;
     flex-direction: row;
@@ -85,7 +87,7 @@
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: flex-start;
     flex: 4 5;
     z-index: 1;

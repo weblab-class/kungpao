@@ -239,8 +239,8 @@ class HabitList extends Component {
 
         <div className="panel2" data-tut="habitbalance">
           <div className="balance">
-            <img src={sanddollar} alt="sanddollar"></img>
             <div>{this.state.balance}</div>
+            <img src={sanddollar} alt="sanddollar"></img>
           </div>
           <div>Use sanddollars in the store to buy fish for your aquarium.</div>
         </div>
