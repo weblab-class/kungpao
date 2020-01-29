@@ -81,7 +81,7 @@ const firstTimeSteps = [
 const steps = [
   {
     selector:'',
-    content: "Welcome back! You've seen this before, so if at any time you'd like to explore more freely, feel free to exit the tutorial and your progress will be saved.",
+    content: "Welcome back! You've seen this before, so if at any time you'd like to explore more freely, feel free to exit the tutorial at any point or skip to any tutorial page using the dots below.",
   },
   {
     selector: '[data-tut="navbarhabits"]',
@@ -592,6 +592,8 @@ class App extends Component {
       <>
         <Tour
         steps={this.state.completedTutorial ? steps : firstTimeSteps}
+        closeWithMask={this.state.completedTutorial ? true : false}
+        startAt={0}
         isOpen={this.state.isTourOpen}
         onRequestClose={this.closeTour} 
         />
