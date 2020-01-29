@@ -15,7 +15,7 @@ const GOOGLE_CLIENT_ID = "707474204069-ibaig6vr8u2gf995465eel35t6kf6u1r.apps.goo
 const firstTimeSteps = [
   {
     selector: '',
-    content: "Welcome to Habit Aquarium! Let's go through a quick introduction.",
+    content: "Welcome to Habit Aquarium! Let's go through a quick introduction. You can use the arrows (or arrow keys) to navigate.",
   },
   {
     selector: '[data-tut="navbarhabits"]',
@@ -67,14 +67,14 @@ const firstTimeSteps = [
   },
   {
     selector:'[data-tut="tourbutton"]',
-    content: "If you ever need a refresher on how to maintain your aquarium, you can access the tour here at any time."
+    content: "If you ever need a refresher on maintaining your aquarium, you can access the tour here at any time."
   }
 ];
 
 const steps = [
   {
     selector: '[data-tut="navbarhabits"]',
-    content: "Let's get started with some habits. Click here to navigate to the Habits page and then continue the tutorial.",
+    content: "Let's get started with some habits. If at any time you'd like to explore more freely, feel free to exit the tutorial and your progress will be saved. You can also jump to pages on the tutorial by clicking the dots below. Click here to navigate to the Habits page and then continue the tutorial.",
   },
   {
     selector: '[data-tut="newhabit"]',
@@ -117,7 +117,7 @@ const steps = [
   },
   {
     selector:'[data-tut="tourbutton"]',
-    content: "If you ever need a refresher on how to maintain your aquarium, you can access the tour here at any time."
+    content: "If you ever need a refresher on maintaining your aquarium, you can access the tour here at any time."
   }
 ];
 
